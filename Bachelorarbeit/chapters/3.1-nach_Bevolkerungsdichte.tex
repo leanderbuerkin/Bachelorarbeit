@@ -32,39 +32,51 @@ Nicht alle Bundesländer wurden in Regierungsbezirke unterteilt, in diesem Fall 
 
 Klar zu erkennen sind die Stadtkreise in Abbildung \ref{fig:distribution_pop_density_counties}: Sie weisen eine hohe Bevölkerungsdichte auf und sind in der Regel von weniger stark bevölkerten Landkreisen umgeben.
 
+Als erstes Beispiel zu Demonstrationszwecken ausführlich gezeigt.
+
 Die Städte in Tabelle \ref{tab:landkreise_um_städte} von einem Landkreis umgeben, an Ihnen lässt sich besonders gut testen, ob sich in den Korrelationswahrscheinlichkeiten zwischen einer Stadt und ihrem Umland eine zeitliche Verschiebung feststellen lässt.
 \begin{table}[H]
     \centering
-    \begin{tabular}{c}
-Kassel 6633\\
-Trier-Saarburg 7235\\
-Südliche Weinstraße 7337\\
-Südwestpfalz 7340\\
-Heilbronn 8125\\
-Rastatt 8216\\
-Rosenheim 9187\\
-Landshut 9274\\
-Straubing-Bogen 9278\\
-Amberg-Sulzbach 9371\\
-Beustadt a.d. Waldnaab 9374\\
-Regensburg 9375\\
-Bamberg 9471\\
-Bayreuth 9472\\
-Coburg 9473\\
-Hof 9475\\
-Ansbach 9571\\
-Schweinfurt 9678\\
-Würzburg 9679\\
-Ostallgäu 9777\\
-Oberallgäu 9780\\
-Potsdam-Mittelmark 12069\\
-Spree-Neiße 12071\\
-Saalekreis 15088\\
-Weimarer Land 16071\\
-\todo{fill table}
+    \begin{tabular}{c|c|c|c}
+    Name des Land-&AGS &Umgebener  &AGS\\
+    kreises (LK)  &Landkreis&Stadtkreis (SK)&Stadtkreis\\
+    \hline
+Kassel & 6633 & Kassel & 6611 \\\hdashline
+Trier-Saarburg & 7235 & Trier & 7211 \\\hdashline
+Südliche Weinstraße & 7337 & Landau i.d.Pfalz & 7313 \\\hdashline
+Südwestpfalz & 7340 & Pirmasens & 7317 \\\hdashline
+Heilbronn & 8125 & Heilbronn & 8121 \\\hdashline
+Rastatt & 8216 & Baden-Baden & 8211 \\\hdashline
+Rosenheim & 9187 & Rosenheim & 9163 \\\hdashline
+Landshut & 9274 & Landshut & 9261 \\\hdashline
+Straubing-Bogen & 9278 & Straubing & 9263 \\\hdashline
+Amberg-Sulzbach & 9371 & Amberg & 9361 \\\hdashline
+Neustadt a.d.Waldnaab & 9374 & Weiden i.d.OPf & 9363 \\\hdashline
+Regensburg & 9375 & Regensburg & 9362 \\\hdashline
+Bamberg & 9471 & Bamberg & 9461 \\\hdashline
+\begin{comment}
+Bayreuth & 9472 &  &  \\\hdashline
+Coburg & 9473 &  &  \\\hdashline
+Hof & 9475 &  &  \\\hdashline
+Ansbach & 9571 &  &  \\\hdashline
+Schweinfurt & 9678 &  &  \\\hdashline
+Würzburg & 9679 &  &  \\\hdashline
+Ostallgäu & 9777 &  &  \\\hdashline
+\end{comment}
+Oberallgäu & 9780 & Kempten & 9763 \\\hdashline
+Potsdam-Mittelmark & 12069 & Brandenburg a.d. Havel & 12051 \\\hdashline
+Spree-Neiße & 12071 & Cottbus & 12052 \\\hdashline
+Saalekreis & 15088 & Halle (Saale) & 15002 \\\hdashline
+Weimarer Land & 16071 & Weimar & 16055
     \end{tabular}
-    \caption{Landkreise mit Name und Gemeindeschlüssel, die eine Stadt komplett umgeben.}
+    \caption{Landkreise mit Name und Gemeindeschlüssel (AGS), die den jeweils mit Name und Gemeindeschlüssel gekennzeichneten Stadtkreis komplett umgeben.}
     \label{tab:landkreise_um_städte}
 \end{table}
-Als erstes Beispiel zu Demonstrationszwecken ausführlich gezeigt.
 
+In Abbildung \autoref{fig:selected_counties} sind die ausgewählten Landkreise mit den Stadtkreisen, die sie umgeben abbgebildet.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/Durchführung/selected_counties.png}
+    \caption{Die ausgewählten Landkreise mit den Stadtkreisen, die sie jeweils umgeben.}
+    \label{fig:selected_counties}
+\end{figure}
