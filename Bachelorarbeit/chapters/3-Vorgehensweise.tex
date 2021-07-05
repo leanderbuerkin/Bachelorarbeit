@@ -14,7 +14,7 @@ Eine Reihe von Histogramen auf der rechten Seite zeigt die Verteilung der sieben
 
 \subsection{Programmdateien}
 Im Anhang finden sich die drei Programmdateien, aus denen sich sich das Programm zusammensetzt: \todo{link project files}
-
+\todo{bild und link von video einbetten}
 
 Die Dateien haben eine hierarchische Struktur:\\
 Die Datei \glqq{}plot\_data.ipynb\grqq{} führt die Datei \glqq{}get\_data.ipynb\grqq{} aus,
@@ -76,14 +76,15 @@ Das Dictionary non\_county\_specific\_data enthält die folgenden Elemente:
     \item[UTC+7days:] Die Liste der Zeiten gespeichert in UTC plus sieben Tage vor dem erstem Datum in der Liste, um den Zeitraum der sieben Tages Inzidenz der ersten sieben Tage darstellen zu können: die hierfür verwendeten Zeiträume beginnen jeweils vor dem ersten hier dokumentierten Fall.
 \end{itemize}
 Die Unixzeit, die Namen und die Nummern der Bundesländer stammen aus dem \glqq{}COVID-19 Datenhub\grqq{} (https://npgeo-corona-npgeo-de.hub.arcgis.com/). Alle anderen Informationen wurden gesammelt oder berechnet.
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/Dictionarys Bachelorprojekt.png}
+    \includegraphics[width=0.8\textwidth]{figures/Dictionarys Bachelorprojekt.png}
     \caption{
     Die Dictionaries non\_county\_specific\_data, counties\_geography und covid19 mit ihren jeweiligen Schlüsseln.
     Für die Dictionaries covid19 und counties\_geography wurde jeweils der Landkreis Kiel (Gemeindeschlüssel 1002) zur Veranschaulichung verwendet.}
     \label{fig:my_label}
 \end{figure}
+
 
 \subsubsection{Datenquellen - Ursprung und Abspeicherung}
 Das Bachelorprojekt verwendet Informationen zur COVID-19 Pandemie und den geographischen Daten von 412 deutschen Landkreisen. Alle Daten stammen aus dem \glqq{}COVID-19 Datenhub\grqq{} (https://npgeo-corona-npgeo-de.hub.arcgis.com/) oder wurden aus den daher stammenden Daten generiert. Diese Datenquelle wurde gewählt, weil sie vom Robert-Koch-Institut (RKI, www.rki.de) und dem deutschen Staat referenziert wird.
@@ -94,4 +95,18 @@ Die Daten sind in drei verschiedenen Formen gespeichert:
     \item Als unpolierte Daten auf der Maschine, welche das Program ausführt, als Backup, wenn die API nicht erreichbar ist.
     \item Als polierte Daten auf der Maschine, welche das Program ausführt, für den sofortigen Gebrauch.
 \end{itemize}
-\todo{Vergleiche mit https://www.rki.de/DE/Content/Infekt/EpidBull/Archiv/2020/Ausgaben/17_20.pdf?__blob=publicationFile  }
+\todo{Vergleiche mit (kommentar siehe Code)}
+% https://www.rki.de/DE/Content/Infekt/EpidBull/Archiv/2020/Ausgaben/17_20.pdf?__blob=publicationFile
+
+\section{Einordnung und weitere Visualisierung der Daten}
+Im folgenden wird die Korrelation der Corona-Fälle der einzelnen deutschen Landkreise untersucht. Um dieses Verfahren besser zu verstehen und ein grobes Gefühl für den Datensatz zu bekommen, werden die einzelnen Werte gesondert an.
+
+\subsection{Die deutschen Landkreise und Ihre Bevölkerungsdichte}
+Zuallererst folgen die genutzten Daten, welche nichts mit Corona zutun haben: Die Landkreise und ihre Bevölkerungsdichte. Die Bevölkerungsdichte wird aus der Bevölkerungszahl und der Fläche des Landkreises berechnet, welche von der API bereitgestellt werden \todo{adäquate Verlinkung auf API}.\\
+\begin{figure}
+    \centering
+    \includegraphics[width=0.\textwidth]{figures/Vorgehensweise/population_density_counties_distribution.png}
+    \caption{Verteilung der Bevölkerungsdichten unter den deutschen Landkreisen. Die Bezirke Berlins}
+    \label{fig:distribution_pop_density_counties}
+\end{figure}
+\todo{klarstellen, das die Landkreise nicht den Landkreisen entsprechen (Berlin ist aufgeteilt) Aus Wikipedia "Landkreis": In Deutschland gibt es 294 Landkreise. Zusammen mit den 106 kreisfreien Städten bilden sie die insgesamt 400 Gebietskörperschaften auf Kreisebene.}
