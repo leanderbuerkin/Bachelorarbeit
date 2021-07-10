@@ -38,16 +38,16 @@
     \hypersetup{pageanchor=false}
 
     % enable/disable, depending on your chosen language
-    \input{chapters/0_0-Titelseite.tex}
+    \input{chapters/0000Titelseite}
 
     \pagestyle{plain} % remove chapter name from top, page number at the bottom
     % use \pagestyle{headings} for having the chapter on top of the pages
     % if you wang a more fancy header use \usepackage[automark,headsepline]{scrlayer-scrpage}
     % and read about it in the KOMA script documentation, https://www.ctan.org/pkg/koma-script
     \frontmatter  % roman page numbers
-    \input{chapters/0_1-Erklaerung.tex}
-    \input{chapters/0_2-Zusammenfassung.tex}
-    \input{chapters/0_3-Zitat.tex}
+    \input{chapters/0005Erklaerung}
+    \input{chapters/0010Kurzbeschreibung}
+    \input{chapters/0015Zitat}
     \tableofcontents
     \listoffigures
     \listoftables
@@ -55,12 +55,13 @@
     \hypersetup{pageanchor=true}  % re-enable hyperlinking
 
     \mainmatter  % Arabic page numbers
-    \input{chapters/1-Motivation.tex}
-    \input{chapters/2-Grundlagen und Stand der Forschung.tex}
-    \input{chapters/3-Durchführung.tex}
-    \input{chapters/5-Diskussion.tex}
-    \input{chapters/6-Zusammenfassung.tex}
-    \input{chapters/7-Danksagung.tex}
+    \input{chapters/0020Motivation}
+    \input{chapters/0025Grundlagen}
+    \input{chapters/0028Vorgehensweise}
+    \input{chapters/0030Durchführung/0030Durchführung}
+    \input{chapters/0045Diskussion}
+    \input{chapters/0050Zusammenfassung}
+    \input{chapters/0055Danksagung}
     
     % If you want a list of your ToDos at the end of the document
     % don't forget to remove before submission!
