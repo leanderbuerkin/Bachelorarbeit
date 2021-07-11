@@ -1,0 +1,34 @@
+Die Farbe jedes Landkreises repräsentiert die sieben Tage Inzidenz des Landkreises gemäß der Legende.\\
+Eine Reihe von Histogramen auf der rechten Seite zeigt die Verteilung der sieben Tage Inzidenzen alles deutschen Landkreise. Ein Histogram besteht aus 15 Säulen, wobei jede Säule einen Inzidenzbereich von 25 abdeckt. Die letzte Säule enthält zusätzlich alle sieben Tages Inzidenzen größer 350 Fälle pro sieben Tage und 100.000 Einwohner. Die Höhe der Säule entspricht jeweils der Anzahl an Landkreisen mit einer sieben Tages Inzidenz im angegebenen Bereich.
+
+
+
+\subsection{Programmdateien}
+Im Anhang finden sich die drei Programmdateien, aus denen sich sich das Programm zusammensetzt: \todo{link project files}
+\todo{bild und link von video einbetten}
+
+Die Dateien haben eine hierarchische Struktur:\\
+Die Datei \glqq{}plot\_data.ipynb\grqq{} führt die Datei \glqq{}get\_data.ipynb\grqq{} aus,
+welche wiederum die Datei \glqq{}get\_geographical\_data\_of\_german\_counties.ipynb\grqq{} ausführt.
+
+Die Datei \glqq{}plot\_data.ipynb\grqq{} speichert die Grafiken schlussendlich\\
+in den Ordner \glqq{}media\grqq{}.
+
+Die Datei \glqq{}get\_data.ipynb\grqq{} konvertiert \glqq{}unpolierte\grqq{} Daten zu \glqq{}polierten\grqq{} Daten.
+
+
+Die Datei \glqq{}get\_geographical\_data\_of\_german\_counties.ipynb\grqq{} ist ein ausgelagerter Teil von der Datei \glqq{}get\_data.ipynb\grqq{}, welcher die Informationen über die Form und die Lage der deutschen Landkreise beschafft. Dieser Vorgang nimmt überdurchschnittlich viel Platz ein, da die Form von circa 100 Landkreisen von Hand überprüft werden muss.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Die Anzahl an COVID-19 Fällen pro Tag stamt aus dem \glqq{}COVID-19 Datenhub\grqq{} (https://npgeo-corona-npgeo-de.hub.arcgis.com/). Die sieben Tages Inzidenz wurde aus den Daten vom COVID-19 Datenhub berechnet.
