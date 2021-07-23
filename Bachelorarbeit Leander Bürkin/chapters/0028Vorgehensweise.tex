@@ -9,7 +9,9 @@ Das fertige Videos ist verfügbar unter \todo{Video verlinken}.
 
 \section{Datenquellen - Ursprung und Abspeicherung}\label{sec:Datenquelle}
 
-Das Bachelorprojekt sowie diese Bachelorarbeit verwenden Informationen zur COVID-19 Pandemie und den geographischen Daten von 412 deutschen Landkreisen. Alle Daten stammen aus dem \glqq{}COVID-19 Datenhub\grqq{} (https://npgeo-corona-npgeo-de.hub.arcgis.com/) oder wurden aus den daher stammenden Daten generiert. Diese Datenquelle wurde gewählt, weil sie vom Robert-Koch-Institut (RKI, www.rki.de)\todo{wie verlinke ich die URL korrekt?} und dem deutschen Staat referenziert wird.\todo{Staat refernzieren}
+Das Bachelorprojekt sowie diese Bachelorarbeit verwenden Informationen zur COVID-19 Pandemie und den geographischen Daten von 412 deutschen Landkreisen. Alle Daten stammen aus dem \glqq{}COVID-19 Datenhub\grqq{} (https://npgeo-corona-npgeo-de.hub.arcgis.com/) oder wurden aus den daher stammenden Daten generiert. Diese Datenquelle wurde gewählt, weil sie vom Robert-Koch-Institut (RKI, www.rki.de) und dem deutschen Staat referenziert wird.
+\todo{wie verlinke ich die URL korrekt?}
+\todo{Staat refernzieren}
 
 Insgesamt werden drei verschiedene Datenpakete der API verwendet, zum einen die geographischen Daten der Landkreise, zum anderen die Summe aller aufgetretenen COVID-19 Fälle seit Beginn der Pandemie für jeden Landkreis und jeden Tag seit dem 01.März 2020 sowie eine Auflistung aller Meldungen der Gesundheitsämter, in welchen das  Referenzdatum, das Meldedatum, die Anzahl der betroffenen Menschen und deren tragisches Schicksal (entweder genesen, verstorben oder noch infektiös) angegeben werden. Das Referenzdatum kann als Tag der Infektion interpretiert werden, das Meldedatum als Genesungsdatum beziehungsweise Sterbedatum.
 \todo{RKI Paper verlinken}
@@ -110,7 +112,7 @@ Die Unixzeit, die Namen und die Nummern der Bundesländer stammen aus dem \glqq{
 In Abbildung \ref{fig:dicts_als_code} sind die drei Dictionaries dargestellt, wie sie auch im Programm verwendet werden.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/Durchführung/Dictionarys Bachelorprojekt.png}
+    \includegraphics[width=0.8\textwidth]{figures/Vorgehensweise/Dictionarys Bachelorprojekt.png}
     \caption{
     Die Dictionaries non\_county\_specific\_data, counties\_geography und covid19 mit ihren jeweiligen Schlüsseln.
     Für die Dictionaries covid19 und counties\_geography wurde jeweils der Landkreis Kiel (Gemeindeschlüssel 1002) zur Veranschaulichung verwendet.}
@@ -122,7 +124,7 @@ In Abbildung \ref{fig:dicts_als_code} sind die drei Dictionaries dargestellt, wi
 \section{SIR-Modell}
 Da die Zahl der aktiven Fälle sehr niedrig und dementsprechend sensibel gegenüber kleinen Anomalien, ist, wird nur auf Bundesebene ein SIR-Modell erstellt und dargestellt. 
 Hierfür werden die drei Kennzahlen des SIR-Modells in drei Abbildungen dargestellt.
-\todo{SRI-Modell einfügen und mit Grundlagen abgleichen}
+\todo{SIR-Modell einfügen und mit Grundlagen abgleichen}
 
 \section{Korrelationsanalyse}
 \subsection{Allgemeine Vorgehensweise}
@@ -130,12 +132,15 @@ Insgesamt werden folgende verschiedene Arten von Korrelationsanalysen durchgefü
 \begin{itemize}
     \item Die Korrelation einzelner Stadtkreise welche komplett von einem Landkreis umgeben sind.
     \item Die Korrelation aller Landkreise untereinander sortiert nach Bevölerungsdichte.
-    \item Die Korrelation aller Landkreise untereinander sortiert nach dem Gemeindeschlüssel, entspricht einer groben Nord-Süd Aufteilung und zudem getrennt nach Ost- und West-Deutschland.
-    \item Die Korrelation aller Regierungsbezirke (beziehungsweise Bundesländer in Bundesländern ohne Regierungsbezirke) untereinander sortiert nach Bevölerungsdichte.
+    \item Die Korrelation aller Regierungsbezirke untereinander sortiert nach Bevölerungsdichte.
+    \item Die Korrelation aller Landkreise untereinander sortiert nach dem Gemeindeschlüssel, entspricht einer groben Nord-Süd Aufteilung.
+    \item Die Korrelation aller Regierungsbezirke untereinander sortiert nach dem Gemeindeschlüssel, entspricht einer groben Nord-Süd Aufteilung.
 \end{itemize}
 Es wird jeweils die Korrelation zwischen den Zeitserien der 7 Tages Inzidenzen nach den in \autoref{sec:BeschreibungKorrelationsanalyse} beschriebenen Methoden untersucht. Hieraus ergibt sich jeweils eine Liste an Werten, welche angeben, bei welchem zeitlichen Versatz wie wahrscheinlich eine Korrelation vorliegt.
 
-Um dieses Verfahren zum Einstieg übersichtlich darzustellen, werden zuerst die Korrelationen zwischen den Landkreisen aus Tabelle \ref{tab:landkreise_um_städte welche sie umgeben } und den Stadtkreisen, die sie umgeben, berechnet. An ihnen lässt sich besonders gut testen, ob sich in den Korrelationswahrscheinlichkeiten zwischen einer Stadt und ihrem Umland eine zeitliche Verschiebung feststellen lässt.
+Um dieses Verfahren zum Einstieg übersichtlich darzustellen, werden zuerst die Korrelationen zwischen den Landkreisen aus Tabelle \ref{tab:landkreise_um_städte} und den Stadtkreisen, die sie umgeben, berechnet. An ihnen lässt sich besonders gut testen, ob sich in den Korrelationswahrscheinlichkeiten zwischen einer Stadt und ihrem Umland eine zeitliche Verschiebung feststellen lässt.
+
+In \autoref{fig:selected_counties} sind die ausgewählten Landkreise mit den Stadtkreisen, die sie umgeben abbgebildet.
 \begin{table}[H]
     \centering
     \begin{tabular}{c|c|c|c}
@@ -174,31 +179,32 @@ Weimarer Land & 16071 & Weimar & 16055
     \label{tab:landkreise_um_städte}
 \end{table}
 
-In Abbildung \autoref{fig:selected_counties} sind die ausgewählten Landkreise mit den Stadtkreisen, die sie umgeben abbgebildet.
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{figures/Durchführung/selected_counties.png}
+    \includegraphics[width=\textwidth]{figures/Vorgehensweise/selected_counties.png}
     \caption{Die ausgewählten Landkreise mit den Stadtkreisen, die sie jeweils umgeben.}
     \label{fig:selected_counties}
 \end{figure}
 
 \subsubsection{Matrix der maximalen Wahrscheinlichkeiten}
-Zum einen werden nun die Verschiebungen mit der höchsten Wahrscheinlichkeit in eine Matrix eingetragen, wobei jede Zeile und Spalte einem Landkreis/Regierungsbezirk zugeordnet ist. 
-Der Eintrag in einer Zelle die wahrscheinlichste zeitliche Verschiebung des Verlaufs der 7 Tages Inzidenz des Landkreises/Regierungsbezirkes der Spalte im Vergleich zu dem Verlauf der 7 Tages Inzidenz des Landkreises/Regierungsbezirkes der Zeile.
-Somit ist die Matrix symmetrisch an der Diagonalen von links oben nach rechts unten, lediglich die Vorzeichen unterscheiden sich. Diese Diagonale ist in diesen Fällen mit Nullen besetzt, da die Korrelationswahrscheinlichkeit zu sich selbst trivialerweise bei einer Verschiebung von $\tau=0$ am größten ist, da die Werte und Trends komplett identisch sind.
+Um die Korrelationswahrscheinlichkeiten aller Landkreise/Regierungsbezirke untereinander darzustellen, werden aus den Korrelationswahrscheinlichkeiten zwei Werte berechnet, wie zwei Landkreise/Regierungsbezirke in Relation zueinander stehen könnten.
+
+Zum einen werden die Verschiebungen mit der höchsten Wahrscheinlichkeit in eine Matrix eingetragen, wobei jede Zeile und Spalte einem Landkreis/Regierungsbezirk zugeordnet ist. 
+Der Eintrag in einer Zelle entspricht der wahrscheinlichsten zeitlichen Verschiebung des Verlaufs der 7 Tages Inzidenz des Landkreises/Regierungsbezirkes der Spalte im Vergleich zu dem Verlauf der 7 Tages Inzidenz des Landkreises/Regierungsbezirkes der Zeile.
+Somit ist die Matrix symmetrisch an der Diagonalen von links oben nach rechts unten, lediglich die Vorzeichen unterscheiden sich. Die Diagonale ist mit Nullen besetzt, da die Korrelationswahrscheinlichkeit zu sich selbst trivialerweise bei einer Verschiebung von $\tau=0$ am größten ist, da die Werte und Trends komplett identisch sind.
 
 Summiert man die Werte einer Zeile auf und teilt sie durch die Anzahl der Werte, erhält man die Anzahl der Tage, die die sieben Tages Inzidenz des Landkreises, der dieser Zeile zugeordnet ist, im Durchschnitt zu den 7 Tages Inzidenzen aller anderen deutschen Landkreisen versetzt ist.
 Somit lässt sich farblich auf einer Deutschlandkarte eine sehr grobe Darstellung erzeugen, welche Landkreise im Schnitt wieviel früher einen Anstieg der 7 Tages Inzidenzen aufwiesen.
 
 \subsubsection{Matrix der aufsummierten Wahrscheinlichkeiten}
 Bei der zweiten Möglichkeit werden die Wahrscheinlichkeiten für alle positiven zeitlichen Verschiebungen zusammenaddiert und die Wahrscheinlichkeiten für alle negativen zeitlichen Verschiebungen davon abgezogen, 
-um die kompletten Informationen aus der Liste an Korrelationswahrscheinlichkeiten zu verarbeiten und nicht nur einen Wert herauszunehmen. Diese Korrelation kann ebenfalls als Matrix dargestellt werden. In diesem Fall entspricht der Wert einer Zelle, ob Zahl der COVID-19 Fälle des Landkreises/Regierungsbezirkes der Spalte eher vor oder nach den COVID-19 Fällen des Landkreises/Regierungsbezirkes der Zeile steigen und fallen. Die Information, um wieviele Tage die Kurven wahrscheinlich verschoben sind, geht verloren. Somit ist auch diese Matrix symmetrisch an der Diagonalen von links oben nach rechts unten. Diese Diagonale ist ebenfalls mit Nullen besetzt, da die positive Verschiebung symmetrisch zur negativen Verschiebung ist.
+um die kompletten Informationen aus der Liste an Korrelationswahrscheinlichkeiten zu verarbeiten und nicht nur einen Wert herauszunehmen. Diese Korrelation kann ebenfalls als Matrix dargestellt werden. In diesem Fall zeigt der Wert einer Zelle, ob die Zahl der COVID-19 Fälle des Landkreises/Regierungsbezirkes der Spalte eher vor oder nach den COVID-19 Fällen des Landkreises/Regierungsbezirkes der Zeile steigen und fallen. Die Information, um wieviele Tage die Kurve wahrscheinlich verschoben ist, geht verloren. Auch diese Matrix ist (mit verkehrtem Vorzeichen) symmetrisch an der Diagonalen von links oben nach rechts unten. Diese Diagonale ist ebenfalls mit Nullen besetzt, da die positive Verschiebung symmetrisch zur negativen Verschiebung ist.
 
 Summiert man die Werte einer Zeile auf, erfährt man wie wahrscheinlich die 7 Tages Inzidenzen des Landkreises/Regierungsbezirks, der der Zeile zugeordnet ist, dem nationalen Schnitt nacheilen oder vorauseilen.
-Somit lässt sich farblich auf einer Deutschlandkarte eine sehr grobe Darstellung erzeugen, welche Landkreise im Schnitt früher einen Anstieg der 7 Tages Inzidenzen aufwiesen. Es lässt sich jedoch keine Aussage mehr darüber treffen, wieviele Tage dieser Versatz vermutlich entspricht.
+Somit lässt sich farblich auf einer Deutschlandkarte eine sehr grobe Darstellung erzeugen, welche Landkreise im Schnitt früher einen Anstieg der 7 Tages Inzidenzen aufwiesen. Es lässt sich jedoch auch hier keine Aussage mehr darüber treffen, wieviele Tage dieser Versatz vermutlich entspricht.
 
 
 \subsection{Explizite Vorgehensweise}
-Da bei einer größeren Verschiebung immer weniger Produkte aufsummiert werden und schlussendlich durch die Anzahl der Produkte geteilt wird, fallen einzelne Ausbrüche stärker ins Gewicht, je größer die Verschiebung ist. Daher werden die Listen mit den Korrelationswahrscheinlichkeiten für die Matrizen für eine maximale Verschiebung von $\tau$ von $-50$~Tage $\leq\tau\leq50$~Tage, bzw. $-30$~Tage $\leq\tau\leq30$~Tage, $-14$~Tage $\leq\tau\leq14$~Tage und $-7$~Tage $\leq\tau\leq7$~Tage erstellt.
+Da bei einer größeren Verschiebung immer weniger Produkte aufsummiert werden und schlussendlich durch die Anzahl der Produkte geteilt wird, fallen einzelne Ausbrüche stärker ins Gewicht, je größer die Verschiebung ist. Daher werden die Listen mit den Korrelationswahrscheinlichkeiten für die Matrizen für eine maximale Verschiebung von $\tau$ von $-50$~Tage $\leq\tau\leq50$~Tage erstellt. Zudem werden die Matrizen für die maximalen Verschiebungen von $-30$~Tage $\leq\tau\leq30$~Tage und $-14$~Tage $\leq\tau\leq14$~Tage erstellt.
 
 Diese Matrizen werden jeweils mit beiden Methoden für alle Landkreise und alle Regierungsbezirke erstellt.

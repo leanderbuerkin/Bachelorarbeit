@@ -4,7 +4,7 @@ Die Bevölkerungsdichte eines Gebietes $\rho_{Gebiet}$ wird berechnet, indem die
 \begin{equation}
     \rho_{Gebiet} = \frac{n_{Einwohner im Gebiet}}{A_{Gebiet}}
 \end{equation}
-\section{7-Tages-Inzidenz}
+\section{7-Tages-Inzidenz}\label{sec:Datenaufbereitung}
 \todo{soll ich die 7-Tages Inzidenz und die Bevölkerungsdichte hier oder in der Vorgehensweise erklären?}
 \section{Susceptible-Infectious-Removed Modell}
 Ein Weg zur Beschreibung der Pandemie bietet das SIR Modell \autocite{SIR}. Dieses Modell teilt die Mitglieder einer Menschengruppe in eine der drei folgenden Kategorie ein und ermöglicht es, die zeitliche Entwicklung einer Pandemie übersichtlich darzustellen:
@@ -42,24 +42,25 @@ Bildlich gesprochen wird die zweite Zeitserie an der ersten Zeitserie vorbeigesc
     \label{fig:Korrelation Beispiel}
 \end{figure}
 
-Da in diesem Beispiel jedoch die Landkreise mit höheren Werten scheinbar eine größere Korrelation aufweisen und die kleineren Verschiebungen übergewichtet werden, da ihre Summe aus mehr Produkten besteht, müssen die Werte noch skaliert werden.
+Da in diesem Beispiel jedoch die Landkreise mit höheren Werten scheinbar eine größere Korrelation aufweisen und die kleineren Verschiebungen übergewichtet werden, da ihre Summe aus mehr Produkten besteht, müssen die Werte, wie in \autoref{eq:skalierte_Korrelation}, noch skaliert werden.
 Um die Landkreise mit allgemein größeren Werte anzupassen, wird durch die Autokorrelation mit keiner zeitlichen Verschiebung
 geteilt, somit ergibt sich für die neuen Werte immer eine Autokorrelationswahrscheinlichkeit von eins bei keiner zeitlichen Verschiebung.
-\begin{equation}\label{eq:Korrelation}
+\begin{equation}\label{eq:skalierte_Korrelation}
     c(\tau) =\sum_{i=1}^n \frac{x_i}{\sqrt{\sum_{j=1}^n x_j^2}}
     \frac{y_{i+\tau}}{\sqrt{\sum_{j=1}^n y_j^2}}= 
     \frac{\sum_{i=1}^n x_i\cdot y_{i+\tau}}{\sqrt{\sum_{i=1}^n x_i^2}\sqrt{\sum_{i=1}^n y_i^2}}
 \end{equation}
 
-Da bei der Faltung bei größeren Verschiebungen zudem weniger Produkte aufsummiert werden, muss bei jeder Summe durch die Anzahl der aufsummierten Produkte geteilt werden. Da jede Zeitserie gleich lang ist, in diesem Fall $n$ Elemente, ergibt sich folgende Gleichung, wobei die Anzahl der Produkte $m$ der Länge der Zeitserie $n$ minus den Betrag der Verschiebung $\vert\tau\vert$ entspricht:
-\begin{equation}\label{eq:Korrelation}
+Da bei der Faltung bei größeren Verschiebungen zudem weniger Produkte aufsummiert werden, muss bei jeder Summe durch die Anzahl der aufsummierten Produkte geteilt werden. Da jede Zeitserie gleich lang ist, in diesem Fall $n$ Elemente, ergibt sich \autoref{eq:komplett_skalierte_Korrelation}, wobei die Anzahl der Produkte $m$ der Länge der Zeitserie $n$ minus den Betrag der Verschiebung $\vert\tau\vert$ entspricht:
+\begin{equation}\label{eq:komplett_skalierte_Korrelation}
     c(\tau) =\frac{n}{m} \frac{\sum_{i=1}^n x_i\cdot y_{i+\tau}}{\sqrt{\sum_{i=1}^n x_i^2}\sqrt{\sum_{i=1}^n y_i^2}}=
     \frac{n}{n-\vert\tau\vert} \frac{\sum_{i=1}^n x_i\cdot y_{i+\tau}}{\sqrt{\sum_{i=1}^n x_i^2}\sqrt{\sum_{i=1}^n y_i^2}}
 \end{equation}
 
-Zudem wird von jedem Wert der Zeitserie $x_i$ der Mittelwert $\overline x = \frac{1}{n}\sum_{i=1}^n x_i$ abgezogen, dadurch lassen sich Antikorrelationen feststellen: Wenn beispielsweise die Anzahl der COVID-19 Infektionen eines Landkreises zu einem Zeitpunkt überdurchschnittlich schnell wächst, also die 7-Tages-Inzidenz minus den Mittelwert der 7-Tages-Inzidenzen positiv ist, und das andere Edukt aus der anderen Zeitserie negativ ist, also in dem anderen Landkreis die Anzahl der COVID-19 Infektionen unterdurchschnittlich schnell wächst, ergibt sich ein negatives Produkt, da die Situation in dem einen Landkreis verhältnissmäßig ruhig wirkt, während die Situation im anderen Landkreis schneller als üblich kritisch wird. Ergibt die Summe aus all den Produkten einer Faltung eine negative Zahl, scheint die 7-Tages Inzidenz des einen Landkreises langsam zu steigen, wenn die 7-Tages Inzidenz des anderes Landkreises schnell zu steigen, dies wird hier Antikorrelation genannt.
+Zudem wird von jedem Wert der Zeitserie $x_i$ der Mittelwert $\overline x = \frac{1}{n}\sum_{i=1}^n x_i$ abgezogen, dadurch lassen sich Antikorrelationen feststellen: Wenn beispielsweise die Anzahl der COVID-19 Infektionen eines Landkreises zu einem Zeitpunkt überdurchschnittlich schnell wächst, also die 7-Tages-Inzidenz minus den Mittelwert der 7-Tages-Inzidenzen positiv ist, und das andere Edukt aus der anderen Zeitserie negativ ist, also in dem anderen Landkreis die Anzahl der COVID-19 Infektionen unterdurchschnittlich schnell wächst, ergibt sich ein negatives Produkt, da die Situation in dem einen Landkreis verhältnissmäßig ruhig wirkt, während die Situation im anderen Landkreis schneller als üblich kritisch wird. Ergibt die Summe aus all den Produkten einer Faltung eine negative Zahl, scheint die 7-Tages Inzidenz des einen Landkreises langsam zu steigen, während die 7-Tages Inzidenz des anderen Landkreises schnell zu steigen scheint, dies wird hier Antikorrelation genannt.
 
-\begin{equation}\label{eq:Korrelation}
+Mit allen Ergänzung lautet die finale Gleichung:
+\begin{equation}\label{eq:Korrelation_Mittelwert}
     c(\tau) =\frac{n}{m}
     \frac{\sum_{i=1}^n (x_i-\overline x)\cdot (y_{i+\tau}-\overline y)}{\sqrt{\sum_{i=1}^n (x_i-\overline x)^2}\sqrt{\sum_{i=1}^n (y_i-\overline y)^2}}
 \end{equation}
