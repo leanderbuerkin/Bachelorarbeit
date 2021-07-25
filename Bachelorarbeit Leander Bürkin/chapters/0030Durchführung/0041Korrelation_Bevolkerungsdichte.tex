@@ -1,12 +1,25 @@
 \section{Korrelationsmatrizen sortiert nach der Bevölkerungsdichte}
 \subsection{Landkreise}
-In \autoref{fig:matrizes_pop_density_counties} finden sich die sechs Matrizen mit den Werten für die Korrelationen zwischen den Landkreisen. Die Zeilen und Spalten sind nach der Bevölkerungsdichte der Landkreise sortiert, eine vollständige Auflistung befindet sich im Anhang.
-
-\todo{Anhang refernzieren}
-
+In \autoref{fig:matrizes_pop_density_counties} finden sich die sechs Matrizen mit den Werten für die Korrelationen zwischen den Landkreisen. Die Zeilen und Spalten sind nach der Bevölkerungsdichte der Landkreise sortiert, eine vollständige Auflistung befindet sich im Anhang in \autoref{tab:counties_by_pop_density}.
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.95\textwidth]{figures/Ergebnisse/matrizes_pop_density_counties.png}
-    \caption{.}
+    \caption{Verschiedene Korrelationsmatrizen berechnet aus den Korrelationen jedes deutschen Landkreises mit sich selbst und jedem anderen deutschen Landkreis. Jeder Zeile und Spalte sind Landkreise zugeteilt, die vollständige Auflistung befindet sich im Anhang. Die Farben der Zellen auf der linken Seite entsprechen der Differenz zwischen der durchschnittlichen Korrelationswahrscheinlichkeit für negative Verschiebungen des Landkreises der Spalte in Relation zum Landkreis der Zeile und der durchschnittlichen Korrelationswahrscheinlichkeit für die zugehörigen positiven Verschiebungen.
+    Auf der rechten Seite wir die Zelle entsprechend der Verschiebung der Zeitserie des Landkreises der Spalte entgegen der Zeitserie der Zeile mit der höchsten Korrelationswahrscheinlichkeit eingefärbt. Beide Vorgehensweise werden für alle ganzzahligen Verschiebungen $\tau\in[-14,14]$,  $\tau\in[-30,30]$ und  $\tau\in[-50,50]$ durchgeführt und in dieser Reihenfolge von oben nach unten dargestellt.}
     \label{fig:matrizes_pop_density_counties}
 \end{figure}
+
+\todo{Richtige Richtung? Nachprüfen! (Spalte und Zeile evtl. tauschen)}
+
+\subsection{Regierungsbezirke}
+In \autoref{fig:matrizes_pop_density_districts} finden sich die sechs Matrizen mit den Werten für die Korrelationen zwischen den Bezirken. Die Zeilen und Spalten sind nach der Bevölkerungsdichte der Regierungsbezirke sortiert, eine vollständige Auflistung befindet sich im Anhang in \autoref{tab:districts_by_pop_density}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.95\textwidth]{figures/Ergebnisse/matrizes_pop_density_districts.png}
+    \caption{Verschiedene Korrelationsmatrizen berechnet aus den Korrelationen jedes deutschen Regierungsbezirks mit sich selbst und jedem anderen deutschen Regierungsbezirks. Jeder Zeile und Spalte sind Regierungsbezirke zugeteilt, die vollständige Auflistung befindet sich im Anhang. Die Farben der Zellen auf der linken Seite entsprechen der Differenz zwischen der durchschnittlichen Korrelationswahrscheinlichkeit für negative Verschiebungen des Regierungsbezirks der Spalte in Relation zum Regierungsbezirk der Zeile und der durchschnittlichen Korrelationswahrscheinlichkeit für die zugehörigen positiven Verschiebungen.
+    Auf der rechten Seite wir die Zelle entsprechend der Verschiebung der Zeitserie des Regierungsbezirks der Spalte entgegen der Zeitserie der Zeile mit der höchsten Korrelationswahrscheinlichkeit eingefärbt. Beide Vorgehensweise werden für alle ganzzahligen Verschiebungen $\tau\in[-14,14]$,  $\tau\in[-30,30]$ und  $\tau\in[-50,50]$ durchgeführt und in dieser Reihenfolge von oben nach unten dargestellt.}
+    \label{fig:matrizes_pop_density_districts}
+\end{figure}
+\todo{Richtige Richtung? Nachprüfen! (Spalte und Zeile evtl. tauschen)}
+

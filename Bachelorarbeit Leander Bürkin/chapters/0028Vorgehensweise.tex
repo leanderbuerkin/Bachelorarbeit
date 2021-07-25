@@ -94,6 +94,7 @@ Beide Listen enthalten für jeden Tag seit dem 01.03.2020 bis zu dem Tag der akt
 
 Die Anzahl an COVID-19 Fällen pro Tag stammt aus dem \glqq{}COVID-19 Datenhub\grqq{}. Die sieben Tages Inzidenz wird wie in \autoref{sec:Datenaufbereitung} beschrieben aus den Daten vom COVID-19 Datenhub berechnet.
 
+\todo{Aufbau des Gemeindeschlüssels erklären}
 \textbf{counties\_geography}\\
 Das Dictionary counties\_geography enthält zu jedem Landkreis ein Dictionary mit den folgenden Elemente:
 \begin{itemize}
@@ -144,17 +145,22 @@ Hierfür werden die drei Kennzahlen des SIR-Modells in drei Abbildungen dargeste
 \todo{SIR-Modell einfügen und mit Grundlagen abgleichen}
 
 \subsection{Korrelationsanalyse}
-Insgesamt werden folgende verschiedene Arten von Korrelationsanalysen durchgeführt:
+Die 7-Tages Inzidenzen der folgenden Gebiete werden nach den in \autoref{sec:BeschreibungKorrelationsanalyse} beschriebenen Methoden untersucht:
 \begin{itemize}
-    \item Die Korrelation einzelner Stadtkreise welche komplett von einem Landkreis umgeben sind.
-    \item Die Korrelation aller Landkreise untereinander sortiert nach Bevölerungsdichte.
-    \item Die Korrelation aller Regierungsbezirke untereinander sortiert nach Bevölerungsdichte.
-    \item Die Korrelation aller Landkreise untereinander sortiert nach dem Gemeindeschlüssel, entspricht einer groben Nord-Süd Aufteilung.
-    \item Die Korrelation aller Regierungsbezirke untereinander sortiert nach dem Gemeindeschlüssel, entspricht einer groben Nord-Süd Aufteilung.
+    \item Die Korrelation einzelner ausgewählte Städte, welche komplett von einem Landkreis umgeben sind, zu eben diesem Landkreis
+    \item Die Korrelationen aller Landkreisen untereinander
+    \item Die Korrelationen aller Regierungsbezirke untereinander
 \end{itemize}
-Es wird jeweils die Korrelation zwischen den Zeitserien der 7 Tages Inzidenzen nach den in \autoref{sec:BeschreibungKorrelationsanalyse} beschriebenen Methoden untersucht. Hieraus ergibt sich jeweils eine Liste an Werten, welche angeben, bei welchem zeitlichen Versatz wie wahrscheinlich eine Korrelation vorliegt.
 
-Um dieses Verfahren zum Einstieg übersichtlich darzustellen, werden zuerst die Korrelationen zwischen den Landkreisen aus Tabelle \ref{tab:landkreise_um_städte} und den Stadtkreisen, die sie umgeben, berechnet. An ihnen lässt sich besonders gut testen, ob sich in den Korrelationswahrscheinlichkeiten zwischen einer Stadt und ihrem Umland eine zeitliche Verschiebung feststellen lässt.
+Hieraus ergibt sich jeweils eine Liste an Werten, welche angeben, bei welchem zeitlichen Versatz wie wahrscheinlich eine Korrelation zwischen den zwei gegebenen Gebieten vorliegt.
+Um nun aus der Liste an Korrelationen einen Wert zu ermitteln, wird entweder der zeitliche Versatz mit der höchsten Korrelationswahrscheinlichkeit verwendet oder der Durchschnitt der ersten Hälfte der Liste vom Durchschnitt der zweiten Hälfte abgezogen.
+Um im zweiten und dritten Fall die Werte für die Korrelationen eines Landkreises mit allen anderen zusammenzufassen und einen Wert pro Landkreis zu erhalten, wird sowohl bei den Maximalwerten wie auch den Differenzen der Durchschnitte der Mittelwert gebildet.
+
+\subsection{Korrelation einzelner ausgewählte Städte und Landkreise}
+Zum Einstieg werden die Korrelationen zwischen den Landkreisen aus Tabelle \ref{tab:landkreise_um_städte} und den Stadtkreisen, die sie umgeben, berechnet. An ihnen lässt sich besonders gut testen, ob sich in den Korrelationswahrscheinlichkeiten zwischen einer Stadt und ihrem Umland eine zeitliche Verschiebung feststellen lässt.
+Um die festgestellten zeitlichen Verschiebungen einzuordnen, wird zudem ermittelt, bei wieviel Prozent der Korrelationen aller deutschen Landkreise untereinander die höchste Korrelationswahrscheinlichkeit bei einer Verschiebung von $\tau = 0$ zu finden ist.
+
+Zudem werden die Korrelationswahrscheinlichkeiten für negative Verschiebungen $ \tau\in[ -50,-1] $ zusammenaddiert und durch ihre Anzahl geteilt. Ebenso wird für die Korrelationen für positive Verschiebungen $\tau\in[ 1, 50]$ der Durchschnitt berechnet. Zieht man die beiden Werte voneinander ab ergibt sich ein Wert, an welchem sich Indizien für eine systematische, zeitliche Verschiebung zwischen den Inzidenzverläufen von Städten und den umliegenden Landkreisen ablesen lassen. Da nicht nur der höchste Wert beachtet wird, werden mehr Informationen beachtet. Jedoch lässt sich nur noch feststellen, ob die Werte der Zeitserie vor, nach oder mit den Werten der anderen wachsen, jedoch nicht mehr wie viele Tage früher/später. Dadurch lässt sich eine Einschätzung geben, ob die Verschiebung mit der höchsten Korrelationswahrscheinlichkeit eher ein Ausreißer ist oder mit dem Trend geht.
 
 In \autoref{fig:selected_counties} sind die ausgewählten Landkreise mit den Stadtkreisen, die sie umgeben abbgebildet.
 \begin{table}[H]

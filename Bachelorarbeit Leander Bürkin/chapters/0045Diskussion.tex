@@ -1,11 +1,40 @@
 \chapter{Diskussion}\label{chap:Diskussion}
+\section{Aussagekraft des SIR-Modells}
+In \autoref{fig:SIR_Deutschland} sind die drei Kennzahlen für das SIR-Modell dargestellt. Die R-Wert Berechnung des Robert-Koch-Instituts basiert auf den selben Daten \autocite{fig:RKI}, jedoch werden hierfür noch einige weitere Maßnahmen und Annahmen getroffen, welche das Maß dieser Bachelorarbeit sprengen würden.
+Wie auch in den Veröffentlichungen und \autoref{sec:Resultate-SIR} beschrieben, weisen die Meldungen der Daten überraschend viele Fehler auf: 
 
+Und dies sind lediglich die automatisch festgestellten Fehler. Inwiefern die Daten nicht das Infektionsverhalten wiederspiegeln, lässt sich anhand der wöchentlichen Schwankungen der Infizierendenzahl abschätzen: Vermutlich werden am Wochenende weniger Tests durchgeführt oder weniger Meldungen abgegeben. 
+Zudem spiegeln die Zahlen nur die getesteten Fälle wieder. Somit kann zum einen verstärktes Testen beispielsweise gegen Ende der Pandemie die Zahlen verfälschen und zum anderen machen symptomfreie Krankheitsverläufe es schwer, festzustellen ob und wie lange eine Person infektiös war.
 
-
-
-
-
-
-Die API stellt unter anderem die Summe aller aufgetretenen COVID-19 Fälle seit Beginn der Pandemie für jeden Landkreis sowie eine Auflistung aller Meldungen der Gesundheitsämter, in welchem vereinfacht gesprochen, das Infektionsdatum, das Genesungsdatum beziehungsweise das Sterbedatum und weitere für uns unwichtige Informationen wie Alter und Geschlecht von einzelnen Fällen angegeben werden. Aus dem zweiten Datensatz läßt sich ein SRI-Modell erstellen, da jedoch bis zu 8\% der Meldungen eines Landkreises fehlerhaft sind (also das Genesungs- bzw. Sterbedatum vor dem Infektionsdatum liegt oder das Genesungs- bzw. Sterbedatum mehr als 30 Tage nach dem Infektionsdatum liegt) und die Anzahl der Infizierenden in einem SIR-Modell sehr klein ist und daher kleine Unregelmäßigkeiten eine große Auswirkung haben, lässt sich anhand eines simplen SIR-Modells keine stichfeste Aussage treffen.
-\todo{Vergleiche mit (kommentar siehe Code)}
+Da die Anzahl der Infizierenden in einem SIR-Modell sehr klein ist und daher kleine Unregelmäßigkeiten eine große Auswirkung haben, lässt sich anhand dieses simplen SIR-Modells keine stichfeste Aussage treffen.
+Im Rahmen dieser Arbeit dient es als Mahnmal, das die erwähnten Probleme stets beachtet werden müssen:
+Die wöchentlichen Schwankungen werden dadurch ausgeglichen, das die 7-Tages Inzidenz verwendet wird; Die Verwendung von den täglichen Fallzahlen des RKIs, welche auch einige Annahmen und Maßnahmen ergreifen, minimiert das Risiko, die Daten in eigenen Programmen nicht korrekt aufzubereiten und schlussendlich: Es wird immer die größtmögliche Anzahl an Informationen verarbeitet.
+\todo{Vergleiche mit (kommentar siehe Code) Quelle einpflegen}
+\todo{Eventuell anregung aus dem Video zu SIR einbinden}
 % https://www.rki.de/DE/Content/Infekt/EpidBull/Archiv/2020/Ausgaben/17_20.pdf?__blob=publicationFile
+
+\section{Zusammenhänge von Bevölkerungsdichten und Corona-Zahlen der Landkreisen}
+Klar zu erkennen in \autoref{fig:distribution_pop_density_counties} sind die vielen kleinen roten Punkte, welche die Stadtkreise kennzeichnen, wie auch im Anhang in \autoref{tab:counties_by_pop_density} klar zu erkennen.
+Diese sind jedoch oftmals von Landkreisen mit vergleichbar niedrigen Bevölkerungsdichten (außer im Rhein-Ruhrgebiet) umgeben. Daher lässt sich systematisch nur sehr schwer zwischen Landkreisen mit wirklich niedriger Bevölkerungsdichte unterscheiden und Landkreisen mit niedriger Bevölkerungsdichte, welche eine Stadt umschließen und eine deutlich höhere Bevölkerungsdichte aufweisen würden, wenn die Stadt zum Landkreis gehören würde. Da somit manche mittelmäßig dicht bevölkerte Gebiete nicht trivial in einen stark bevölkerten Stadtkreis und einen dünn bevölkerten Landkreis zerlegt sind, lassen sich keine Schlussfolgerungen ziehen, inwiefern dünn bevölkerte Gebiete stärker betroffen sind als dichter bevölkerte Gebiete, dies spiegelt sich auch in den im Vergleich zu den restlichen Matrizen recht homogenen Matrizen in \autoref{fig:matrizes_pop_density_counties} wieder.
+Jedoch lässt sich die Aufteilung vorzüglich nutzen, um festzustellen, ob die 7-Tages Inzidenzen einer Stadt vor den 7-Tages Inzidenzen im Umland steigen.
+\autoref{fig:highest_selected_counties} zeigt jedoch eindeutig, das die 7-Tages Inzidenzen der gewählten Städte und Landkreise außergewöhnlich zeitgleich steigen und fallen: Die höchste Korrelationswahrscheinlichkeit bei einer Verschiebung von $\tau=0$ bei 50\% ist derart über dem nationalen Durchschnitt von ca. 8,7\%, das davon ausgegangen werden kann, das sich ein Landkreis, der eine Stadt komplett umgibt einen sehr ähnlichen Verlauf der 7-Tages Inzidenz aufweisen wird.
+Auch die sehr kleinen in \autoref{fig:sum_selected_c} eingetragenen Differenzen zwischen dem Durchschnitt der Korrelationswahrscheinlichkeiten der positiven Verschiebungen und dem Durchschnitt der Korrelationswahrscheinlichkeiten der negativen Verschiebungen: die maximalsten Differenzen entsprichen lediglich 10\% des Maximalwerts und sind ausgeglichen oberhalb und unterhalb der null angeordnet.
+
+Da die Inzidenzwerte jedoch zuvor normierten wurden und wie in \autoref{fig:germany_incidence} zu sehen manche Städte deutlich stärker als ihr Umland betroffen waren - oder vice versa - lässt sich dies nicht über die absoluten Werte sagen, sondern lediglich über die Anstiege und Abnahmen sagen.
+Zudem ist die Größe Teilmenge von 18 untersuchten Paaren stets zu berücksichtigen, auch wenn kein trivialer Zusammenhang zwischen dem Ergebniss und der Auswahlmethode, Städte zu wählen, welche vollständig von einem Landkreis umgeben sind, besteht, handelt es sich hierbei um nur um einen wage Überprüfung.
+\todo{Eigene Aussage relativieren oder ist das Aussage des Lesers?}
+
+\section{Zusammenhänge von Bevölkerungsdichten und Corona-Zahlen der Regierungsbezirke}
+Um das oben beschriebene Probleme von nicht trivial aufgeteilten Gebieten zu beheben und einen Zusammenhang zwischen Bevölkerungsdichten und Corona-Zahlen herstellen zu können, werden statt der Landkreise die Regierungsbezirke verwendet.
+
+Vor allem in der rechten oberen Matrix in \autoref{fig:matrizes_pop_density_districts} sind zwei Dinge sehr auffällig: Die dunklen Stellen an der Unterseite (bzw. symmetrisch dazu die hellen an der rechten Seite) und die sehr hellen ersten drei Zeilen und die vierte, zu Trier zugehörige Zeile, welche im Vergleich sehr dunkel ist.
+
+\todo{Ausformulieren: Hamburg, Bremen, Berlin scheinen vorzupreschen; herausfinden, was mit Trier ist; Gelb oben mit dünnerer Bevölkerungsdichte begründen: In Teilen nachweisbar, was in den Landkreisen nicht möglich.}
+
+\section{Zusammenhänge von Gemeindeschlüssel und Corona-Zahlen der Landkreise und Regierungsbezirke}
+\todo{Ausformulieren: Landkreise: Matrix rechts oben klar gelb: Nord-Ostdeutschland zieht verspätet nach, auch in den anderen Matrizen leicht erkennbar; Gleiches bei Regierungsbezirke}
+
+
+\section{Durchschnittliche Verschiebung im nationalen Vergleich Landkreise}
+\todo{klar Einzelfälle wie Karnevalsdings, Konservendosen und Rosenfabrik und Nordwestdingsbums. Aber auch überrraschende ähnlich zur Karte der Bevölkerungsdichte der Regierungsbezirke, schön erkennbar, das bei Zahlen in etwa das selbe sagen, Zentrum, osten und Norden bis auf berlin klar erkennbar}
+
