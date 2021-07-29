@@ -46,8 +46,7 @@ Die Bevölkerungsdichte wird auch für die Regierungsbezirke berechnet. Nicht al
 % Zudem sind die Stadtstaaten Bremen und Hamburg zum Regierungsbezirk Lüneburg hinzugefügt und der Stadtstaat Berlin zum Bundesland Brandenburg hinzugefügt. Die Regierungsbezirke werden durch die ersten zwei beziehungsweise drei Ziffern des Gemeindeschlüssel herausgefiltert.
 Sowohl die Bevölkerungsdichten der Landkreise wie auch die Bevölkerungsdichten der Regierungsbezirke werden zur Einordnung der Korrelationsanalysen auf einer Deutschlandkarte dargestellt, wobei die Farbe die Bevölkerunsdichte repräsentiert, wie in \autoref{sec:Durchschnitt, Farbgebung und Skalierung} beschrieben.
 
-Die sieben Tages Inzidenz wird für jeden Tag seit Beginn der Pandemie berechnet. Hierfür wird die akkumulierte Zahl der Fälle am siebten Tag vor dem jeweiligen Tag von der akkumulierte Zahl der Fälle am jeweiligen Tag abgezogen, dies ergibt die neu hinzugekommenen Fälle innerhalb von sieben Tagen.
-Diese Zahl wird durch die Anzahl der Bewohner des Landkreises geteilt und mit 100.000 multipliziert. Dadurch werden die Werte der einzelnen Landkreise vergleichbar.
+\todo{sieben Tages INzidenz erwähnen und Grundlagen refernzieren}
 
 \todo{sieben Tages Inzidenz Quelle angeben}
 
@@ -152,15 +151,16 @@ Die 7-Tages Inzidenzen der folgenden Gebiete werden nach den in \autoref{sec:Bes
     \item Die Korrelationen aller Regierungsbezirke untereinander
 \end{itemize}
 
-Hieraus ergibt sich jeweils eine Liste an Werten, welche angeben, bei welchem zeitlichen Versatz wie wahrscheinlich eine Korrelation zwischen den zwei gegebenen Gebieten vorliegt.
-Um nun aus der Liste an Korrelationen einen Wert zu ermitteln, wird entweder der zeitliche Versatz mit der höchsten Korrelationswahrscheinlichkeit verwendet oder der Durchschnitt der ersten Hälfte der Liste vom Durchschnitt der zweiten Hälfte abgezogen.
-Um im zweiten und dritten Fall die Werte für die Korrelationen eines Landkreises mit allen anderen zusammenzufassen und einen Wert pro Landkreis zu erhalten, wird sowohl bei den Maximalwerten wie auch den Differenzen der Durchschnitte der Mittelwert gebildet.
+
 
 \subsection{Korrelation einzelner ausgewählte Städte und Landkreise}
 Zum Einstieg werden die Korrelationen zwischen den Landkreisen aus Tabelle \ref{tab:landkreise_um_städte} und den Stadtkreisen, die sie umgeben, berechnet. An ihnen lässt sich besonders gut testen, ob sich in den Korrelationswahrscheinlichkeiten zwischen einer Stadt und ihrem Umland eine zeitliche Verschiebung feststellen lässt.
 Um die festgestellten zeitlichen Verschiebungen einzuordnen, wird zudem ermittelt, bei wieviel Prozent der Korrelationen aller deutschen Landkreise untereinander die höchste Korrelationswahrscheinlichkeit bei einer Verschiebung von $\tau = 0$ zu finden ist.
 
-Zudem werden die Korrelationswahrscheinlichkeiten für negative Verschiebungen $ \tau\in[ -50,-1] $ zusammenaddiert und durch ihre Anzahl geteilt. Ebenso wird für die Korrelationen für positive Verschiebungen $\tau\in[ 1, 50]$ der Durchschnitt berechnet. Zieht man die beiden Werte voneinander ab ergibt sich ein Wert, an welchem sich Indizien für eine systematische, zeitliche Verschiebung zwischen den Inzidenzverläufen von Städten und den umliegenden Landkreisen ablesen lassen. Da nicht nur der höchste Wert beachtet wird, werden mehr Informationen beachtet. Jedoch lässt sich nur noch feststellen, ob die Werte der Zeitserie vor, nach oder mit den Werten der anderen wachsen, jedoch nicht mehr wie viele Tage früher/später. Dadurch lässt sich eine Einschätzung geben, ob die Verschiebung mit der höchsten Korrelationswahrscheinlichkeit eher ein Ausreißer ist oder mit dem Trend geht.
+\todo{Grundlagen Matrizen referenzieren
+Einpflegen:
+Zieht man die beiden Werte voneinander ab ergibt sich ein Wert, an welchem sich Indizien für eine systematische, zeitliche Verschiebung zwischen den Inzidenzverläufen von Städten und den umliegenden Landkreisen ablesen lassen.}
+
 
 In \autoref{fig:selected_counties} sind die ausgewählten Landkreise mit den Stadtkreisen, die sie umgeben abbgebildet.
 \begin{table}[H]
@@ -209,23 +209,9 @@ Weimarer Land & 16071 & Weimar & 16055
 \end{figure}
 
 \subsubsection{Matrix der maximalen Wahrscheinlichkeiten}
-Um die Korrelationswahrscheinlichkeiten aller Landkreise/Regierungsbezirke untereinander darzustellen, werden aus den Korrelationswahrscheinlichkeiten zwei Werte berechnet, wie zwei Landkreise/Regierungsbezirke in Relation zueinander stehen könnten.
+\todo{farbliche Darstellung der Matrix hier erklären}
+\todo{Grundlagen refernzieren}
 
-Zum einen werden die Verschiebungen mit der höchsten Wahrscheinlichkeit in eine Matrix eingetragen, wobei jede Zeile und Spalte einem Landkreis/Regierungsbezirk zugeordnet ist.
 
-Der Eintrag in einer Zelle entspricht der wahrscheinlichsten zeitlichen Verschiebung des Verlaufs der 7 Tages Inzidenz des Landkreises/Regierungsbezirkes der Spalte im Vergleich zu dem Verlauf der 7 Tages Inzidenz des Landkreises/Regierungsbezirkes der Zeile.
-Somit ist die Matrix symmetrisch an der Diagonalen von links oben nach rechts unten, lediglich die Vorzeichen unterscheiden sich. Die Diagonale ist mit Nullen besetzt, da die Korrelationswahrscheinlichkeit zu sich selbst trivialerweise bei einer Verschiebung von $\tau=0$ am größten ist, da die Werte und Trends komplett identisch sind.
-
-Summiert man die Werte einer Zeile auf und teilt sie durch die Anzahl der Werte, erhält man die Anzahl der Tage, die die sieben Tages Inzidenz des Landkreises, der dieser Zeile zugeordnet ist, im Durchschnitt zu den 7 Tages Inzidenzen aller anderen deutschen Landkreisen versetzt ist.
-Somit lässt sich farblich auf einer Deutschlandkarte eine sehr grobe Darstellung erzeugen, welche Landkreise im Schnitt wieviel früher einen Anstieg der 7 Tages Inzidenzen aufwiesen.
-
-\subsubsection{Matrix der aufsummierten Wahrscheinlichkeiten}
-Bei der zweiten Möglichkeit werden die Wahrscheinlichkeiten für alle positiven zeitlichen Verschiebungen zusammenaddiert und die Wahrscheinlichkeiten für alle negativen zeitlichen Verschiebungen davon abgezogen, 
-um die kompletten Informationen aus der Liste an Korrelationswahrscheinlichkeiten zu verarbeiten und nicht nur einen Wert herauszunehmen. Diese Korrelation kann ebenfalls als Matrix dargestellt werden. In diesem Fall zeigt der Wert einer Zelle, ob die Zahl der COVID-19 Fälle des Landkreises/Regierungsbezirkes der Spalte eher vor oder nach den COVID-19 Fällen des Landkreises/Regierungsbezirkes der Zeile steigen und fallen. Die Information, um wieviele Tage die Kurve wahrscheinlich verschoben ist, geht verloren. Auch diese Matrix ist (mit verkehrtem Vorzeichen) symmetrisch an der Diagonalen von links oben nach rechts unten. Diese Diagonale ist ebenfalls mit Nullen besetzt, da die positive Verschiebung symmetrisch zur negativen Verschiebung ist.
-
-Summiert man die Werte einer Zeile auf, erfährt man wie wahrscheinlich die 7 Tages Inzidenzen des Landkreises/Regierungsbezirks, der der Zeile zugeordnet ist, dem nationalen Schnitt nacheilen oder vorauseilen.
-Somit lässt sich farblich auf einer Deutschlandkarte eine sehr grobe Darstellung erzeugen, welche Landkreise im Schnitt früher einen Anstieg der 7 Tages Inzidenzen aufwiesen. Es lässt sich jedoch auch hier keine Aussage mehr darüber treffen, wieviele Tage dieser Versatz vermutlich entspricht.
-
-Da bei einer größeren Verschiebung immer weniger Produkte aufsummiert werden und schlussendlich durch die Anzahl der Produkte geteilt wird, fallen einzelne Ausbrüche stärker ins Gewicht, je größer die Verschiebung ist. Daher werden die Listen mit den Korrelationswahrscheinlichkeiten für die Matrizen für eine maximale Verschiebung von $\tau$ von $-50$~Tage $\leq\tau\leq50$~Tage erstellt. Zudem werden die Matrizen für die maximalen Verschiebungen von $-30$~Tage $\leq\tau\leq30$~Tage und $-14$~Tage $\leq\tau\leq14$~Tage erstellt.
-
+So werden für jede Kombination aus zwei Gebieten sechs Werte ermittelt: Jeweils für Verschiebungen zwischen $\tau=-50$ und $\tau=50$, $\tau=-30$ und $\tau=30$ und $\tau=-14$ und $\tau=14$ zwei Werte aus den beiden erwähnten Varianten.
 Diese Matrizen werden jeweils mit beiden Methoden für alle Landkreise und alle Regierungsbezirke erstellt.
