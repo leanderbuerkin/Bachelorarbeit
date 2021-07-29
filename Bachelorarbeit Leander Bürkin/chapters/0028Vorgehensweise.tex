@@ -7,17 +7,19 @@ Der entsprechende Programmcode findet sich in den Programmdateien im Anhang der 
 
 Diese Bachelorarbeit basiert teilweise auf den Vorleistungen des Bachelorprojekts von Leander Marius Bürkin.
 Ziel dieses Bachelorprojekts war eine Reihe an Deutschlandkarten in einem Video zusammenzufassen, welches die Ausbreitung der COVID-19 Pandemie in Deutschland vom ersten März 2020 bis zum letzten Tag, für den die API des Robert-Koch-Instituts Daten liefert, darstellt.
-Das fertige Videos ist verfügbar unter \todo{Video verlinken}.
+Das fertige Video ist verfügbar unter \todo{Video verlinken}.
 
 \section{Datenquellen - Ursprung und Abspeicherung}\label{sec:Datenquelle}
 
-Das Bachelorprojekt sowie diese Bachelorarbeit verwenden Informationen zur COVID-19 Pandemie und den geographischen Daten von 412 deutschen Landkreisen. Alle Daten stammen aus dem \glqq{}COVID-19 Datenhub\grqq{} (https://npgeo-corona-npgeo-de.hub.arcgis.com/) oder wurden aus den daher stammenden Daten generiert. Diese Datenquelle wurde gewählt, weil sie vom Robert-Koch-Institut (RKI, www.rki.de) und dem deutschen Staat referenziert wird.
+Das Bachelorprojekt sowie diese Bachelorarbeit verwenden Informationen zur COVID-19 Pandemie und den geographischen Daten von 412 deutschen Landkreisen. Alle Daten stammen von der Programmierschnittstelle (API) \glqq{}COVID-19 Datenhub\grqq{}
+\todo{Link in die QUellen}
+(https://npgeo-corona-npgeo-de.hub.arcgis.com/) oder wurden aus den daher stammenden Daten generiert. Diese Datenquelle wurde gewählt, weil sie vom Robert-Koch-Institut (RKI, www.rki.de) und dem deutschen Staat referenziert wird.
 
 \todo{wie verlinke ich die URL korrekt?}
 
 \todo{Staat refernzieren}
 
-Insgesamt werden drei verschiedene Datenpakete der API verwendet, zum einen die geographischen Daten der Landkreise, zum anderen die Summe aller aufgetretenen COVID-19 Fälle seit Beginn der Pandemie für jeden Landkreis und jeden Tag seit dem 01.März 2020 sowie eine Auflistung aller Meldungen der Gesundheitsämter, in welchen das  Referenzdatum, das Meldedatum, die Anzahl der betroffenen Menschen und deren tragisches Schicksal (entweder genesen, verstorben oder noch infektiös) angegeben werden. Das Referenzdatum kann als Tag der Infektion interpretiert werden, das Meldedatum als Genesungsdatum beziehungsweise Sterbedatum.
+Insgesamt werden drei verschiedene Datenpakete der API verwendet, zum einen die geographischen Daten der Landkreise, zum anderen die Summe aller aufgetretenen COVID-19 Fälle seit Beginn der Pandemie für jeden Landkreis und jeden Tag vom 01.03.2020 bis zum 21.07.2021 sowie eine Auflistung aller Meldungen der Gesundheitsämter, in welchen das  Referenzdatum, das Meldedatum, die Anzahl der betroffenen Menschen und deren Zustand (entweder genesen, verstorben oder noch infektiös) angegeben werden. Das Referenzdatum kann als Tag der Infektion interpretiert werden, das Meldedatum als Genesungsdatum beziehungsweise Sterbedatum.
 
 \todo{RKI Paper verlinken}
 
@@ -26,29 +28,23 @@ Die Landkreise, welche das RKI angibt stimmen nicht mit den Landkreisen des Stat
 \todo{https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/04-kreise.html}
 \todo{Liste der NUTS-Codes Gemeindeschlüssel leiten sich daraus ab. URL siehe Kommentar}
 %https://eur-lex.europa.eu/legal-content/DE/TXT/PDF/?uri=CELEX:32016R2066&from=EN
-Die Daten werden abgespeichert, damit nicht bei jeder Ausführung eine zeitaufwendige Anfrage an die API zu stellen und die Daten aufzubereiten.
-
-Bevor die deutschen Landkreise gewählt wurden, wurden die COVID-19 Daten der USA verwendet. Jedoch wieß die API, die die Daten der John Hoppkins Universität bereitstellte, einige Fehler auf und wurde schlussendlich entfernt.
-Dieser Umstand findet seine Auswirkungen immernoch in einigen Begriffen im Programmcode (bspw. \glqq{}county\grqq{} für Landkreis und \glqq{}district\grqq{} für Regierungsbezirk).
-\todo{Tauchen "counties" etc. anderstwo noch auf?}
-
+Die Daten werden abgespeichert, damit sie nicht bei jeder Ausführung erneut angefordert und aufbereitet werden müssen.
 \section{Datenaufbereitung}
-Bevor die Daten genutzt werden können müssen sie gecheckt werden, überflüssige Informationen entfernt werden und neue Kennzahlen aus den gegebenen Informationen berechnet werden. Daten vor der Datenaufbereitung, welche direkt von der API oder einem Backup davon stammen, werden als \glqq{}unmodifizierte\grqq{} Daten bezeichnet. 
+Bevor die Daten genutzt werden können, müssen sie verifiziert werden, überflüssige Informationen entfernt werden und neue Kennzahlen aus den gegebenen Informationen berechnet werden. Daten vor der Datenaufbereitung, welche direkt von der API oder einem Backup davon stammen, werden als \glqq{}unmodifizierte\grqq{} Daten bezeichnet. 
 
 Daten, die rudimentär auf Vollständigkeit überprüft wurden, aus den Daten generierte Daten enthalten und bei welchen überflüssige Informationen entfernt wurden, werden \glqq{}modifizierte\grqq{} Daten genannt.
 
-Zunächst werden die unmodifizierten Daten in eine übersichtlichere Form übertragen und es wird sichergestellt, dass gleich viel Werte für jeden Landkreis vorhanden sind. Zudem werden die Umrisse der circa 100 Landkreise von Hand geprüft, welche mehrere Polygone enthalten, diese werden entweder als Ausschnitt oder als reale Fläche interpretiert.
+Zunächst werden die unmodifizierten Daten in eine übersichtlichere Form übertragen und es wird sichergestellt, dass gleich viele Werte für jeden Landkreis vorhanden sind. Zudem werden die Umrisse der 100 Landkreise von Hand geprüft, welche mehrere Polygone enthalten, diese werden entweder als Ausschnitt oder als reale Fläche interpretiert. Würde man einfach alle Polygone zeichnen, kann es passieren, das ein Bereich, welcher komplett von einem Landkreis umgeben ist von einem seiner Polygone übermalt wird, welches genau diese Fläche aus dem Landkreis ausschneiden sollte.
 
-Nachdem die unmodifizierten Daten in eine übersichtlichere Form übertragen und überprüft wurde werden aus den Daten weitere Werte berechnet.
+Nachdem die unmodifizierten Daten in eine übersichtlichere Form übertragen und überprüft wurden, werden aus den Daten weitere Werte berechnet.
 
-Die Bevölkerungsdichte wird berechnet, indem die Anzahl der Einwohner durch die Fläche in Quadratmetern geteilt wird. Beide Informationen werden von der API bereitgestellt.
-Die Bevölkerungsdichte wird auch für die Regierungsbezirke berechnet. Nicht alle Bundesländer wurden in Regierungsbezirke unterteilt, in diesem Fall wird die Bevölkerungsdichte des Bundeslandes gewählt. Im folgenden wird dennoch von \glqq{}den Regierungsbezirken\grqq{} gesprochen. 
+Die Bevölkerungsdichte wird berechnet, indem die Anzahl der Einwohner durch die Fläche in Quadratmetern geteilt wird (siehe \autoref{eq:Bevölkerungsdichte}). Beide Informationen werden von der API bereitgestellt.
+Die Bevölkerungsdichte wird auch für die Regierungsbezirke berechnet. Nicht alle Bundesländer wurden in Regierungsbezirke unterteilt, in diesem Fall wird die Bevölkerungsdichte des Bundeslandes gewählt. Im Folgenden wird dennoch von \glqq{}den Regierungsbezirken\grqq{} gesprochen.
+\todo{Wo werden die regierungsbezirke definiert?}
 % Zudem sind die Stadtstaaten Bremen und Hamburg zum Regierungsbezirk Lüneburg hinzugefügt und der Stadtstaat Berlin zum Bundesland Brandenburg hinzugefügt. Die Regierungsbezirke werden durch die ersten zwei beziehungsweise drei Ziffern des Gemeindeschlüssel herausgefiltert.
 Sowohl die Bevölkerungsdichten der Landkreise wie auch die Bevölkerungsdichten der Regierungsbezirke werden zur Einordnung der Korrelationsanalysen auf einer Deutschlandkarte dargestellt, wobei die Farbe die Bevölkerunsdichte repräsentiert, wie in \autoref{sec:Durchschnitt, Farbgebung und Skalierung} beschrieben.
 
-\todo{sieben Tages INzidenz erwähnen und Grundlagen refernzieren}
-
-\todo{sieben Tages Inzidenz Quelle angeben}
+Für jeden Landkreis und jeden Regierungsbezirk wird eine Zeitserie mit den 7-Tages Inzidenzen angefertigt, welche die 7-Tages Inzidenz nach \autoref{eq:7-Tages_Inzidenz} für jeden Tag enthält, für den eine Fallzahlen angegeben ist. 
 
 Um die Auflistung aller Meldungen der Gesundheitsämter nutzen zu können, müssen diese erst für jeden Landkreis und jeden Tag gesammelt und aufsummiert werden:
 Das Referenzdatum wird als Tag der Infektion interpretiert. Die Anzahl der betroffenen Individuen wird für jeden folgenden Tag zur akkumulierten Anzahl der Fälle hinzuaddiert.
@@ -63,13 +59,12 @@ Mithilfe der Gesamtbevölkerung eines Landkreises werden aus diesen Daten für j
     Die Summe aus der akkumulierten Anzahl der Genesenen und der Verstorbenen. Oder die akkumulierte Anzahl der Fälle minus die aktiven Fälle, solange zu jeder Meldung ein Referenzdatum angegeben ist, entspricht dies der ersten Variante.
 \end{itemize}
 
-Um ein Gefühl dafür zu bekommen, welcher Lankreis wie hart von der Corona Pandemie betroffen ist, wird die akkumulierte Anzahl der COVID-19 Fälle des letzten Tages durch die Bevölkerung des Landkreises geteilt und farblich in einer Deutschlandkarte dargestellt.
+Um ein Gefühl dafür zu bekommen, welcher Lankreis in welchem Ausmaß von der Corona Pandemie getroffen wurde, wird die akkumulierte Anzahl der COVID-19 Fälle des letzten Tages durch die Bevölkerung des Landkreises geteilt und farblich in einer Deutschlandkarte dargestellt.
 
 \section{Datenformat}
 Die Daten liegen in einer Kombination aus sogenannten Python Dictionaries und sogennanten Python Listen vor.
 
-Ein Dictionary ist dadurch charakterisiert, dass man über den Namen eines Elements (der \glqq{}Key\grqq{}) das Element (das \glqq{}Value\grqq{}) bekommt, ähnlich wie man früher in Telefonbüchern anhand des Namens (der Key) die Telefonnummer (das Value) erhalten hat.
-\todo{soll ich die Fachbegriffe hinzufügen? Werden sie überhaupt benutzt?}
+Ein Dictionary ist dadurch charakterisiert, dass man über den Namen eines Elements (\glqq{}Key\grqq{}) das Element (\glqq{}Value\grqq{}) bekommt, ähnlich wie man früher in Telefonbüchern anhand des Namens (Key) die Telefonnummer (Value) erhalten hat.
 
 Listen sind dadurch charakterisiert, dass sie Elemente in einer fixen Reihenfolge enthalten und sich diese durch ihren Index leicht auffindbar machen. So sind beispielsweise die Anzahl der COVID-19 Fälle der einzelnen Tage chronologisch in einer Liste gespeichert, sodass man daraus direkt eine Abbildung erstellen kann.
 
@@ -115,9 +110,10 @@ Das Dictionary non\_county\_specific\_data enthält die folgenden Elemente:
     \item[lowest\_case\_number:] Die niedrigste akkumulierte Fallzahl unter allen Landkreisen.
     \item[highest\_incidence:] Die höchste sieben Tages Inzidenz eines Tages unter allen Landkreisen.
     \item[lowest\_incidence:] Die niedrigste sieben Tages Inzidenz eines Tages unter allen Landkreisen.
-    \item[UTC:] Die Unixzeit konvertiert in die Koordinierte Weltzeit \glqq{}DD.MM.YYYY\grqq{}.
-    \item[UTC+7days:] Die Liste der Zeiten gespeichert in UTC plus sieben Tage vor dem erstem Datum in der Liste, um den Zeitraum der sieben Tages Inzidenz der ersten sieben Tage darstellen zu können: die hierfür verwendeten Zeiträume beginnen jeweils vor dem ersten hier dokumentierten Fall.
+    \item[UTC:] Die Unixzeit konvertiert in die Koordinierte Weltzeit im Format \glqq{}DD.MM.YYYY\grqq{}.
+    \item[UTC+7days:] Die Liste der Zeiten gespeichert in UTC plus sieben weitere Tage vor dem erstem Datum in der Liste. Diese werden benutzt, um den Zeitraum der 7-Tages Inzidenz der ersten sieben Tage darstellen zu können: die hierfür verwendeten Zeiträume beginnen jeweils vor dem ersten hier dokumentierten Fall.
 \end{itemize}
+\todo{itemize reparieren}
 Die Unixzeit, die Namen und die Nummern der Bundesländer stammen aus dem \glqq{}COVID-19 Datenhub\grqq{}. Alle anderen Informationen wurden gesammelt oder berechnet.
 
 In Abbildung \ref{fig:dicts_als_code} sind die drei Dictionaries dargestellt, wie sie auch im Programm verwendet werden.
@@ -134,7 +130,7 @@ In Abbildung \ref{fig:dicts_als_code} sind die drei Dictionaries dargestellt, wi
 \section{Datendarstellung}
 Zuerst werden die Daten der Landkreise und Regierungsbezirke dargestellt, welche auf einfachen Gleichungen beruhen und lediglich zur Einordnung der anderen Ergebnisse dienen:
 \begin{itemize}
-    \item Die Bevölkerungsdichte, um schlussfolgerungen ziehen zu können, ob diese in irgendeinerweise mit dem Infektionsverhalten zusammenhängt
+    \item Die Bevölkerungsdichte, um Schlussfolgerungen ziehen zu können, ob diese in irgendwie mit dem Infektionsverhalten zusammenhängt
     \item Die Anordnung der Gebiete, wenn man sie nach ihrem Gemeindeschlüssel sortiert - Die Sortierung erfolgt hier lexikographisch, das heißt, das die Länge des Gemeindeschlüssels keine Rolle spielt, sondern immer das erste Zeichen verglichen wird und bei Übereinstimmung das nächste (Dadurch ergibt sich eine einheitlichere Nord-Süd-Aufteilung als die Sortierung nach der Größe)
     \item Die Summe der 7-Tages Inzidenzen als Maß wie stark ein Gebiet betroffen war
 \end{itemize}
@@ -147,7 +143,7 @@ Hierfür werden die drei Kennzahlen des SIR-Modells in drei Abbildungen dargeste
 Die 7-Tages Inzidenzen der folgenden Gebiete werden nach den in \autoref{sec:BeschreibungKorrelationsanalyse} beschriebenen Methoden untersucht:
 \begin{itemize}
     \item Die Korrelation einzelner ausgewählte Städte, welche komplett von einem Landkreis umgeben sind, zu eben diesem Landkreis
-    \item Die Korrelationen aller Landkreisen untereinander
+    \item Die Korrelationen aller Landkreise untereinander
     \item Die Korrelationen aller Regierungsbezirke untereinander
 \end{itemize}
 
@@ -157,10 +153,7 @@ Die 7-Tages Inzidenzen der folgenden Gebiete werden nach den in \autoref{sec:Bes
 Zum Einstieg werden die Korrelationen zwischen den Landkreisen aus Tabelle \ref{tab:landkreise_um_städte} und den Stadtkreisen, die sie umgeben, berechnet. An ihnen lässt sich besonders gut testen, ob sich in den Korrelationswahrscheinlichkeiten zwischen einer Stadt und ihrem Umland eine zeitliche Verschiebung feststellen lässt.
 Um die festgestellten zeitlichen Verschiebungen einzuordnen, wird zudem ermittelt, bei wieviel Prozent der Korrelationen aller deutschen Landkreise untereinander die höchste Korrelationswahrscheinlichkeit bei einer Verschiebung von $\tau = 0$ zu finden ist.
 
-\todo{Grundlagen Matrizen referenzieren
-Einpflegen:
-Zieht man die beiden Werte voneinander ab ergibt sich ein Wert, an welchem sich Indizien für eine systematische, zeitliche Verschiebung zwischen den Inzidenzverläufen von Städten und den umliegenden Landkreisen ablesen lassen.}
-
+Wie in \autoref{sec:BeschreibungKorrelationsanalyse} werden für die ausgewählten Landkreis-Stadtkreis-Paare Korrelationsanalysen durchgeführt. Da es sich um eine übersichtliche Datenmenge handelt und für jeden Landkreis nur eine Korrelation geprüft wird, werden die Werte, welche normalerweise in Matrixform dargestellt werden, explizit ausgegeben.
 
 In \autoref{fig:selected_counties} sind die ausgewählten Landkreise mit den Stadtkreisen, die sie umgeben abbgebildet.
 \begin{table}[H]
