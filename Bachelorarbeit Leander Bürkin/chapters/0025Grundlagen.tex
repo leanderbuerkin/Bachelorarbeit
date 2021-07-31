@@ -1,4 +1,17 @@
 \chapter{Grundlagen}\label{chap:Grundlagen}
+\section{Susceptible-Infectious-Removed-Modell}
+Ein Weg zur Beschreibung der Pandemie bietet das \glqq{}Susceptible-Infectious-Removed-Modell\grqq{} (SIR-Modell) \autocite{SIR}. Dieses Modell teilt die Mitglieder einer Menschengruppe in eine der drei folgenden Kategorien ein und ermöglicht es, die zeitliche Entwicklung einer Pandemie übersichtlich darzustellen:
+\begin{itemize}
+    \item \glqq{}Susceptible\grqq{}: Menschen, welche angesteckt werden können.
+    \item \glqq{}Infectious\grqq{}: Infizierte Menschen, welche weitere Menschen anstecken können. Werden auch als \glqq{}die aktiven Fälle\grqq{} bezeichnet.
+    \item \glqq{}Removed\grqq{}: Menschen, welche in die Kategorie \glqq{}Infectious\grqq{} fielen, nun keine weiteren Menschen mehr anstecken können und aus dem Infektionsgeschehen entfernt wurden,
+    in diesem Fall Genesene und Verstorbene. 
+\end{itemize}
+In dem hier verwendeten SIR-Modell wird weder die Geburten- noch die Sterberate beachtet, die angenommen Bevölkerung bleibt durchgehend konstant.
+
+Zudem wird angenommen, das jedes Individuum nur einmal infiziert werden kann und die Infektion die einzige Möglichkeit darstellt, von der Kategorie \glqq{}Susceptible\grqq{} in die Kategorie \glqq{}Removed\grqq{} zu wechseln.
+Somit fällt die Zahl der Menschen in der Kategorie \glqq{}Susceptible\grqq{} monoton und die Zahl der Menschen in der Kategorie \glqq{}Removed\grqq{} steigt monoton an.
+
 \section{Bevölkerungsdichte}
 Die Bevölkerungsdichte eines Gebietes $\rho_{Gebiet}$ wird berechnet, indem die Anzahl der Einwohner im Gebiet $n_{Einwohner\ Gebiet}$ durch die Fläche des Gebiets $A_{Gebiet}$ geteilt wird:
 \begin{equation}\label{eq:Bevölkerungsdichte}
@@ -6,11 +19,15 @@ Die Bevölkerungsdichte eines Gebietes $\rho_{Gebiet}$ wird berechnet, indem die
 \end{equation}
 \section{7-Tages Inzidenz}\label{sec:Datenaufbereitung}
 Die 7-Tages Inzidenz $i_t$ wird für jeden Tag $t$ seit Beginn der Pandemie berechnet.
-Zuerst wird von der akkumulierte Zahl der Fälle am gewählten Tag $f_t$ die akkumulierte Zahl der Fälle am siebten Tag vor dem jeweiligen Tag $f_{t-7}$ abgezogen, dies ergibt die neu hinzugekommenen Fälle innerhalb von sieben Tagen.
-Diese Zahl wird durch die Anzahl der Bewohner des Gebiets $p$ geteilt und mit 100.000 multipliziert. Dies ergibt \autoref{eq:7-Tages_Inzidenz}.
+Zuerst wird von der akkumulierte Zahl der Fälle am gewählten Tag $f_t$ die akkumulierte Zahl der Fälle sieben Tage zuvor $f_{t-7}$ abgezogen, dies ergibt die neu hinzugekommenen Fälle innerhalb von sieben Tagen.
+
+Schlussendlich wird diese Zahl durch die Anzahl der Bewohner des Gebiets $p_{Gebiet}$ geteilt und mit 100.000 multipliziert. Dies ergibt \autoref{eq:7-Tages_Inzidenz}.
 \begin{equation}\label{eq:7-Tages_Inzidenz}
-    i_t= \frac{f_t-f_{t-7}}{p}\cdot 100.000
+    i_t= \frac{f_t-f_{t-7}}{p_{Gebiet}}\cdot 100.000
 \end{equation}
+
+Die 7-Tages Inzidenz bietet sich im Vergleich zur täglichen Fallzahl aus mehreren Gründen als Kennzahl für die Verbreitung eines Virus in einem Gebiet an:
+
 Wie in \autoref{fig:neue_Fälle_pro_Wochentag_Deutschland} klar zu sehen, werden an Wochenenden im Schnitt deutlich weniger neue Fälle registriert als an den anderen Wochentagen.
 Daher werden immer sieben Tage in der 7-Tages Inzidenz zusammengefasst.
 \begin{figure}[H]
@@ -23,21 +40,14 @@ Da die Bevölkerung der deutschen Landkreise und Regierungsbezirke nicht identis
 
 Aufgrund der ansonsten sehr kleinen Zahlen, bietet es sich zudem an, das Ergebnis mit 100.000 zu multiplizieren.
 
-\section{Susceptible-Infectious-Removed Modell}
-Ein Weg zur Beschreibung der Pandemie bietet das SIR Modell \autocite{SIR}. Dieses Modell teilt die Mitglieder einer Menschengruppe in eine der drei folgenden Kategorie ein und ermöglicht es, die zeitliche Entwicklung einer Pandemie übersichtlich darzustellen:
-\begin{itemize}
-    \item \glqq{}susceptible\grqq{}: Menschen, welche angesteckt werden können.
-    \item \glqq{}infectious\grqq{}: Infizierte Menschen, welche weitere Menschen anstecken können. Werden auch als "die aktiven Fälle" bezeichnet.
-    \item \glqq{}recovered\grqq{}: Menschen, welche in die Kategorie \glqq{}infectious\grqq{} fielen und\\
-    nun immun gegen die Krankheit sind. (Hierzu zählen auch Verstorbene)
-\end{itemize}
+Dies sind die drei Begründungen für die drei Schritte in der Berechnung der 7-Tages Inzidenz nach \autoref{eq:7-Tages_Inzidenz}.
 
 
 \section{Korrelationsanalyse mithilfe einer Faltung}\label{sec:BeschreibungKorrelationsanalyse}
 \subsection{Berechnung der Korrelationswerte}\label{Grundlagen:Berechnung der Korrelationwerte}
-Um festzustellen, ob die 7-Tages-Inzidenzen einiger Landkreise im Vergleich zu anderen Landkreisen eher voraus- oder nacheilen, wird in diesem Fall die Korrelationsfunktion verwendet \autocite{Korrelation}.
+Um festzustellen, ob die 7-Tages Inzidenzen einiger Landkreise im Vergleich zu anderen Landkreisen eher voraus- oder nacheilen, wird die Korrelationsfunktion verwendet \autocite{Korrelation}.
 
-Bei diskreten Werten, aufgeteilt in zwei Zeitserien $X$ und $Y$, wie in diesem Fall, lässt sich eine Faltung sehr einfach umsetzen:
+Bei diskreten Werten, aufgeteilt in zwei Zeitserien $X$ und $Y$, wie in diesem Fall, lässt sich eine Korrelationsanalyse sehr einfach umsetzen:
 Für eine zeitliche Verschiebung $\tau$ wird mit jedem Wert $x_i$ zum jeweiligen Zeitpunkt $t_i$ aus der ersten Zeitserie mit dem zugehörigen Wert $y_i$ aus der zweiten Zeitserie ein Produkt gebildet. Der zugehörige Wert aus der zweiten Zeitserie entspricht hierbei dem Zeitpunkt $t$ des Wertes der ersten Zeitserie plus die gewählte Verschiebung $\tau$. Sollte dieser zweite Wert nicht existieren, wird kein Produkt gebildet.
 
 Für jede zeitliche Verschiebung $\tau$, für die mindestens ein Produkt gebildet wird, werden alle möglichen Produkte aufsummiert.
@@ -57,29 +67,44 @@ Bildlich gesprochen wird die zweite Zeitserie an der ersten Zeitserie vorbeigesc
     \label{fig:Korrelation Beispiel}
 \end{figure}
 
-Da in diesem Beispiel jedoch die Landkreise mit höheren Werten scheinbar eine größere Korrelation aufweisen und die kleineren Verschiebungen übergewichtet werden, da ihre Summe aus mehr Produkten besteht, müssen die Werte, wie in \autoref{eq:skalierte_Korrelation}, noch skaliert werden.
-Um die Landkreise mit allgemein größeren Werte anzupassen, wird durch die Korrelation mit keiner zeitlichen Verschiebung zu sich selbst
-geteilt, somit ergibt sich mit den neuen Werten immer bei einer Korrelationsanalyse mit sich selbst immer ein Wert von eins bei keiner zeitlichen Verschiebung.
-\begin{equation}\label{eq:skalierte_Korrelation}
-    c(\tau) =\sum_{i=1}^n \frac{x_i}{\sqrt{\sum_{j=1}^n x_j^2}}
-    \frac{y_{i+\tau}}{\sqrt{\sum_{j=1}^n y_j^2}}= 
-    \frac{\sum_{i=1}^n x_i\cdot y_{i+\tau}}{\sqrt{\sum_{i=1}^n x_i^2}\sqrt{\sum_{i=1}^n y_i^2}}
-\end{equation}
+Da bei einer Korrelationsanalyse nach \autoref{eq:Korrelation} Summen aus mehr Produkten übergewichtet werden und Zeitserien mit größeren Werten größere Korrelationswerte erzeugen, müssen die Korrelationswerte noch skaliert werden.
 
-Da bei der Faltung bei größeren Verschiebungen zudem weniger Produkte aufsummiert werden, muss bei jeder Summe durch die Anzahl der aufsummierten Produkte geteilt werden. Da jede Zeitserie gleich lang ist, in diesem Fall $n$ Elemente, ergibt sich \autoref{eq:skalierte_Korrelation_geteilt_durch_Produkte}, wobei die Anzahl der Produkte $m$ der Länge der Zeitserie $n$ minus den Betrag der Verschiebung $\vert\tau\vert$ entspricht:
+Um zum einen die unterschiedliche Anzahl der Produkte auszugleichen, werden die Summen durch die Anzahl ihrer Summanden geteilt, wie in \autoref{eq:skalierte_Korrelation_geteilt_durch_Produkte} gezeigt. Ohne diese Gewichtung würden zwei Zeitserien mit konstanten Werten größer null bei einer Verschiebung $\tau=0$ die größte Korrelation aufweisen und die Korrelation bei betragsmäßig größeren Verschiebungen abnehmen, was nicht gewünscht ist.
+
+Da jede Zeitserie die gleiche Länge $n$ hat, erhält man die Anzahl der Summanden indem man
+den Betrag der Verschiebung $\vert\tau\vert$
+von der Länge der Zeitserie $n$ abzieht:
+
 \begin{equation}\label{eq:skalierte_Korrelation_geteilt_durch_Produkte}
-    c(\tau) =\frac{n}{m} \frac{\sum_{i=1}^n x_i\cdot y_{i+\tau}}{\sqrt{\sum_{i=1}^n x_i^2}\sqrt{\sum_{i=1}^n y_i^2}}=
-    \frac{n}{n-\vert\tau\vert} \frac{\sum_{i=1}^n x_i\cdot y_{i+\tau}}{\sqrt{\sum_{i=1}^n x_i^2}\sqrt{\sum_{i=1}^n y_i^2}}
+    c(\tau) =\frac{1}{n-\vert\tau\vert} \sum_{i=1}^n x_i\cdot y_{i+\tau}
 \end{equation}
 
-Zudem wird von jedem Wert der Zeitserie $x_i$ der Mittelwert $\overline x = \frac{1}{n}\sum_{i=1}^n x_i$ abgezogen, dadurch lassen sich Antikorrelationen feststellen: Wenn beispielsweise die Anzahl der COVID-19 Infektionen eines Landkreises zu einem Zeitpunkt überdurchschnittlich schnell wächst, also die 7-Tages-Inzidenz minus den Mittelwert der 7-Tages-Inzidenzen positiv ist, und das andere Edukt aus der anderen Zeitserie negativ ist, also in dem anderen Landkreis die Anzahl der COVID-19 Infektionen unterdurchschnittlich schnell wächst, ergibt sich ein negatives Produkt, da die Situation in dem einen Landkreis verhältnismäßig ruhig wirkt, während die Situation im anderen Landkreis schneller als üblich kritisch wird. Ergibt die Summe aus all den Produkten einer Faltung eine negative Zahl, scheint die 7-Tages Inzidenz des einen Landkreises langsam zu steigen, während die 7-Tages Inzidenz des anderen Landkreises schnell zu steigen scheint, dies wird hier Antikorrelation genannt.
+Um zum anderen die tendenziell größeren Werte mancher Zeitserien auszugleichen, werden die Werte aller Zeitserien mithilfe des sogenannten \glqq{}Autokorrelationswerts für die Verschiebung $\tau=0$\grqq{} gewichtet: Er beschreibt den Wert der Korrelation einer Zeitserie mit sich selbst bei keiner zeitlichen Verschiebung. Wie in \autoref{eq:skalierte_Korrelation} zu sehen, werden die Werte einer Zeitserie gewichtet, indem sie durch die Wurzel des Autokorrelationswerts für die Verschiebung $\tau=0$ dieser Zeitserie geteilt werden.
 
-Mit allen Ergänzungen berechnet sich die Korrelation $c(\tau)$ zwischen zwei Zeitserien $X:|X|=n$ und $Y:|Y|=m$ mit einer Verschiebung $\tau$ relativ zu $X$ aus den einzelnen Werten $x_i\in X$, $y_i \in Y$ und den Mittelwerten der Zeitserien $\overline x,\ \overline y$ wie in \autoref{eq:komplette_skalierte_Korrelation} beschrieben.
+\begin{equation}\label{eq:skalierte_Korrelation}
+    c(\tau) =
+    \frac{1}{n-\vert\tau\vert}
+    \sum_{i=1}^n
+    \frac{x_i}{\sqrt{\frac{1}{n}\sum_{i=1}^n x_i^2}}
+    \cdot
+    \frac{y_{i+\tau}}{\sqrt{\frac{1}{n}\sum_{i=1}^n y_i^2}}
+    =
+    \frac{n}{n-\vert\tau\vert}
+    \frac{\sum_{i=1}^n x_i \cdot y_{i+\tau}}
+    {\sqrt{\sum_{i=1}^n x_i^2}
+    \sqrt{\sum_{i=1}^n y_i^2}}
+\end{equation}
+
+
+Zudem wird von jedem Wert der Zeitserie $x_i$ der Mittelwert $\overline x = \frac{1}{n}\sum_{i=1}^n x_i$ abgezogen, dadurch lassen sich Antikorrelationen feststellen: Wenn beispielsweise die Anzahl der COVID-19 Infektionen eines Landkreises zu einem Zeitpunkt überdurchschnittlich wächst, also die 7-Tages-Inzidenz minus dem Mittelwert der 7-Tages-Inzidenzen positiv ist, und das andere Edukt aus der anderen Zeitserie negativ ist, also in dem anderen Landkreis die Anzahl der COVID-19 Infektionen unterdurchschnittlich wächst, ergibt sich ein negatives Produkt, da sich die Situation in dem einen Landkreis  schneller als üblich verschlechtert, während sich die Situation im anderen Landkreis verbessert oder langsamer als üblich verschlechtert.
+
+Ergibt die Summe aus all den Produkten einer Korrelation eine negative Zahl, scheint die 7-Tages Inzidenz des einen Landkreises zu fallen oder langsam zu steigen, während die 7-Tages Inzidenz des anderen Landkreises steigt oder langsam fällt, dies wird hier Antikorrelation genannt.
+
+Mit allen Ergänzungen berechnet sich die Korrelation $c(\tau)$ zwischen Zeitserie $X:|X|=n$ mit den Werten $x_i\in X$ und Zeitserie $Y:|Y|=n$ mit den Werten $y_i \in Y$ und einer Verschiebung $\tau$ relativ zu $X$ mithilfe der Mittelwerte der Zeitserien $\overline x,\ \overline y$ wie in \autoref{eq:komplette_skalierte_Korrelation} beschrieben.
 \begin{equation}\label{eq:komplette_skalierte_Korrelation}
-    c(\tau) =\frac{n}{m}
+    c(\tau) =\frac{n}{n-\vert\tau\vert}
     \frac{\sum_{i=1}^n (x_i-\overline x)\cdot (y_{i+\tau}-\overline y)}{\sqrt{\sum_{i=1}^n (x_i-\overline x)^2}\sqrt{\sum_{i=1}^n (y_i-\overline y)^2}}
 \end{equation}
-\todo{Quelle}
 
 \subsection{Korrelation zwischen zwei Gebieten am Beispiel von Flensburg und Kiel}
 Um die hergeleiteten Gleichungen und die weiterhin verwendete Terminologie zugänglicher zu machen, wird eine Korrelationsanalyse mit dem Verlauf der 7-Tages Inzidenz der Stadtkreise Flensburg und Kiel durchgeführt. Der Verlauf der 7-Tages Inzidenz der beiden Stadtkreise sind in \autoref{fig:Inzidenz_Flensburg} und \autoref{fig:Inzidenz_Kiel} einmal im Original und einmal um die mittlere 7-Tages Inzidenz in x-Richtung verschoben abgebildet.
