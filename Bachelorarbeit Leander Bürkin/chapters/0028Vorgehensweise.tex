@@ -3,29 +3,36 @@ Um dem im Kapitel \glqq{}\ref{chap:Motivation} Motivation\grqq{} formulierten Zi
 Anschließend werden deren Daten in eine nutzbare Form übertragen.
 Schlussendlich können die Informationen aus den Daten verknüpft, interpretiert und graphisch dargestellt werden.
 
-Der entsprechende Programmcode findet sich in den Programmdateien im Anhang der Bachelorarbeit. \todo{Wo sind die Programmdateien}
+Der mit Jupyter Notebook (\href{jupyter.org}{jupyter.org}) erstellte Programmcode findet sich in den Programmdateien im Anhang der Bachelorarbeit.
+\todo{Programmdateien anhängen}
 
 Diese Bachelorarbeit basiert teilweise auf den Vorleistungen des Bachelorprojekts von Leander Marius Bürkin.
 Ziel dieses Bachelorprojekts war eine Reihe an Deutschlandkarten in einem Video zusammenzufassen, welches die Ausbreitung der COVID-19 Pandemie in Deutschland vom ersten März 2020 bis zum letzten Tag, für den die API des Robert-Koch-Instituts Daten liefert, darstellt.
-Das fertige Video ist verfügbar unter \todo{Video verlinken}.
+
+
+Das Bachelorprojekt sowie eines der Videos ist verfügbar unter\\
+\href{https://github.com/leanderbuerkin/Bachelorprojekt/blob/master/media/germany_incidence_V4_300ms_1080p_music.mp4}{https://github.com/leanderbuerkin/Bachelorprojekt/blob/master/media/}\\
+\href{https://github.com/leanderbuerkin/Bachelorprojekt/blob/master/media/germany_incidence_V4_300ms_1080p_music.mp4}{germany\_incidence\_V4\_300ms\_1080p\_music.mp4}
 
 \section{Datenquellen - Ursprung und Abspeicherung}\label{sec:Datenquelle}
 
-Das Bachelorprojekt sowie diese Bachelorarbeit verwenden Informationen zur COVID-19 Pandemie und den geographischen Daten von 412 deutschen Landkreisen. Alle Daten stammen von der Programmierschnittstelle (API) \glqq{}COVID-19 Datenhub\grqq{}
-(\href{npgeo-corona-npgeo-de.hub.arcgis.com}{npgeo-corona-npgeo-de.hub.arcgis.com}) oder wurden aus den daher stammenden Daten generiert. Diese Datenquelle wurde gewählt, weil sie vom Robert-Koch-Institut (RKI, www.rki.de) und dem deutschen Staat referenziert wird.
+Das Bachelorprojekt sowie diese Bachelorarbeit verwenden Informationen zur COVID-19 Pandemie und den geographischen Daten von 412 deutschen Landkreisen. Alle Daten stammen von der Programmierschnittstelle (API) des Robert-Koch-Instituts \glqq{}COVID-19 Datenhub\grqq{}
+(\href{npgeo-corona-npgeo-de.hub.arcgis.com}{npgeo-corona-npgeo-de.hub.arcgis.com}) oder werden aus den daher stammenden Daten generiert. Diese Datenquelle wurde gewählt, weil sie vom Robert-Koch-Institut (RKI, \href{www.rki.de}{www.rki.de}) und dem deutschen Staat\\
+ (www.bundesregierung.de) referenziert wird. Beispielsweise unter:
+\begin{itemize}
+    \item \href{www.bundesregierung.de/breg-de/themen/coronavirus}{www.bundesregierung.de/breg-de/themen/coronavirus}
+    \item \href{www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Fallzahlen_Inzidenz_aktualisiert.html}{www.rki.de/DE/Content/InfAZ/N/Neuartiges\_Coronavirus/Daten/Fallzahlen}\\
+    \href{www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Fallzahlen_Inzidenz_aktualisiert.html}{\_Inzidenz\_aktualisiert.html}
+\end{itemize}
 
-\todo{wie verlinke ich die URL korrekt?}
+Insgesamt werden drei verschiedene Datenpakete der API verwendet, zum einen die geographischen Daten der Landkreise, zum anderen die Summe aller aufgetretenen COVID-19 Fälle seit Beginn der Pandemie für jeden Landkreis und jeden Tag vom 01.03.2020 bis zum 21.07.2021 sowie eine Auflistung aller Meldungen der Gesundheitsämter, in welchen das  Referenzdatum, das Meldedatum, die Anzahl der betroffenen Menschen und deren Zustand (entweder genesen, verstorben oder noch infektiös) angegeben werden. Das Referenzdatum kann laut RKI als Tag der Infektion interpretiert werden, das Meldedatum als Genesungsdatum beziehungsweise Sterbedatum \autocite{RKI_Bulletin}.
 
-\todo{Staat refernzieren}
-
-Insgesamt werden drei verschiedene Datenpakete der API verwendet, zum einen die geographischen Daten der Landkreise, zum anderen die Summe aller aufgetretenen COVID-19 Fälle seit Beginn der Pandemie für jeden Landkreis und jeden Tag vom 01.03.2020 bis zum 21.07.2021 sowie eine Auflistung aller Meldungen der Gesundheitsämter, in welchen das  Referenzdatum, das Meldedatum, die Anzahl der betroffenen Menschen und deren Zustand (entweder genesen, verstorben oder noch infektiös) angegeben werden. Das Referenzdatum kann als Tag der Infektion interpretiert werden, das Meldedatum als Genesungsdatum beziehungsweise Sterbedatum.
-
-\todo{RKI Paper verlinken}
-
-Die Landkreise, welche das RKI angibt stimmen nicht mit den Landkreisen des Statistischen Bundesamtes überein: In den Daten des RKIs gibt es 118 Landkreise mehr, beziehungsweise wenn man die kreisfreien Städte abzieht, zwölf Landkreise mehr. Diese Diskrepanz kommt durch die Aufteilung von Berlin in seine 12 Bezirke und Eisenach wird in den Daten des RKIs als eigene kreisfreie Stadt gewertet und nicht zum Wartburgkreis hinzugezählt, der Stadtkreis Eisenach ist mit dem Gemeindeschlüssel 16056 versehen. Trotz dieser Unterschiede und obwohl auch kreisfreie Städte miteinbegriffen sind, wird nach Vorbild des RKIs im folgenden der Begriff \glqq{}Landkreise\grqq{} für alle 412 Gebiete verwendet.
-\todo{Verlinken: https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/03-regierungsbezirke.html}
-\todo{https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/04-kreise.html}
-\todo{Liste der NUTS-Codes Gemeindeschlüssel leiten sich daraus ab. URL siehe Kommentar}
+Die Landkreise, welche das RKI angibt stimmen nicht mit den Landkreisen des Statistischen Bundesamtes
+\footnote{Für die geographischen Daten der Landkreise: https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/04-kreise.html\\
+Für die geographischen Daten der Regierungsbezirke: https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/03-regierungsbezirke.html\\
+}
+überein: In den Daten des RKIs gibt es 118 Landkreise mehr, beziehungsweise wenn man die kreisfreien Städte abzieht, zwölf Landkreise mehr. Diese Diskrepanz kommt durch die Aufteilung von Berlin in seine 12 Bezirke und Eisenach wird in den Daten des RKIs als eigene kreisfreie Stadt gewertet und nicht zum Wartburgkreis hinzugezählt, der Stadtkreis Eisenach ist mit dem Gemeindeschlüssel 16056 versehen. Trotz dieser Unterschiede und obwohl auch kreisfreie Städte miteinbegriffen sind, wird im folgenden weiterhin der Begriff \glqq{}Landkreise\grqq{} für alle 412 Gebiete verwendet.
+%Liste der NUTS-Codes Gemeindeschlüssel leiten sich daraus ab. URL siehe Kommentar
 %https://eur-lex.europa.eu/legal-content/DE/TXT/PDF/?uri=CELEX:32016R2066&from=EN
 Die Daten werden abgespeichert, damit sie nicht bei jeder Ausführung erneut angefordert und aufbereitet werden müssen.
 \section{Datenaufbereitung}
