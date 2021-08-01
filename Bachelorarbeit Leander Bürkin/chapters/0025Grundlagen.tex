@@ -23,7 +23,7 @@ Die Bevölkerungsdichte eines Gebietes $\rho_{Gebiet}$ wird berechnet, indem die
 \begin{equation}\label{eq:Bevölkerungsdichte}
     \rho_{Gebiet} = \frac{n_{Einwohner\  Gebiet}}{A_{Gebiet}}
 \end{equation}
-\section{7-Tages Inzidenz}\label{sec:Datenaufbereitung}
+\section{7-Tages Inzidenz}\label{sec:Grundlagen:7-Tages Inzidenz}
 Die 7-Tages Inzidenz $i_t$ wird für jeden Tag $t$ seit Beginn der Pandemie berechnet.
 Zuerst wird von der akkumulierte Zahl der Fälle am gewählten Tag $f_t$ die akkumulierte Zahl der Fälle sieben Tage zuvor $f_{t-7}$ abgezogen, dies ergibt die neu hinzugekommenen Fälle innerhalb von sieben Tagen.
 
@@ -50,7 +50,8 @@ Dies sind die drei Begründungen für die drei Schritte in der Berechnung der 7-
 
 
 \section{Korrelationsanalyse mithilfe einer Faltung}\label{sec:BeschreibungKorrelationsanalyse}
-\subsection{Berechnung der Korrelationswerte}\label{Grundlagen:Berechnung der Korrelationwerte}
+
+\subsection{Berechnung der Korrelationswerte}\label{sec:Grundlagen:BerechnungderKorrelationwertes}
 Um festzustellen, ob die 7-Tages Inzidenzen einiger Landkreise im Vergleich zu anderen Landkreisen eher voraus- oder nacheilen, wird die Korrelationsfunktion verwendet \autocite{Korrelation}.
 
 Bei diskreten Werten, aufgeteilt in zwei Zeitserien $X$ und $Y$, wie in diesem Fall, basiert die Korrelationsanalyse auf einer diskreten Faltung:
