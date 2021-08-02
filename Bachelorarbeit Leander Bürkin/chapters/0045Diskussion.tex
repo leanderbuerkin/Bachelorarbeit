@@ -1,22 +1,22 @@
 \chapter{Diskussion}\label{chap:Diskussion}
 \section{Aussagekraft des SIR-Modells}
-In \autoref{fig:SIR_Deutschland} sind die drei Kennzahlen für das SIR-Modell dargestellt. Die R-Wert Berechnung des Robert-Koch-Instituts basiert auf den selben Daten \autocite{RKI_Bulletin}, jedoch werden hierfür noch einige weitere Maßnahmen und Annahmen getroffen, welche das Maß dieser Bachelorarbeit sprengen würden.
+Die R-Wert Berechnung des Robert-Koch-Instituts basiert auf den selben Daten auf denen auch die drei Kennzahlen für das SIR-Modell in \autoref{fig:SIR_Deutschland} basieren\autocite{RKI_Bulletin}, jedoch werden hierfür noch einige weitere Maßnahmen und Annahmen getroffen, welche das Maß dieser Bachelorarbeit sprengen würden.\autocite{RKI_Bulletin}
 Wie auch in der Veröffentlichung und \autoref{sec:Resultate-SIR} beschrieben, weisen die Meldungen der Daten überraschend viele Fehler auf, obwohl es sich lediglich um die automatisch festgestellten Fehler handelt.
 
-Inwiefern die Daten nicht das Infektionsverhalten wiederspiegeln, lässt sich anhand der wöchentlichen Schwankungen der Infizierendenzahl abschätzen: Vermutlich werden am Wochenende weniger Tests durchgeführt oder weniger Meldungen abgegeben. 
+Inwiefern die Daten nicht das Infektionsverhalten wiederspiegeln, lässt sich anhand der Wopchentagsabhängigen Schwankungen der Infizierendenzahl abschätzen: Vermutlich werden am Wochenende weniger Tests durchgeführt oder weniger Meldungen abgegeben. 
 
 Zudem spiegeln die Zahlen nur die getesteten Fälle wieder. Somit kann zum einen verstärktes Testen in späteren Zeiträumen in der Pandemie die Zahlen verfälschen und zum anderen machen symptomfreie Krankheitsverläufe es schwer, festzustellen ob und wie lange eine Person infektiös war.
 
-Da die Anzahl der Infizierenden in einem SIR-Modell sehr klein ist und daher kleine Unregelmäßigkeiten eine große Auswirkung haben, lässt sich anhand dieses simplen SIR-Modells keine stichfeste Aussage treffen.
+Da die Anzahl der Infizierenden in einem SIR-Modell sehr klein ist und daher kleine Unregelmäßigkeiten eine große Auswirkung haben, lassen sich anhand dieses simplen SIR-Modells keine stichfesten Aussagen über das Infektionsgeschehen treffen.
 Im Rahmen dieser Arbeit dient es als Mahnmal, dass die erwähnten Probleme stets beachtet werden müssen:
 Die täglichen Schwankungen werden dadurch ausgeglichen, dass die 7-Tages Inzidenz verwendet wird. Die Verwendung von den täglichen Fallzahlen des RKIs als offizielle Stelle sorgt für eine Vorsortierung der Meldungen. Zudem werden im weiteren Verlauf ausschließlich die Fallzahlen benutzt, da diese die höchsten Größenordnungen erreichen und daher Inkonsistenzen von einigen 100 Fällen pro Tag weniger verheerend sind.
 
 \section{Zusammenhänge von Bevölkerungsdichten und Corona-Zahlen der Landkreisen}\label{sec:discussion:pop_density_counties}
-Klar zu erkennen in \autoref{fig:distribution_pop_density_counties} sind die vielen kleinen roten Punkte, welche die Stadtkreise kennzeichnen, die auch die nach der Bevölkerungsdichte sortierten Liste im \autoref{tab:counties_by_pop_density} anführen.
+Klar zu erkennen in \autoref{fig:distribution_pop_density_counties} sind die vielen kleinen roten Punkte, welche Stadtkreise mit besonders hoher bevölkerungsdichte kennzeichnen, wie auch in der nach der Bevölkerungsdichte sortierten Liste im \autoref{tab:counties_by_pop_density} aufgeführt.
 
-Diese sind jedoch oftmals von Landkreisen mit vergleichbar niedrigen Bevölkerungsdichten (außer im Rhein-Ruhrgebiet) umgeben. Daher lässt sich systematisch nur sehr schwer zwischen Landkreisen mit homogen niedriger Bevölkerungsdichte in einem gewissen Bereich und Landkreisen mit niedriger Bevölkerungsdichte, welche eine Stadt umschließen und eine deutlich höhere Bevölkerungsdichte aufweisen würden, wenn die Stadt zum Landkreis gehören würde.
+Diese sind jedoch oftmals von Landkreisen mit vergleichbar niedrigen Bevölkerungsdichten (außer im Rhein-Ruhrgebiet) umgeben. Daher lässt sich systematisch nur sehr schwer zwischen Landkreisen mit homogen niedriger Bevölkerungsdichte in einem gewissen Bereich und Landkreisen mit niedriger Bevölkerungsdichte, welche eine Stadt umschließen und eine deutlich höhere Bevölkerungsdichte aufweisen würden, wenn die Stadt zum Landkreis gehören würde, unterscheiden.
 
-Da somit manche mittelmäßig dicht bevölkerte Gebiete nicht trivial in einen stark bevölkerten Stadtkreis und einen dünn bevölkerten Landkreis zerlegt sind, lassen sich keine Schlussfolgerungen ziehen, inwiefern dünn bevölkerte Gebiete stärker betroffen sind als dichter bevölkerte Gebiete, dies spiegelt sich auch in den im Vergleich zu den restlichen Matrizen recht homogenen Matrizen in \autoref{fig:matrizes_pop_density_counties} wieder.
+Da somit manche mittelmäßig dicht bevölkerte Gebiete nicht trivial in einen stark bevölkerten Stadtkreis und einen dünn bevölkerten Landkreis zerlegt sind, lassen sich keine Schlussfolgerungen ziehen, inwiefern dünn bevölkerte Gebiete stärker betroffen sind als dichter bevölkerte Gebiete. Dies spiegelt sich auch in den im Vergleich zu den restlichen Matrizen recht homogenen Matrizen in \autoref{fig:matrizes_pop_density_counties} wieder.
 
 Jedoch lässt sich die Aufteilung vorzüglich nutzen, um festzustellen, ob die 7-Tages Inzidenzen einer Stadt vor den 7-Tages Inzidenzen im Umland steigen.
 \autoref{fig:highest_selected_counties} zeigt jedoch eindeutig, das die 7-Tages Inzidenzen der gewählten Städte und Landkreise außergewöhnlich zeitgleich steigen und fallen: Der höchste Korrelationswert bei einer Verschiebung von $\tau=0$ bei 50\% ist derart über dem nationalen Durchschnitt von ca. 8,7\%, das davon ausgegangen werden kann, das sich ein Landkreis, der eine Stadt komplett umgibt einen sehr ähnlichen Verlauf der 7-Tages Inzidenz aufweisen wird.
@@ -28,12 +28,12 @@ Die geringe Größe der Teilmenge mit 18 untersuchten Paaren sollte bei der Eins
 \section{Zusammenhänge von Bevölkerungsdichten und Corona-Zahlen der Regierungsbezirke}\label{sec:discussion:pop_density_districts}
 Um das oben beschriebene Problem von nicht trivial aufgeteilten Gebieten zu beheben und einen Zusammenhang zwischen Bevölkerungsdichten und Corona-Zahlen herstellen zu können, werden statt der Landkreise die Regierungsbezirke verwendet.
 
-Alle Matrizen in \autoref{fig:matrizes_pop_density_districts} scheinen einen Farbverlauf von links unten nach rechts oben zu besitzen, in der Matrix rechts oben ist es am deutlichsten ersichtlich. Dies spricht stark dafür, dass die 7-Tages Inzidenz der bevölkerungsdichten Regierungsbezirke früher ansteigt. Der Farbverlauf wirkt relativ kontinuierlich, was den Verdacht auf einen Zusammenhang noch weiter verstärkt.
+Alle Matrizen in \autoref{fig:matrizes_pop_density_districts} scheinen einen Farbverlauf von links unten nach rechts oben zu besitzen, was in der Matrix rechts oben am deutlichsten ersichtlich ist. Dies spricht stark dafür, dass die 7-Tages Inzidenz der bevölkerungsdichten Regierungsbezirke früher ansteigt. Der Farbverlauf wirkt relativ kontinuierlich, was den Verdacht auf einen Zusammenhang noch weiter verstärkt.
 
-Dieser Effekt entspricht durchaus der ersten Intuition, da sich, wie der Name schon sagt, in dichter bevölkerten Gebieten mehr Menschen auf engerem Raum bewegen und dadurch von mehr Infizierenden schneller angesteckt werden.
-Zudem sind die Treffpunkte in Städten vermutlich deutlich größer: Größere Unternehmen, Universitäten, größere Diskotheken, größere Wohneinheiten, stärker frequentierte Knotenpunkte des Nah- und Fernverkehrs etc. Dadurch kann es zu mehr und stärkeren Superspreading-Events, Ereignisse kommen, an denen sich eine Vielzahl an Menschen an wenigen Infizierten ansteckt.
+Dieser Effekt entspricht durchaus der ersten Intuition, da sich, wie der Name schon sagt, in dichter bevölkerten Gebieten mehr Menschen auf engerem Raum bewegen und dadurch mehr Menschen von Infizierenden angesteckt werden.
+Zudem sind die Treffpunkte in Städten vermutlich deutlich größer: Größere Unternehmen, Universitäten, größere Diskotheken, größere Wohneinheiten, stärker frequentierte Knotenpunkte des Nah- und Fernverkehrs etc. Dadurch kann es zu mehr und stärkeren Superspreading-Events kommen. Superspreading-Events sind Ereignisse an denen sich eine Vielzahl an Menschen an wenigen Infizierten anstecken.
 
-Die Superlative dieser Superspreading-Events stören jedoch auch die Regelmäßigkeit des angesprochenen Farbverlaufs in den Matrizen: Beispielsweise kam es laut Zeit \footnote{
+Die Superlative dieser Superspreading-Events stören jedoch auch die Regelmäßigkeit des angesprochenen Farbverlaufs in den Matrizen: Beispielsweise kam es laut Zeit\footnote{
 Zeit-Artikel \glqq{}Corona-Zahlen im Kreis Cloppenburg schnellen hoch\grqq{} vom 9. Oktober 2020
 \href{https://www.zeit.de/news/2020-10/09/corona-zahlen-im-kreis-cloppenburg-hochgeschnellt}{
 https://www.zeit.de/news/2020-10/09/corona-zahlen-im-kreis-cloppenburg-hochgeschnellt}}im Oktober 2020 im Landkreis Cloppenburg zu einem Corona Ausbruch in einem Schlachthof. Erstellt man für den 06.10.2020 und den 07.10.2020 eine Karte mit allen Landkreisen mit einer 7-Tages Inzidenz über 50 rot ein, ergibt sich die Karte in \autoref{fig:oktober_inzidenzen_uber_50}.
@@ -56,10 +56,10 @@ In \autoref{fig:cloppenburg} ist zudem klar ersichtlich, das die 7-Tages Inziden
     \label{fig:cloppenburg}
 \end{figure}
 
-Jedoch muss nicht immer ein außerordentlicher Corona Ausbruch für eine auffällige Färbung in der Matrix sorgen: Die vierte Zeile in den Matrizen, welche dem Regierungsbezirk Trier zugeordnet ist, ist ebenfalls erstaunlich dunkel.
-Vergleicht man den Inzidenzverlauf des Regierungsbezirks mit den Inzidenzverläufen der restlichen Regierungsbezirke, scheint die 7-Tages Inzidenz des Regierungsbezirkes Trier zu Beginn durchschnittlich früh und stark angewachsen zu sein, was gegen ein markantes Superspreading-Event spricht.
+Jedoch muss nicht immer ein außerordentlicher Corona Ausbruch für eine auffällige Färbung in der Matrix sorgen: Die vierte Zeile in den Matrizen in \autoref{fig:matrizes_pop_density_districts}, welche dem Regierungsbezirk Trier zugeordnet ist, ist ebenfalls erstaunlich dunkel.
+Vergleicht man wie in \autoref{fig:Inzidenz_Trier} den Inzidenzverlauf des Regierungsbezirks mit den Inzidenzverläufen der restlichen Regierungsbezirke, scheint die 7-Tages Inzidenz des Regierungsbezirkes Trier zu Beginn durchschnittlich früh und stark angewachsen zu sein, was gegen ein markantes Superspreading-Event spricht.
 
-Im Vergleich zu den anderen Regierungsbezirken blieb die 7-Tages Inzidenz jedoch ungewöhnlich stabil, wie in Abbildung \autoref{fig:Inzidenz_Trier} zu sehen. Die insgesamt niedrige Summe aller täglichen 7-Tages Inzidenzen des Regierungsbezirks, welche in \autoref{fig:distribution_incidences_districts} erkennbar ist, stützt die These, das die 7-Tages Inzidenz im nationalen Vergleich zwar früh stieg, aber durchgehend bei relativ niedrigen Werten blieb.
+Im Vergleich zu den anderen Regierungsbezirken blieb die 7-Tages Inzidenz jedoch ungewöhnlich stabil, wie in \autoref{fig:Inzidenz_Trier} zu sehen. Die insgesamt niedrige Summe aller täglichen 7-Tages Inzidenzen des Regierungsbezirks, welche in \autoref{fig:distribution_incidences_districts} erkennbar ist, stützt die These, das die 7-Tages Inzidenz im nationalen Vergleich zwar früh stieg, aber durchgehend bei relativ niedrigen Werten blieb.
 
 \begin{figure}[H]
     \centering
@@ -70,20 +70,20 @@ Im Vergleich zu den anderen Regierungsbezirken blieb die 7-Tages Inzidenz jedoch
 
 
 
-Die Schlussfolgerungen, welche anhand der Matrizen aufgestellt wurden, werden auch von \autoref{fig:average_shift_districts.png} und \autoref{fig:positive_or_negative_shift_districts} gestützt: Bis auf die beiden erwähnten Ausnahmen, ähneln die beiden Deutschlandkarten \autoref{fig:distribution_pop_density_districts}.
+Die Schlussfolgerungen, welche anhand der Matrizen aufgestellt wurden, werden auch von \autoref{fig:average_shift_districts.png} und \autoref{fig:positive_or_negative_shift_districts} gestützt, welche die Verteilung der durchschnittlichen Verschiebungen mit dem höchsten Wert und die durchschnittlichen Tendenzen der Verschiebung aller Landkreise zeigen: Bis auf die beiden erwähnten Ausnahmen, ähneln die beiden Deutschlandkarten stark der Deutschlandkarte, welche die Verteilung der Bevölkerungsdichte der Landkreise in \autoref{fig:distribution_pop_density_districts} zeigt.
 
 \section{Zusammenhänge von Gemeindeschlüssel und Corona-Zahlen der Landkreise und Regierungsbezirke}
 Die Matrizen aus \autoref{fig:matrizes_north_to_south_counties} und \autoref{fig:matrizes_north_to_south_districts} zeigen keinen konstanten Farbverlauf: Viel eher sind die obersten Zeilen bis auf wenige Ausnahmen sehr hell, sie sind den neuen Bundesländern, Schleswig-Holstein und dem Saarland zugeordnet. Der mittlere und untere Teil, dessen Gebiete grob den alten Bundesländern zugeordnet sind, sind eher dunkler.
 
-Der dunkle Strich in der dritten Zeile der Matrizen in \autoref{fig:matrizes_north_to_south_districts} ist Berlin zugeordnet. Da es sich um Städte mit sehr hoher Bevölkerungsdichte handelt, fallen diese auch in das in \autoref{sec:discussion:pop_density_districts} beschriebene Muster. Hamburg, welches für den dunklen Strich in den selben Matrizen in Zeile 11 verantwortlich ist, fällt in die selbe Kategorie.
+Die dunklen Striche in der dritten Zeile der Matrizen in \autoref{fig:matrizes_north_to_south_districts} ist Berlin zugeordnet. Da es sich um Städte mit sehr hoher Bevölkerungsdichte handelt, fallen diese auch in das in \autoref{sec:discussion:pop_density_districts} beschriebene Muster. Hamburg, welches für die dunklen Striche in den selben Matrizen in Zeile 11 verantwortlich ist, fällt in die selbe Kategorie.
 
 Das Saarland, welches in \autoref{fig:matrizes_north_to_south_districts} laut \autoref{tab:districts_by_admunitid} der zweiten Zeile zugeordnet ist, ist in in allen Matrizen in der oberen Hälfte eine der dunkleren Linien, im unteren Teil würde sie vermutlich nicht auffallen.
-Dies ist wenig verwunderlich, da das Saarland bei der Sortierung nach dem Gemeindeschlüssel am auffälligsten aus dem Nord-Süd- und Ost-West-Raster herausfällt, wie in \autoref{fig:distribution_AdmUnitId} zu sehen.
+Dies ist wenig verwunderlich, da das Saarland bei der Sortierung nach dem Gemeindeschlüssel am auffälligsten aus dem Nord-Süd- und Ost-West-Raster herausfällt, wie in \autoref{fig:distribution_AdmUnitId} zu sehen ist.
 
 Somit scheinen die 7-Tages Inzidenzen in den alten Bundesländern vor den 7-Tages Inzidenzen in den neuen Bundesländern zu steigen.
 
 
-\section{Durchschnittliche Verschiebung im nationalen Vergleich Landkreise}
+\section{Durchschnittliche Verschiebung der Landkreise im nationalen Vergleich}
 
 \autoref{fig:average_shift_counties.png} und
 \autoref{fig:positive_or_negative_shift_counties} weisen die selben Merkmale auf wie die analysierten Abbildungen  und stützen daher die Thesen:

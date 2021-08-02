@@ -1,4 +1,5 @@
 \chapter{Grundlagen}\label{chap:Grundlagen}
+
 \section{Mittelwert}\label{sec:Grundlagen:Mittelwert}
 Der Mittelwert, das Mittel oder auch der Durchschnitt entspricht nach \autoref{eq:Mittelwert} der Summe der einzelnen Werte $x_1$, $x_2$, $x_3$ ... $x_n$ geteilt durch ihre Anzahl $n$.
 \begin{equation}\label{eq:Mittelwert}
@@ -16,7 +17,7 @@ Ein Weg zur Beschreibung der Pandemie bietet das \glqq{}Susceptible-Infectious-R
 In dem hier verwendeten SIR-Modell wird weder die Geburten- noch die Sterberate beachtet, die angenommen Bevölkerung bleibt durchgehend konstant.
 
 Zudem wird angenommen, das jedes Individuum nur einmal infiziert werden kann und die Infektion die einzige Möglichkeit darstellt, von der Kategorie \glqq{}Susceptible\grqq{} in die Kategorie \glqq{}Removed\grqq{} zu wechseln.
-Somit fällt die Zahl der Menschen in der Kategorie \glqq{}Susceptible\grqq{} monoton und die Zahl der Menschen in der Kategorie \glqq{}Removed\grqq{} steigt monoton an.
+Somit fällt die Zahl der Menschen in der Kategorie \glqq{}Susceptible\grqq{} monoton und die Zahl der Menschen in der Kategorie \glqq{}Removed\grqq{} steigt monoton an.\autocite{SIR}
 
 \section{Bevölkerungsdichte}
 Die Bevölkerungsdichte eines Gebietes $\rho_{Gebiet}$ wird berechnet, indem die Anzahl der Einwohner im Gebiet $n_{Einwohner\ Gebiet}$ durch die Fläche des Gebiets $A_{Gebiet}$ geteilt wird:
@@ -24,12 +25,13 @@ Die Bevölkerungsdichte eines Gebietes $\rho_{Gebiet}$ wird berechnet, indem die
     \rho_{Gebiet} = \frac{n_{Einwohner\  Gebiet}}{A_{Gebiet}}
 \end{equation}
 \section{7-Tages Inzidenz}\label{sec:Grundlagen:7-Tages Inzidenz}
-Die 7-Tages Inzidenz $i_t$ wird für jeden Tag $t$ seit Beginn der Pandemie berechnet.
-Zuerst wird von der akkumulierte Zahl der Fälle am gewählten Tag $f_t$ die akkumulierte Zahl der Fälle sieben Tage zuvor $f_{t-7}$ abgezogen, dies ergibt die neu hinzugekommenen Fälle innerhalb von sieben Tagen.
+Die 7-Tages Inzidenz ist laut RKI als die \glqq{}Anzahl der innerhalb der letzten 7 Tage neu gemeldeten Fälle pro 100.000 Einwohner\grqq{} definiert \autocite{7-TageInzidenz}.
 
-Schlussendlich wird diese Zahl durch die Anzahl der Bewohner des Gebiets $p_{Gebiet}$ geteilt und mit 100.000 multipliziert. Dies ergibt \autoref{eq:7-Tages_Inzidenz}.
+Um die 7-Tages Inzidenz $i_d$ für den Tag $d$ zu berechnen, wird von der akkumulierten Zahl der Fälle  am gewählten Tag $f_d$ die akkumulierte Zahl der Fälle sieben Tage zuvor $f_{d-7}$ abgezogen, dies ergibt die neu hinzugekommenen Fälle innerhalb von sieben Tagen.
+
+Schlussendlich wird diese Zahl durch die Anzahl der Bewohner des Gebiets $p_{Gebiet}$ geteilt und mit 100 000 multipliziert. Dies ergibt \autoref{eq:7-Tages_Inzidenz}.
 \begin{equation}\label{eq:7-Tages_Inzidenz}
-    i_t= \frac{f_t-f_{t-7}}{p_{Gebiet}}\cdot 100.000
+    i_t= \frac{f_d-f_{d-7}}{p_{Gebiet}}\cdot 100.000
 \end{equation}
 
 Die 7-Tages Inzidenz bietet sich im Vergleich zur täglichen Fallzahl aus mehreren Gründen als Kennzahl für die Verbreitung eines Virus in einem Gebiet an:
@@ -70,7 +72,7 @@ Bildlich gesprochen wird die zweite Zeitserie an der ersten Zeitserie vorbeigesc
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/Grundlagen/Korrelation.png}
-    \caption{Beispielhafte Darstellung einer Faltung anhand der Folgen $[1,2,3,2]$ und $[5,7,5,1]$. Auf der linken Seite hinter dem Gleichheitszeichen von oben nach unten die Korrelationswahrscheinlichkeiten für die negativen Verschiebungen $\tau=-3$, $\tau=-2$ und $\tau=-1$. Entsprechend in der Mitte bei keine Verschiebung ($\tau=0$) und rechts für die positiven Verschiebungen $\tau=1$, $\tau=2$ und $\tau=3$}
+    \caption{Beispielhafte Darstellung einer Faltung anhand der Folgen $[1,2,3,2]$ und $[5,7,5,1]$. Auf der linken Seite sind von oben nach unten hinter dem Gleichheitszeichen die Korrelationswerte für die negativen Verschiebungen $\tau=-3$, $\tau=-2$ und $\tau=-1$ eingetragen. Entsprechend ist der Korrelationswert für die Verschiebung $\tau=0$ in der Mitte und die Korrelationswerte für die positiven Verschiebungen $\tau=1$, $\tau=2$ und $\tau=3$ auf der rechten Seite zu finden.}
     \label{fig:Korrelation Beispiel}
 \end{figure}
 
@@ -86,7 +88,7 @@ von der Länge der Zeitserie $n$ abzieht:
     c(\tau) =\frac{1}{n-\vert\tau\vert} \sum_{i=1}^n x_i\cdot y_{i+\tau}
 \end{equation}
 
-Um zum anderen die tendenziell größeren Werte mancher Zeitserien auszugleichen, werden die Werte aller Zeitserien mithilfe des sogenannten \glqq{}Autokorrelationswerts für die Verschiebung $\tau=0$\grqq{} gewichtet: Er beschreibt den Wert der Korrelation einer Zeitserie mit sich selbst bei keiner zeitlichen Verschiebung. Wie in \autoref{eq:skalierte_Korrelation} zu sehen, werden die Werte einer Zeitserie gewichtet, indem sie durch die Wurzel des Autokorrelationswerts für die Verschiebung $\tau=0$ dieser Zeitserie geteilt werden.
+Um zum anderen die tendenziell größeren Werte mancher Zeitserien auszugleichen, werden die Werte aller Zeitserien mithilfe des sogenannten \glqq{}Autokorrelationswerts für die Verschiebung $\tau=0$ \grqq{} gewichtet: Er beschreibt den Wert der Korrelation einer Zeitserie mit sich selbst bei keiner zeitlichen Verschiebung. Wie in \autoref{eq:skalierte_Korrelation} zu sehen, werden die Werte einer Zeitserie gewichtet, indem sie durch die Wurzel des Autokorrelationswerts für die Verschiebung $\tau=0$ dieser Zeitserie geteilt werden.
 
 \begin{equation}\label{eq:skalierte_Korrelation}
     c(\tau) =
@@ -107,20 +109,20 @@ Zudem wird von jedem Wert der Zeitserie $x_i$ der Mittelwert $\overline x = \fra
 
 Ergibt die Summe aus all den Produkten einer Korrelation eine negative Zahl, scheint die 7-Tages Inzidenz des einen Landkreises zu fallen oder langsam zu steigen, während die 7-Tages Inzidenz des anderen Landkreises steigt oder langsam fällt, dies wird hier Antikorrelation genannt.
 
-Mit allen Ergänzungen berechnet sich die Korrelation $c(\tau)$ zwischen Zeitserie $X:|X|=n$ mit den Werten $x_i\in X$ und Zeitserie $Y:|Y|=n$ mit den Werten $y_i \in Y$ und einer Verschiebung $\tau$ relativ zu $X$ mithilfe der Mittelwerte der Zeitserien $\overline x,\ \overline y$ wie in \autoref{eq:komplette_skalierte_Korrelation} beschrieben.
+Mit allen Ergänzungen berechnet sich die Korrelation $c(\tau)$ zwischen der Zeitserie $X:|X|=n$ mit den Werten $x_i\in X$ und der Zeitserie $Y:|Y|=n$ mit den Werten $y_i \in Y$ und einer Verschiebung $\tau$ relativ zu $X$ mithilfe der Mittelwerte der Zeitserien $\overline x,\ \overline y$ wie in \autoref{eq:komplette_skalierte_Korrelation} beschrieben.
 \begin{equation}\label{eq:komplette_skalierte_Korrelation}
     c(\tau) =\frac{n}{n-\vert\tau\vert}
     \frac{\sum_{i=1}^n (x_i-\overline x)\cdot (y_{i+\tau}-\overline y)}{\sqrt{\sum_{i=1}^n (x_i-\overline x)^2}\sqrt{\sum_{i=1}^n (y_i-\overline y)^2}}
 \end{equation}
 
 \subsection{Korrelation zwischen zwei Gebieten am Beispiel von Flensburg und Kiel}
-Um die verwendete Terminologie und die hergeleiteten Gleichungen anhand eines Beispiels näher zu bringen, werden in diesem Abschnitt die einzelnen Schritten einer Korrelationsanalyse ausgeführt. Als Beispiel dient hierfür die Korrelation zwischen den 7-Tages Inzidenzen der Stadtkreise Flensburg und Kiel. Die 7-Tages Inzidenzen sind in \autoref{fig:Inzidenz_Flensburg} und \autoref{fig:Inzidenz_Kiel} abgebildet, jeweils einmal im Original und einmal um die mittlere 7-Tages Inzidenz in x-Richtung nach unten verschoben.
+Um die verwendete Terminologie und die hergeleiteten Gleichungen anhand eines Beispiels näher zu bringen, werden in diesem Abschnitt die einzelnen Schritten einer Korrelationsanalyse ausgeführt. Als Beispiel dient hierfür die Korrelation zwischen den 7-Tages Inzidenzen der Stadtkreise Flensburg und Kiel. Die 7-Tages Inzidenzen sind in \autoref{fig:Inzidenz_Flensburg} und \autoref{fig:Inzidenz_Kiel} abgebildet, jeweils einmal im Original und einmal um den Mittelwert der 7-Tages Inzidenz in x-Richtung nach unten verschoben.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/Inzidenz_Flensburg.png}
     \caption{Der Verlauf der 7-Tages Inzidenz des Stadtkreises Flensburg (Gemeindeschlüssel 1001).
-    In Hellblau sind ist der originale Verlauf der 7-Tages Inzidenz dargestellt. Der Verlauf der 7-Tages Inzidenzen, von denen der Mittelwert der 7-Tages Inzidenzen von Flensburg abgezogen wurde, ist blau dargestellt.}
+    In Hellblau ist der originale Verlauf der 7-Tages Inzidenz dargestellt. Der Verlauf der 7-Tages Inzidenzen, von denen der Mittelwert der 7-Tages Inzidenzen von Flensburg abgezogen wurde, ist blau dargestellt.}
     \label{fig:Inzidenz_Flensburg}
 \end{figure}
 \begin{figure}[H]
@@ -155,7 +157,7 @@ In \autoref{fig:correlation_Flensburg_Kiel_scaled_autocorrelation} sind die Erge
     \label{fig:correlation_Flensburg_Kiel_scaled_complete}
 \end{figure}
 
-In \autoref{fig:correlation_Flensburg_Kiel_scaled_complete} ist schön zu erkennen, das die Korrelationsanalyse von zwei Zeitserien mit 508 7-Tages Inzidenzen 1015 Korrelationswerte ergibt.
+In \autoref{fig:correlation_Flensburg_Kiel_scaled_complete} ist zu erkennen, das die Korrelationsanalyse von zwei Zeitserien mit 508 7-Tages Inzidenzen 1015 Korrelationswerte ergibt.
 Für jeden der 412 Landkreis ergeben sich daher aus der Korrelationsanalyse mit sich selbst und jedem anderen Landkreise 418.180 Werte, ebenso ergeben sich für jeden der 38 Regierungsbezirk 38.570. Dies ergibt in Summe $
 %38.570\cdot 38 + 418.180\cdot412 =
 1.465.660+172.290.160=173.755.820$ Werte.
@@ -163,13 +165,8 @@ Für jeden der 412 Landkreis ergeben sich daher aus der Korrelationsanalyse mit 
 Jeder Wert gibt die Wahrscheinlichkeit einer Korrelation bei der jeweiligen Verschiebung an, wobei die zugeordneten Verschiebungen von links nach rechts bei jedem Schritt um eins zunehmen und der mittlerste der Korrelationswerte der Verschiebung $\tau = 0$ zugeordnet ist. Die Verschiebung ist im Kontext dieser Arbeit stets in ganzen Tagen zwischen $-507$ und $507$ angegeben. Der Wert an Position 501 in der Liste der Korrelationswerte gibt also an, wie wahrscheinlich der Verlauf der 7-Tages Inzidenz des ersten Gebiets mit dem um eine Woche nach links verschobenen Verlauf der 7-Tages Inzidenz des zweiten Gebiets korreliert.
 
 \subsection{Komprimierung und Darstellung als Matrizen}\label{sec:Grundlagen:Korrelation:Komprimierung}
-Das Ziel der nachfolgend beschriebenen Schritte ist, die Korrelationswerte eines Gebiets auf einen Wert zusammenzuführen, sodass man einfach und schnell auffallende Korrelationen zwischen zwei oder mehreren Gebieten finden kann.
-
-In dieser Arbeit werden nur Korrelationen mit einem zeitlichen Versatz zwischen $\tau=-50$ und $\tau=50$ betrachtet, da zum einen eine Interpretation für eine Verschiebung von mehr als 4 Wochen sehr schwierig ist und zum anderen einzelne Ausreißer bei größeren Verschiebungen stärker ins Gewicht fallen, weil immer weniger Produkte aufsummiert werden. Dies fällt auch in \autoref{fig:correlation_Flensburg_Kiel_scaled_autocorrelation} im Vergleich zu \autoref{fig:correlation_Flensburg_Kiel} an den Rändern der Graphen auf.
-
-Um ein detailliertes Bild zu erhalten, werden zudem Korrelationsanalysen für die Verschiebungen $\tau\in[-30,30]$ und $\tau\in[-14,14]$ durchgeführt.
-
-Somit sind jeder Kombination aus zwei Landkreisen nur noch höchstens 101 Werte zugeordnet. Diese Werte werden in zwei verschiedenen Varianten zu einem Wert zusammengefasst:
+Das Ziel der nachfolgend beschriebenen Schritte ist, die Korrelationswerte eines Gebiets auf einen Wert zusammenzuführen. Dadurch kann man einfach und schnell auffallende Korrelationen zwischen zwei oder mehreren Gebieten finden kann.
+Hierfür werden zwei verschiedenen Methoden verwendet:
 \begin{itemize}
     \item Die Verschiebung mit dem maximalen Korrelationswert: Die zeitliche Verschiebung, bei der die Korrelationsanalyse den größten Wert angibt. Sie sagt aus bei welcher Verschiebung in Tagen am wahrscheinlichsten eine Korrelation vorliegt.
     \item Die Tendenz der Verschiebung: 
@@ -185,8 +182,9 @@ Die Tendenz der Verschiebung berechnet sich aus der Liste der Korrelationswerte 
     \sum_{\tau=1}^{\lfloor m/2 \rfloor}c_{\tau}-c_{-\tau}
 \end{equation}
 In \autoref{fig:Flensburg_Kiel_Verschiebung_Tendenz} entspricht der blaue Graph den Werten der Korrelationsanalyse, wie sie auch in \autoref{fig:correlation_Flensburg_Kiel_scaled_complete} abgebildet sind. Um bildlich die Differenz zwischen den Werten der betragsmäßig gleichen Verschiebungen darzustellen, werden die Werte der negativen Verschiebungen an der Vertikalen bei $x=0$ gespiegelt und Lila eingefärbt.
+Da die Linke Seite gespiegelt wird, ist sie nicht weiter von Bedeutung.
 
-Da die Linke Seite gespiegelt wird, ist sie nicht weiter von Bedeutung. In den Zwischenräumen der beiden Graphen und auf der Horizontalen bei $y=0$ sind die Differenzen der Werte der betragsmäßig gleichen Verschiebungen aufgezeichnet, deren Mittel der Tendenz der Verschiebung entspricht. Diese ist als dunkelblaue Horizontale bei $y=0.0266$ dargestellt.
+In den Zwischenräumen der beiden Graphen und auf der Horizontalen bei $y=0$ sind die Differenzen der Werte der betragsmäßig gleichen Verschiebungen aufgezeichnet, deren Mittel der Tendenz der Verschiebung entspricht. Diese ist als dunkelblaue Horizontale bei $y=0,0266$ dargestellt.
 
 \begin{figure}[H]
     \centering
@@ -201,14 +199,14 @@ Da hierfür jedoch nur ein Wert herausgenommen wird, bietet es sich zum anderen 
 
 
 Um dies für alle Landkreise und Regierungsbezirke zu ermöglichen, werden die beiden Werte jeweils in einer Matrix dargestellt: Jeder Zeile und Spalte wird der Index für ein Gebiet zugeordnet. In die Zellen werden entweder die Verschiebungen mit dem maximalen Korrelationswert oder die Tendenzen der Verschiebung eingetragen. Ein spezifischer Wert in einer Zelle stammt aus der Korrelationsanalyse der Gebiete, die der Zeile und der Spalte zugeordnet sind.
-Die Matrizen sind (mit verkehrtem Vorzeichen) symmetrisch an der Diagonalen von links oben nach rechts unten. Die Diagonalen sind mit Nullen besetzt, da die Werte der positiven Verschiebung symmetrisch zu den Werten der negativen Verschiebung sind und die Korrelation mit sich selbst trivialerweise bei einer Verschiebung von $\tau=0$ am größten ist, da die Werte und Trends komplett identisch sind.
+Die Matrizen sind (mit umgekehrtem Vorzeichen) symmetrisch an der Diagonalen von links oben nach rechts unten. Die Diagonalen sind mit Nullen besetzt, da die Werte der positiven Verschiebung symmetrisch zu den Werten der negativen Verschiebung sind und die Korrelation mit sich selbst trivialerweise bei einer Verschiebung von $\tau=0$ am größten ist, da die Werte und Trends komplett identisch sind.
 
 Um den Gebieten selbst Werte zuzuordnen und nicht nur in Kombination mit einem anderen Gebiet, wird sowohl bei den Maximalwerten wie auch den Tendenzen der Verschiebung der Mittelwert gebildet, indem die Zeilen der Matrizen aufsummiert werden und durch die Anzahl der Spalten geteilt werden.
 \section{Farbgebung}\label{sec:Grundlagen:Farbgebung}
 Um schnell verständliche Abbildungen bereitstellen zu können, werden die Werte skaliert und die Farbgebung der Deutschlandkarten derart angepasst, dass das gesamte Farbspektrum abgedeckt wird. Das Farbspektrum reicht gemäß den Farben des Regenbogens von blau über grün zu gelb zu rot, wie in \autoref{fig:color_schemes} demonstriert. Die niedrigsten Werte werden blau gefärbt.
 Da manche dieser Farbwerte im Kontrast zu einem weißen Hintergrund schwer zu erkennen sind, ist der Hintergrund der meisten Abbildungen grau.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/Grundlagen/color_schemes.png}
     \caption{Das Farbspektrum, in welchem sich die Darstellungen bewegen. Von links nach rechts steigen die eingegebenen Werte konstant. Der angegebene Wert wird jeweils anhand des ersten und des letzten Werten einer Referenzliste linear in diesem Spektrum verortet.}
