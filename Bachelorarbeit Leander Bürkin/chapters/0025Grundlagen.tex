@@ -1,7 +1,7 @@
 \chapter{Grundlagen}\label{chap:Grundlagen}
 
 \section{Mittelwert}\label{sec:Grundlagen:Mittelwert}
-Der Mittelwert, das Mittel oder auch der Durchschnitt entspricht nach \autoref{eq:Mittelwert} der Summe der einzelnen Werte $x_1$, $x_2$, $x_3$ ... $x_n$ geteilt durch ihre Anzahl $n$.
+Der Mittelwert $\bar x$, auch genannt das Mittel oder auch der Durchschnitt, entspricht nach \autoref{eq:Mittelwert} der Summe der einzelnen Werte $x_1$, $x_2$, $x_3$ ... $x_n$ geteilt durch ihre Anzahl $n$.
 \begin{equation}\label{eq:Mittelwert}
     \bar x = \frac{1}{n}\sum_{i=1}^n x_i
 \end{equation}
@@ -20,44 +20,47 @@ Zudem wird angenommen, das jedes Individuum nur einmal infiziert werden kann und
 Somit fällt die Zahl der Menschen in der Kategorie \glqq{}Susceptible\grqq{} monoton und die Zahl der Menschen in der Kategorie \glqq{}Removed\grqq{} steigt monoton an.\autocite{SIR}
 
 \section{Bevölkerungsdichte}
-Die Bevölkerungsdichte eines Gebietes $\rho_{Gebiet}$ wird berechnet, indem die Anzahl der Einwohner im Gebiet $n_{Einwohner\ Gebiet}$ durch die Fläche des Gebiets $A_{Gebiet}$ geteilt wird:
+Die Bevölkerungsdichte eines Gebietes $\rho_{Gebiet}$ wird berechnet, indem die Anzahl der Einwohner im Gebiet $p_{Gebiet}$ durch die Fläche des Gebiets $A_{Gebiet}$ geteilt wird:
 \begin{equation}\label{eq:Bevölkerungsdichte}
     \rho_{Gebiet} = \frac{n_{Einwohner\  Gebiet}}{A_{Gebiet}}
 \end{equation}
-\section{7-Tages Inzidenz}\label{sec:Grundlagen:7-Tages Inzidenz}
-Die 7-Tages Inzidenz ist laut RKI als die \glqq{}Anzahl der innerhalb der letzten 7 Tage neu gemeldeten Fälle pro 100.000 Einwohner\grqq{} definiert \autocite{7-TageInzidenz}.
+\section{7-Tage-Inzidenz}\label{sec:Grundlagen:7-Tages Inzidenz}
+Die 7-Tage-Inzidenz ist die Zahl der neu gemeldeten Fälle in den letzten 7 Tagen pro 100 000 Menschen \autocite{7-TageInzidenz}.
 
-Um die 7-Tages Inzidenz $i_d$ für den Tag $d$ zu berechnen, wird von der akkumulierten Zahl der Fälle  am gewählten Tag $f_d$ die akkumulierte Zahl der Fälle sieben Tage zuvor $f_{d-7}$ abgezogen, dies ergibt die neu hinzugekommenen Fälle innerhalb von sieben Tagen.
+Um die 7-Tage-Inzidenz $i_d$ für den Tag $d$ zu berechnen, wird von der akkumulierten Zahl der Fälle  am gewählten Tag $f_d$ die akkumulierte Zahl der Fälle sieben Tage zuvor $f_{d-7}$ abgezogen, dies ergibt die neu hinzugekommenen Fälle innerhalb von sieben Tagen.
 
 Schlussendlich wird diese Zahl durch die Anzahl der Bewohner des Gebiets $p_{Gebiet}$ geteilt und mit 100 000 multipliziert. Dies ergibt \autoref{eq:7-Tages_Inzidenz}.
 \begin{equation}\label{eq:7-Tages_Inzidenz}
     i_t= \frac{f_d-f_{d-7}}{p_{Gebiet}}\cdot 100.000
 \end{equation}
 
-Die 7-Tages Inzidenz bietet sich im Vergleich zur täglichen Fallzahl aus mehreren Gründen als Kennzahl für die Verbreitung eines Virus in einem Gebiet an:
+Die 7-Tage-Inzidenz auf Basis der Fallzahlen bietet sich im Vergleich zur täglichen Fallzahl, der Todeszahl oder den aktiven Fällen aus mehreren Gründen als Kennzahl für die Verbreitung eines Virus in einem Gebiet an:
 
-Wie in \autoref{fig:neue_Fälle_pro_Wochentag_Deutschland} klar zu sehen, werden an Wochenenden im Schnitt deutlich weniger neue Fälle registriert als an den anderen Wochentagen.
-Daher werden immer sieben Tage in der 7-Tages Inzidenz zusammengefasst.
+Die Fallzahl als Ausgangspunkt zu verwenden bietet sich im Gegensatz zu den aktiven Fällen an, da Beginn und Ende der Infektion bei den aktiven Fällen sehr schwer bestimmbar ist. Die Todeszahlen sind zwar eine gut bestimmbare Größe, jedoch würde hierbei ein größerer zeitlicher Verzug zur Infektion entstehen und generell kleinere Zahlen verwendet, welche auf Landkreisebene sehr viel anfälliger für Ausreißer wären.
+
+In \autoref{fig:neue_Fälle_pro_Wochentag_Deutschland} werden die neu gemeldeten Fällen in Deutschland an unterschiedlichen Wochentagen dargestellt. Hierfür werden die einzelnen Wochen betrachtet und jeweils die Anzahl der am Montag gemeldeten Fälle von allen sieben Fallzahlen der Woche abgezogen. Dadurch ergeben sich die in \autoref{fig:neue_Fälle_pro_Wochentag_Deutschland} dargestellten gemeldeten Fälle am jeweiligen Wochentag relativ zu den gemeldeten Fällen an den Montagen.
+
+Klar zu erkennen, werden an Wochenenden im Schnitt deutlich weniger neue Fälle registriert als an den anderen Wochentagen.
+Daher werden immer sieben Tage in der 7-Tage-Inzidenz zusammengefasst.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/neue_Fälle_pro_Wochentag_Deutschland.png}
-    \caption{In Deutschland neu gemeldete COVID-19 Fälle am jeweiligen Wochentag im Vergleich zu den am Montag der selben Woche gemeldeten Fälle.}
+    \caption{In Deutschland neu gemeldete COVID-19-Fälle am jeweiligen Wochentag im Vergleich zu den am Montag der selben Woche gemeldeten Fälle.}
     \label{fig:neue_Fälle_pro_Wochentag_Deutschland}
 \end{figure}
 Da die Bevölkerung der deutschen Landkreise und Regierungsbezirke nicht identisch ist, wird jeweils durch die Bevölkerungszahl geteilt, um die einzelnen Gebiete miteinander vergleichen zu können.
 
 Aufgrund der ansonsten sehr kleinen Zahlen, bietet es sich zudem an, das Ergebnis mit 100.000 zu multiplizieren.
 
-Dies sind die drei Begründungen für die drei Schritte in der Berechnung der 7-Tages Inzidenz nach \autoref{eq:7-Tages_Inzidenz}.
+Dies sind die drei Begründungen für die drei Schritte in der Berechnung der 7-Tage-Inzidenz nach \autoref{eq:7-Tages_Inzidenz}.
 
 
 \section{Korrelationsanalyse mithilfe einer Faltung}\label{sec:BeschreibungKorrelationsanalyse}
-
 \subsection{Berechnung der Korrelationswerte}\label{sec:Grundlagen:BerechnungderKorrelationwertes}
-Um festzustellen, ob die 7-Tages Inzidenzen einiger Landkreise im Vergleich zu anderen Landkreisen eher voraus- oder nacheilen, wird die Korrelationsfunktion verwendet \autocite{Korrelation}.
+Um festzustellen, ob die 7-Tage-Inzidenzen einiger Landkreise im Vergleich zu anderen Landkreisen eher voraus- oder nacheilen, werden die Korrelationswerte im Rahmen einer Korrelationsanalyse berechnet \autocite{Korrelation}.
 
-Bei diskreten Werten, aufgeteilt in zwei Zeitserien $X$ und $Y$, wie in diesem Fall, basiert die Korrelationsanalyse auf einer diskreten Faltung:
-Für eine zeitliche Verschiebung $\tau$ wird mit jedem Wert $x_i$ zum jeweiligen Zeitpunkt $t_i$ aus der ersten Zeitserie mit dem zugehörigen Wert $y_i$ aus der zweiten Zeitserie ein Produkt gebildet. Der zugehörige Wert aus der zweiten Zeitserie entspricht hierbei dem Zeitpunkt $t$ des Wertes der ersten Zeitserie plus die gewählte Verschiebung $\tau$. Sollte dieser zweite Wert nicht existieren, wird kein Produkt gebildet.
+Bei diskreten Werten, aufgeteilt in zwei Zeitreihen $X$ und $Y$, wie in diesem Fall, basiert die Korrelationsanalyse auf einer diskreten Faltung:
+Für eine zeitliche Verschiebung $\tau$ wird mit jedem Wert $x_i$ zum jeweiligen Zeitpunkt $t_i$ aus der ersten Zeitreihe mit dem zugehörigen Wert $y_i$ aus der zweiten Zeitreihe ein Produkt gebildet. Der zugehörige Wert aus der zweiten Zeitreihe entspricht hierbei dem Zeitpunkt $t$ des Wertes der ersten Zeitreihe plus der gewählten Verschiebung $\tau$. Sollte dieser zweite Wert nicht existieren, wird kein Produkt gebildet.
 
 Für jede zeitliche Verschiebung $\tau$, für die mindestens ein Produkt gebildet wird, werden alle möglichen Produkte aufsummiert.
 
@@ -67,7 +70,7 @@ Somit ergibt sich \autoref{eq:Korrelation}, mit $n := $ Länge von $X$ und wenn 
 \end{equation}
 
 
-Bildlich gesprochen wird die zweite Zeitserie an der ersten Zeitserie vorbeigeschoben, beginnend an dem Punkt, an dem ausschließlich das erste Element der ersten Zeitserie mit dem letzten Element der zweiten Zeitserie multipliziert wird. Dies ist beispielhaft mit den Folgen $[1,2,3,2]$ und $[5,7,5,1]$ in \autoref{fig:Korrelation Beispiel} dargestellt.
+Bildlich gesprochen wird die zweite Zeitreihe an der ersten Zeitreihe vorbeigeschoben, beginnend an dem Punkt, an dem ausschließlich das erste Element der ersten Zeitreihe mit dem letzten Element der zweiten Zeitreihe multipliziert wird. Dies ist beispielhaft mit den Folgen $[1,2,3,2]$ und $[5,7,5,1]$ in \autoref{fig:Korrelation Beispiel} dargestellt.
 
 \begin{figure}[H]
     \centering
@@ -76,19 +79,19 @@ Bildlich gesprochen wird die zweite Zeitserie an der ersten Zeitserie vorbeigesc
     \label{fig:Korrelation Beispiel}
 \end{figure}
 
-Da bei einer Korrelationsanalyse nach \autoref{eq:Korrelation} Summen aus mehr Produkten übergewichtet werden und Zeitserien mit größeren Werten größere Korrelationswerte erzeugen, müssen die Korrelationswerte noch skaliert werden.
+Da bei einer Korrelationsanalyse nach \autoref{eq:Korrelation} Summen aus mehr Produkten übergewichtet werden und Zeitreihen mit größeren Werten größere Korrelationswerte erzeugen, müssen die Korrelationswerte noch skaliert werden.
 
-Um zum einen die unterschiedliche Anzahl der Produkte auszugleichen, werden die Summen durch die Anzahl ihrer Summanden geteilt, wie in \autoref{eq:skalierte_Korrelation_geteilt_durch_Produkte} gezeigt. Ohne diese Gewichtung würden zwei Zeitserien mit konstanten Werten größer null bei einer Verschiebung $\tau=0$ die größte Korrelation aufweisen und die Korrelation bei betragsmäßig größeren Verschiebungen abnehmen, was nicht gewünscht ist.
+Um zum einen die unterschiedliche Anzahl der Produkte auszugleichen, werden die Summen durch die Anzahl ihrer Summanden geteilt, wie in \autoref{eq:skalierte_Korrelation_geteilt_durch_Produkte} gezeigt. Ohne diese Gewichtung würden zwei Zeitreihen mit konstanten Werten größer null bei einer Verschiebung $\tau=0$ die größte Korrelation aufweisen und die Korrelation bei betragsmäßig größeren Verschiebungen abnehmen, was nicht gewünscht ist.
 
-Da jede Zeitserie die gleiche Länge $n$ hat, erhält man die Anzahl der Summanden indem man
+Da jede Zeitreihe die gleiche Länge $n$ hat, erhält man die Anzahl der Summanden indem man
 den Betrag der Verschiebung $\vert\tau\vert$
-von der Länge der Zeitserie $n$ abzieht:
+von der Länge der Zeitreihe $n$ abzieht:
 
 \begin{equation}\label{eq:skalierte_Korrelation_geteilt_durch_Produkte}
     c(\tau) =\frac{1}{n-\vert\tau\vert} \sum_{i=1}^n x_i\cdot y_{i+\tau}
 \end{equation}
 
-Um zum anderen die tendenziell größeren Werte mancher Zeitserien auszugleichen, werden die Werte aller Zeitserien mithilfe des sogenannten \glqq{}Autokorrelationswerts für die Verschiebung $\tau=0$ \grqq{} gewichtet: Er beschreibt den Wert der Korrelation einer Zeitserie mit sich selbst bei keiner zeitlichen Verschiebung. Wie in \autoref{eq:skalierte_Korrelation} zu sehen, werden die Werte einer Zeitserie gewichtet, indem sie durch die Wurzel des Autokorrelationswerts für die Verschiebung $\tau=0$ dieser Zeitserie geteilt werden.
+Um zum anderen die tendenziell größeren Werte mancher Zeitreihen auszugleichen, werden die Werte aller Zeitreihen mithilfe des sogenannten \glqq{}Autokorrelationswerts für die Verschiebung $\tau=0$ \grqq{} gewichtet: Er beschreibt den Wert der Korrelation einer Zeitreihe mit sich selbst bei keiner zeitlichen Verschiebung. Wie in \autoref{eq:skalierte_Korrelation} zu sehen, werden die Werte einer Zeitreihe gewichtet, indem sie durch die Wurzel des Autokorrelationswerts für die Verschiebung $\tau=0$ dieser Zeitreihe geteilt werden.
 
 \begin{equation}\label{eq:skalierte_Korrelation}
     c(\tau) =
@@ -105,80 +108,80 @@ Um zum anderen die tendenziell größeren Werte mancher Zeitserien auszugleichen
 \end{equation}
 
 
-Zudem wird von jedem Wert der Zeitserie $x_i$ der Mittelwert $\overline x = \frac{1}{n}\sum_{i=1}^n x_i$ abgezogen, dadurch lassen sich Antikorrelationen feststellen: Wenn beispielsweise die Anzahl der COVID-19 Infektionen eines Landkreises zu einem Zeitpunkt überdurchschnittlich wächst, also die 7-Tages-Inzidenz minus dem Mittelwert der 7-Tages-Inzidenzen positiv ist, und das andere Edukt aus der anderen Zeitserie negativ ist, also in dem anderen Landkreis die Anzahl der COVID-19 Infektionen unterdurchschnittlich wächst, ergibt sich ein negatives Produkt, da sich die Situation in dem einen Landkreis  schneller als üblich verschlechtert, während sich die Situation im anderen Landkreis verbessert oder langsamer als üblich verschlechtert.
+Zudem wird von jedem Wert $x_i$ der Zeitreihe der Mittelwert $\overline x = \frac{1}{n}\sum_{i=1}^n x_i$ abgezogen, dadurch lassen sich Antikorrelationen feststellen: Wenn beispielsweise die Anzahl der COVID-19-Infektionen eines Landkreises zu einem Zeitpunkt überdurchschnittlich wächst, also die 7-Tage-Inzidenz minus dem Mittelwert der 7-Tage-Inzidenzen positiv ist, und das andere Edukt aus der anderen Zeitreihe negativ ist, also in dem anderen Landkreis die Anzahl der COVID-19-Infektionen unterdurchschnittlich wächst, ergibt sich ein negatives Produkt, da sich die Situation in dem einen Landkreis  schneller als üblich verschlechtert, während sich die Situation im anderen Landkreis verbessert oder langsamer als üblich verschlechtert.
 
-Ergibt die Summe aus all den Produkten einer Korrelation eine negative Zahl, scheint die 7-Tages Inzidenz des einen Landkreises zu fallen oder langsam zu steigen, während die 7-Tages Inzidenz des anderen Landkreises steigt oder langsam fällt, dies wird hier Antikorrelation genannt.
+Ergibt die Summe aus all den Produkten einer Korrelation eine negative Zahl, scheint die 7-Tage-Inzidenz des einen Landkreises zu fallen oder langsam zu steigen, während die 7-Tage-Inzidenz des anderen Landkreises steigt oder langsam fällt, dies wird hier Antikorrelation genannt.
 
-Mit allen Ergänzungen berechnet sich die Korrelation $c(\tau)$ zwischen der Zeitserie $X:|X|=n$ mit den Werten $x_i\in X$ und der Zeitserie $Y:|Y|=n$ mit den Werten $y_i \in Y$ und einer Verschiebung $\tau$ relativ zu $X$ mithilfe der Mittelwerte der Zeitserien $\overline x,\ \overline y$ wie in \autoref{eq:komplette_skalierte_Korrelation} beschrieben.
+Mit allen Ergänzungen berechnet sich die Korrelation $c(\tau)$ zwischen der Zeitreihe $X:|X|=n$ mit den Werten $x_i\in X$ und der Zeitreihe $Y:|Y|=n$ mit den Werten $y_i \in Y$ und einer Verschiebung $\tau$ relativ zu $X$ mithilfe der Mittelwerte der Zeitreihen $\overline x,\ \overline y$ wie in \autoref{eq:komplette_skalierte_Korrelation} beschrieben.
 \begin{equation}\label{eq:komplette_skalierte_Korrelation}
     c(\tau) =\frac{n}{n-\vert\tau\vert}
     \frac{\sum_{i=1}^n (x_i-\overline x)\cdot (y_{i+\tau}-\overline y)}{\sqrt{\sum_{i=1}^n (x_i-\overline x)^2}\sqrt{\sum_{i=1}^n (y_i-\overline y)^2}}
 \end{equation}
 
 \subsection{Korrelation zwischen zwei Gebieten am Beispiel von Flensburg und Kiel}
-Um die verwendete Terminologie und die hergeleiteten Gleichungen anhand eines Beispiels näher zu bringen, werden in diesem Abschnitt die einzelnen Schritten einer Korrelationsanalyse ausgeführt. Als Beispiel dient hierfür die Korrelation zwischen den 7-Tages Inzidenzen der Stadtkreise Flensburg und Kiel. Die 7-Tages Inzidenzen sind in \autoref{fig:Inzidenz_Flensburg} und \autoref{fig:Inzidenz_Kiel} abgebildet, jeweils einmal im Original und einmal um den Mittelwert der 7-Tages Inzidenz in x-Richtung nach unten verschoben.
+Um die verwendete Terminologie und die hergeleiteten Gleichungen anhand eines Beispiels näher zu bringen, werden in diesem Abschnitt die einzelnen Schritten einer Korrelationsanalyse ausgeführt. Als Beispiel dient hierfür die Korrelation zwischen dem Verlauf der 7-Tage-Inzidenzen der Stadtkreise Flensburg und Kiel. Beide Verläufe bestehen aus 508 7-Tage-Inzidenzen, welche jeweils einem Tag zugeordnet sind. Die 7-Tage-Inzidenzen sind in \autoref{fig:Inzidenz_Flensburg} und \autoref{fig:Inzidenz_Kiel} abgebildet, jeweils einmal im Original und einmal um den Mittelwert der 7-Tage-Inzidenz in x-Richtung nach unten verschoben.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/Inzidenz_Flensburg.png}
-    \caption{Der Verlauf der 7-Tages Inzidenz des Stadtkreises Flensburg (Gemeindeschlüssel 1001).
-    In Hellblau ist der originale Verlauf der 7-Tages Inzidenz dargestellt. Der Verlauf der 7-Tages Inzidenzen, von denen der Mittelwert der 7-Tages Inzidenzen von Flensburg abgezogen wurde, ist blau dargestellt.}
+    \caption{Der Verlauf der 7-Tage-Inzidenz des Stadtkreises Flensburg (Gemeindeschlüssel 1001).
+    In Hellblau ist der originale Verlauf der 7-Tage-Inzidenz dargestellt. Der Verlauf der 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen von Flensburg abgezogen wurde, ist blau dargestellt.}
     \label{fig:Inzidenz_Flensburg}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/Inzidenz_Kiel.png}
-    \caption{Der Verlauf der 7-Tages Inzidenz des Stadtkreises Kiel (Gemeindeschlüssel 1002).
-    In Hellblau sind ist der originale Verlauf der 7-Tages Inzidenz dargestellt. Der Verlauf der 7-Tages Inzidenzen, von denen der Mittelwert der 7-Tages Inzidenzen von Kiel abgezogen wurde, ist blau dargestellt.}
+    \caption{Der Verlauf der 7-Tage-Inzidenz des Stadtkreises Kiel (Gemeindeschlüssel 1002).
+    In Hellblau sind ist der originale Verlauf der 7-Tage-Inzidenz dargestellt. Der Verlauf der 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen von Kiel abgezogen wurde, ist blau dargestellt.}
     \label{fig:Inzidenz_Kiel}
 \end{figure}
-In \autoref{fig:correlation_Flensburg_Kiel} ist die diskrete Faltung abgebildet, wie sie der Korrelationsanalyse zugrunde liegt und in \autoref{eq:Korrelation} definiert ist.
+In \autoref{fig:correlation_Flensburg_Kiel} ist die diskrete Faltung abgebildet, wie sie der Korrelationsanalyse zugrunde liegt und in \autoref{eq:Korrelation} definiert ist. Die Faltung der beiden in \autoref{fig:Inzidenz_Flensburg} und \autoref{fig:Inzidenz_Kiel} gezeigten Zeitreihen der Länge 507 erzeugt 1015 Werte, da das Spektrum der Verschiebungen $\tau$ bei $\tau=-507$ beginnt und die ganzen Zahlen bis einschließlich $\tau=507$ enthält.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/correlation_Flensburg_Kiel.png}
-    \caption{Ergebnis der diskreten Faltung der 7-Tages Inzidenzen der Stadtkreise Kiel und Flensburg.
-    In Hellblau ist das Ergebnis der Faltung mit den originalen 7-Tages Inzidenzen dargestellt. Das Ergebnis der Faltung mit den 7-Tages Inzidenzen, von denen der Mittelwert der 7-Tages Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
+    \caption{Ergebnis der diskreten Faltung der 7-Tage-Inzidenzen der Stadtkreise Kiel und Flensburg.
+    In Hellblau ist das Ergebnis der Faltung mit den originalen 7-Tage-Inzidenzen dargestellt. Das Ergebnis der Faltung mit den 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
     \label{fig:correlation_Flensburg_Kiel}
 \end{figure}
-\autoref{fig:correlation_Flensburg_Kiel_scaled_autocorrelation} ergibt sich, wenn die Summen jeweils durch die Anzahl ihrer Summanden (den Produkten) geteilt werden, wie in \autoref{eq:skalierte_Korrelation_geteilt_durch_Produkte} beschrieben. Klar zu erkennen die verstärkten Ausschläge am linken und rechten Rand.
+\autoref{fig:correlation_Flensburg_Kiel_scaled_autocorrelation} ergibt sich, wenn die Summen jeweils durch die Anzahl ihrer Summanden (den Produkten) geteilt werden, wie in \autoref{eq:skalierte_Korrelation_geteilt_durch_Produkte} beschrieben. Klar zu erkennen die verstärkten Ausschläge am linken und rechten Rand. Sie entstehen dadurch, dass bei betragsmäßig größeren Verschiebungen der Divisor $n-\vert\tau\vert$ kleiner wird. Dadurch werden die einzelnen Produkte stärker gewichtet und Abweichungen einzelner Produkte sorgen für größere Ausschläge.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/correlation_Flensburg_Kiel_scaled_autocorrelation.png}
-    \caption{Korrelationsanalyse der 7-Tages Inzidenzen der Stadtkreise Kiel und Flensburg ohne Skalierung mithilfe der Autokorrelation.
-    In Hellblau ist das Ergebnis der Korrelationsanalyse mit den originalen 7-Tages Inzidenzen dargestellt. Das Ergebnis der Korrelationsanalyse mit den 7-Tages Inzidenzen, von denen der Mittelwert der 7-Tages Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
+    \caption{Korrelationsanalyse der 7-Tage-Inzidenzen der Stadtkreise Kiel und Flensburg ohne Skalierung mithilfe der Autokorrelation.
+    In Hellblau ist das Ergebnis der Korrelationsanalyse mit den originalen 7-Tage-Inzidenzen dargestellt. Das Ergebnis der Korrelationsanalyse mit den 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
     \label{fig:correlation_Flensburg_Kiel_scaled_autocorrelation}
 \end{figure}
 In \autoref{fig:correlation_Flensburg_Kiel_scaled_autocorrelation} sind die Ergebnisse der kompletten Korrelationsanalyse abgebildet, wie sie mithilfe von \autoref{eq:skalierte_Korrelation} erzeugt werden.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/correlation_Flensburg_Kiel_scaled_complete.png}
-    \caption{Vollständige Korrelationsanalyse der 7-Tages Inzidenzen der Stadtkreise Kiel und Flensburg skaliert mithilfe der Autokorrelation.
-    In Hellblau ist das Ergebnis der Korrelationsanalyse mit den originalen 7-Tages Inzidenzen dargestellt. Das Ergebnis der Korrelationsanalyse mit den 7-Tages Inzidenzen, von denen der Mittelwert der 7-Tages Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
+    \caption{Vollständige Korrelationsanalyse der 7-Tage-Inzidenzen der Stadtkreise Kiel und Flensburg skaliert mithilfe der Autokorrelation.
+    In Hellblau ist das Ergebnis der Korrelationsanalyse mit den originalen 7-Tage-Inzidenzen dargestellt. Das Ergebnis der Korrelationsanalyse mit den 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
     \label{fig:correlation_Flensburg_Kiel_scaled_complete}
 \end{figure}
 
-In \autoref{fig:correlation_Flensburg_Kiel_scaled_complete} ist zu erkennen, das die Korrelationsanalyse von zwei Zeitserien mit 508 7-Tages Inzidenzen 1015 Korrelationswerte ergibt.
+In \autoref{fig:correlation_Flensburg_Kiel_scaled_complete} ist zu erkennen, das die Korrelationsanalyse von zwei Zeitreihen mit 508 7-Tage-Inzidenzen 1015 Korrelationswerte ergibt.
 Für jeden der 412 Landkreis ergeben sich daher aus der Korrelationsanalyse mit sich selbst und jedem anderen Landkreise 418.180 Werte, ebenso ergeben sich für jeden der 38 Regierungsbezirk 38.570. Dies ergibt in Summe $
-%38.570\cdot 38 + 418.180\cdot412 =
-1.465.660+172.290.160=173.755.820$ Werte.
+%38.570\cdot 38 + 418.180\cdot412 = 1.465.660+172.290.160=
+173 755 820$ Werte.
 
-Jeder Wert gibt die Wahrscheinlichkeit einer Korrelation bei der jeweiligen Verschiebung an, wobei die zugeordneten Verschiebungen von links nach rechts bei jedem Schritt um eins zunehmen und der mittlerste der Korrelationswerte der Verschiebung $\tau = 0$ zugeordnet ist. Die Verschiebung ist im Kontext dieser Arbeit stets in ganzen Tagen zwischen $-507$ und $507$ angegeben. Der Wert an Position 501 in der Liste der Korrelationswerte gibt also an, wie wahrscheinlich der Verlauf der 7-Tages Inzidenz des ersten Gebiets mit dem um eine Woche nach links verschobenen Verlauf der 7-Tages Inzidenz des zweiten Gebiets korreliert.
+Jeder Wert gibt den Grad des linearen Zusammenhangs bei der jeweiligen Verschiebung an, wobei die zugeordneten Verschiebungen von links nach rechts bei jedem Schritt um eins zunehmen und der mittlere der Korrelationswerte der Verschiebung $\tau = 0$ zugeordnet ist. Die Verschiebung ist im Kontext dieser Arbeit stets in ganzen Tagen zwischen $-507$ und $507$ angegeben. 
 
 \subsection{Komprimierung und Darstellung als Matrizen}\label{sec:Grundlagen:Korrelation:Komprimierung}
 Das Ziel der nachfolgend beschriebenen Schritte ist, die Korrelationswerte eines Gebiets auf einen Wert zusammenzuführen. Dadurch kann man einfach und schnell auffallende Korrelationen zwischen zwei oder mehreren Gebieten finden kann.
 Hierfür werden zwei verschiedenen Methoden verwendet:
 \begin{itemize}
-    \item Die Verschiebung mit dem maximalen Korrelationswert: Die zeitliche Verschiebung, bei der die Korrelationsanalyse den größten Wert angibt. Sie sagt aus bei welcher Verschiebung in Tagen am wahrscheinlichsten eine Korrelation vorliegt.
-    \item Die Tendenz der Verschiebung: 
+    \item Die Verschiebung $\tau_0$ mit dem maximalen Korrelationswert $c(\tau_0)$: Die zeitliche Verschiebung, bei der die Korrelationsanalyse den größten Korrelationswert ergeben hat.
+    \item Die Tendenz der Verschiebung $\hat{\tau}$: 
     Das Mittel der Differenz zwischen den Werten der betragsmäßig gleichen Verschiebungen.
     Das Resultat ermöglicht eine grobe Einschätzung, ob der maximale Wert nur ein Ausreißer ist oder nicht.
 \end{itemize}
 
-Die Berechnung der Tendenz der Verschiebung ist etwas komplexer und wird daher ebenfalls am Beispiel der Korrelationsanalyse der Stadtkreise Kiel und Flensburg erklärt.
+Die Berechnung der Tendenz der Verschiebung $\hat{\tau}$ ist etwas komplexer und wird daher ebenfalls am Beispiel der Korrelationsanalyse der Stadtkreise Kiel und Flensburg erklärt.
 In \autoref{fig:Flensburg_Kiel_Verschiebung_Tendenz} ist die Berechnung graphisch dargestellt.
-Die Tendenz der Verschiebung berechnet sich aus der Liste der Korrelationswerte $C:\vert C\vert =m$, genauer gesagt aus ihrer Länge $m$ und ihren Werten $c_\tau$,$ -\lfloor m/2 \rfloor\geq \tau\leq \lfloor m/2 \rfloor$:
-\begin{equation}
-    s_{Tendenz} = \frac{1}{\lfloor m/2 \rfloor}
+Die Tendenz der Verschiebung $\hat{\tau}$ berechnet sich aus der Liste der Korrelationswerte $C:\vert C\vert =m$, genauer gesagt aus ihrer Länge $m$ und ihren Werten $c_\tau$,$ -\lfloor m/2 \rfloor\geq \tau\leq \lfloor m/2 \rfloor$:
+\begin{equation}\label{eq:Tendenz der Verschiebung}
+    \hat{\tau} = \frac{1}{\lfloor m/2 \rfloor}
     \sum_{\tau=1}^{\lfloor m/2 \rfloor}c_{\tau}-c_{-\tau}
 \end{equation}
 In \autoref{fig:Flensburg_Kiel_Verschiebung_Tendenz} entspricht der blaue Graph den Werten der Korrelationsanalyse, wie sie auch in \autoref{fig:correlation_Flensburg_Kiel_scaled_complete} abgebildet sind. Um bildlich die Differenz zwischen den Werten der betragsmäßig gleichen Verschiebungen darzustellen, werden die Werte der negativen Verschiebungen an der Vertikalen bei $x=0$ gespiegelt und Lila eingefärbt.
@@ -203,7 +206,8 @@ Die Matrizen sind (mit umgekehrtem Vorzeichen) symmetrisch an der Diagonalen von
 
 Um den Gebieten selbst Werte zuzuordnen und nicht nur in Kombination mit einem anderen Gebiet, wird sowohl bei den Maximalwerten wie auch den Tendenzen der Verschiebung der Mittelwert gebildet, indem die Zeilen der Matrizen aufsummiert werden und durch die Anzahl der Spalten geteilt werden.
 \section{Farbgebung}\label{sec:Grundlagen:Farbgebung}
-Um schnell verständliche Abbildungen bereitstellen zu können, werden die Werte skaliert und die Farbgebung der Deutschlandkarten derart angepasst, dass das gesamte Farbspektrum abgedeckt wird. Das Farbspektrum reicht gemäß den Farben des Regenbogens von blau über grün zu gelb zu rot, wie in \autoref{fig:color_schemes} demonstriert. Die niedrigsten Werte werden blau gefärbt.
+Um schnell verständliche Abbildungen bereitstellen zu können, werden die Werte skaliert und die Farbgebung der Deutschlandkarten derart angepasst, dass das gesamte Farbspektrum abgedeckt wird. Das Farbspektrum reicht von blau über grün zu gelb zu rot, wie in \autoref{fig:color_schemes} demonstriert. Die niedrigsten Werte werden blau gefärbt und in der Regel die weiteren Farben linear zugeordnet, bis dem höchsten Wert schwarz zugeteilt wird.
+Das bedeutet, das einer Zahlenfolge mit 30 Zahlen mit selbem Abstand zueinander exakt die 30 in \autoref{fig:color_schemes} dargestellten Farben zugeordnet.
 Da manche dieser Farbwerte im Kontrast zu einem weißen Hintergrund schwer zu erkennen sind, ist der Hintergrund der meisten Abbildungen grau.
 
 \begin{figure}[H]
