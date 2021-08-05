@@ -7,31 +7,45 @@ Der Mittelwert $\bar x$, auch genannt das Mittel oder auch der Durchschnitt, ent
 \end{equation}
 
 \section{Susceptible-Infectious-Removed-Modell}\label{sec:Grundlagen:SIR}
-Ein Weg zur Beschreibung der Pandemie bietet das \glqq{}Susceptible-Infectious-Removed-Modell\grqq{} (SIR-Modell) \autocite{SIR}. Dieses Modell teilt die Mitglieder einer Menschengruppe in eine der drei folgenden Kategorien ein und ermöglicht es, die zeitliche Entwicklung einer Pandemie übersichtlich darzustellen:
+Ein Weg zur Beschreibung einer Pandemie bietet das \glqq{}Susceptible-Infectious-Removed-Modell\grqq{} (SIR-Modell) \autocite{SIR}. Dieses Modell teilt die Mitglieder einer Menschengruppe in eine der drei folgenden Kategorien ein und ermöglicht es, die zeitliche Entwicklung einer Pandemie übersichtlich darzustellen:
 \begin{itemize}
     \item \glqq{}Susceptible\grqq{}: Menschen, welche angesteckt werden können.
     \item \glqq{}Infectious\grqq{}: Infizierte Menschen, welche weitere Menschen anstecken können. Werden auch als \glqq{}die aktiven Fälle\grqq{} bezeichnet.
     \item \glqq{}Removed\grqq{}: Menschen, welche in die Kategorie \glqq{}Infectious\grqq{} fielen, nun keine weiteren Menschen mehr anstecken können und aus dem Infektionsgeschehen entfernt wurden,
     in diesem Fall Genesene und Verstorbene. 
 \end{itemize}
+
+Da nur die Zahlen der Kategorie \glqq{}Infectious\grqq{} direkt bereitgestellt werden, müssen die Zahlen der Kategorien \glqq{}Susceptible\grqq{} und \glqq{}Removed\grqq{} berechnet werden.
+
+Die Zahl der Menschen in Kategorie \glqq{}Susceptible\grqq{} $S_t$ entspricht für das gewählte Gebiet $\Omega$ am Tag $t$ der Anzahl der Einwohner $p_{\Omega}$ abzüglich der akkumulierten Zahl der Fälle des Tages $F_t$ , wie in Gleichung \autoref{eq:Susceptibles} angegeben. Diese Berechnung wird für jeden Tag $t$ durchgeführt, für den eine akkumulierte Zahl der Fälle $F_t$ angegeben ist.
+    \begin{equation}\label{eq:Susceptibles}
+        S_t=p_{\Omega}-F_t
+    \end{equation}
+Die Zahl der Menschen in Kategorie \glqq{}Removed\grqq{} $R_t$ für das gewählte Gebiet $\Omega$ am Tag $t$ ergeben sich aus der Summe der akkumulierten Anzahl der Genesenen $G_t$ und der akkumulierten Anzahl der Verstorbenen $V_t$. Sie wird ebenfalls nach \autoref{eq:Removed} für jeden Tag berechnet, für den die beiden Ausgangswerte vorliegen.
+\begin{equation}\label{eq:Removed}
+    R_t=G_t+V_t
+\end{equation}
+
+Die Zahlen der Kategorie \glqq{}Infectious\grqq{} liegen wie bereits erwähnt als aktive Fälle vor.
+
 In dem hier verwendeten SIR-Modell wird weder die Geburten- noch die Sterberate beachtet, die angenommen Bevölkerung bleibt durchgehend konstant.
 
 Zudem wird angenommen, das jedes Individuum nur einmal infiziert werden kann und die Infektion die einzige Möglichkeit darstellt, von der Kategorie \glqq{}Susceptible\grqq{} in die Kategorie \glqq{}Removed\grqq{} zu wechseln.
 Somit fällt die Zahl der Menschen in der Kategorie \glqq{}Susceptible\grqq{} monoton und die Zahl der Menschen in der Kategorie \glqq{}Removed\grqq{} steigt monoton an.\autocite{SIR}
 
 \section{Bevölkerungsdichte}
-Die Bevölkerungsdichte eines Gebietes $\rho_{Gebiet}$ wird berechnet, indem die Anzahl der Einwohner im Gebiet $p_{Gebiet}$ durch die Fläche des Gebiets $A_{Gebiet}$ geteilt wird:
+Um für ein Gebiet $\Omega$ die Bevölkerungsdichte $\rho_{\Omega}$ zu berechnen, wird die Anzahl der Einwohner im Gebiet $p_{\Omega}$ durch die Fläche des Gebiets $A_{\Omega}$ geteilt:
 \begin{equation}\label{eq:Bevölkerungsdichte}
-    \rho_{Gebiet} = \frac{n_{Einwohner\  Gebiet}}{A_{Gebiet}}
+    \rho_{\Omega} = \frac{p_{\Omega}}{A_{\Omega}}
 \end{equation}
 \section{7-Tage-Inzidenz}\label{sec:Grundlagen:7-Tages Inzidenz}
-Die 7-Tage-Inzidenz ist die Zahl der neu gemeldeten Fälle in den letzten 7 Tagen pro 100 000 Menschen \autocite{7-TageInzidenz}.
+Die 7-Tage-Inzidenz ist die Zahl der neu gemeldeten Fälle in den letzten 7 Tagen pro 100~000 Menschen \autocite{7-TageInzidenz}.
 
-Um die 7-Tage-Inzidenz $i_d$ für den Tag $d$ zu berechnen, wird von der akkumulierten Zahl der Fälle  am gewählten Tag $f_d$ die akkumulierte Zahl der Fälle sieben Tage zuvor $f_{d-7}$ abgezogen, dies ergibt die neu hinzugekommenen Fälle innerhalb von sieben Tagen.
+Um die 7-Tage-Inzidenz $i_t$ für den Tag $t$ zu berechnen, wird von der akkumulierten Zahl der Fälle  am gewählten Tag $f_t$ die akkumulierte Zahl der Fälle sieben Tage zuvor $f_{t-7}$ abgezogen, dies ergibt die neu hinzugekommenen Fälle innerhalb von sieben Tagen.
 
-Schlussendlich wird diese Zahl durch die Anzahl der Bewohner des Gebiets $p_{Gebiet}$ geteilt und mit 100 000 multipliziert. Dies ergibt \autoref{eq:7-Tages_Inzidenz}.
+Schlussendlich wird diese Zahl durch die Anzahl der Bewohner des Gebiets $p_{Gebiet}$ geteilt und mit 100~000 multipliziert. Dies ergibt \autoref{eq:7-Tages_Inzidenz}.
 \begin{equation}\label{eq:7-Tages_Inzidenz}
-    i_t= \frac{f_d-f_{d-7}}{p_{Gebiet}}\cdot 100.000
+    i_t= \frac{f_t-f_{t-7}}{p_{\Omega}}\cdot 100~000
 \end{equation}
 
 Die 7-Tage-Inzidenz auf Basis der Fallzahlen bietet sich im Vergleich zur täglichen Fallzahl, der Todeszahl oder den aktiven Fällen aus mehreren Gründen als Kennzahl für die Verbreitung eines Virus in einem Gebiet an:
@@ -50,23 +64,24 @@ Daher werden immer sieben Tage in der 7-Tage-Inzidenz zusammengefasst.
 \end{figure}
 Da die Bevölkerung der deutschen Landkreise und Regierungsbezirke nicht identisch ist, wird jeweils durch die Bevölkerungszahl geteilt, um die einzelnen Gebiete miteinander vergleichen zu können.
 
-Aufgrund der ansonsten sehr kleinen Zahlen, bietet es sich zudem an, das Ergebnis mit 100.000 zu multiplizieren.
+Aufgrund der ansonsten sehr kleinen Zahlen, bietet es sich zudem an, das Ergebnis mit 100~000 zu multiplizieren.
 
 Dies sind die drei Begründungen für die drei Schritte in der Berechnung der 7-Tage-Inzidenz nach \autoref{eq:7-Tages_Inzidenz}.
 
+\section{Lexikographische Ordnung}
+Um mehrere Zahlen in eine lexikographische Ordnung zu bringen, werden die Zahlen zuerst nach der ersten Ziffer sortiert. Anschließend werden die Zahlen mit der selben ersten Ziffer nach der zweiten Ziffer sortiert. Anschließend werden die Zahlen mit der selben zweiten Ziffer nach der dritten Ziffer sortiert und so weiter.
 
+Dadurch ergibt sich eine Ordnung, bei welcher beispielsweise 1000 vor 200 kommt. Als Beispiel bietet sich die Liste der Landkreise in \autoref{tab:counties_by_admunitid}, die Landkreise sind hierbei lexikographisch nach dem Gemeindeschlüssel sortiert.
 \section{Korrelationsanalyse mithilfe einer Faltung}\label{sec:BeschreibungKorrelationsanalyse}
 \subsection{Berechnung der Korrelationswerte}\label{sec:Grundlagen:BerechnungderKorrelationwertes}
-Um festzustellen, ob die 7-Tage-Inzidenzen einiger Landkreise im Vergleich zu anderen Landkreisen eher voraus- oder nacheilen, werden die Korrelationswerte im Rahmen einer Korrelationsanalyse berechnet \autocite{Korrelation}.
+Um festzustellen, ob die 7-Tage-Inzidenzen einiger Landkreise im Vergleich zu anderen Landkreisen eher voraus- oder nacheilen, werden die Korrelationswerte im Rahmen der nachfolgend vorgestellten Korrelationsanalyse berechnet \autocite{Korrelation}.
 
-Bei diskreten Werten, aufgeteilt in zwei Zeitreihen $X$ und $Y$, wie in diesem Fall, basiert die Korrelationsanalyse auf einer diskreten Faltung:
-Für eine zeitliche Verschiebung $\tau$ wird mit jedem Wert $x_i$ zum jeweiligen Zeitpunkt $t_i$ aus der ersten Zeitreihe mit dem zugehörigen Wert $y_i$ aus der zweiten Zeitreihe ein Produkt gebildet. Der zugehörige Wert aus der zweiten Zeitreihe entspricht hierbei dem Zeitpunkt $t$ des Wertes der ersten Zeitreihe plus der gewählten Verschiebung $\tau$. Sollte dieser zweite Wert nicht existieren, wird kein Produkt gebildet.
+Bei diskreten Werten, aufgeteilt in zwei Zeitreihen $X:|X|=n$ und $Y:|Y|=n$ mit den Werten $x_t und y_t$, wie in diesem Fall, basiert die Korrelationsanalyse auf einer diskreten Faltung:
+Für eine zeitliche Verschiebung $\tau$ wird mit jedem Wert $x_t$ zum jeweiligen Zeitpunkt $t$ aus der ersten Zeitreihe mit dem zugehörigen Wert $y_{t+\tau}$ aus der zweiten Zeitreihe ein Produkt gebildet . Der zugehörige Wert aus der zweiten Zeitreihe entspricht hierbei dem Zeitpunkt $t$ des Wertes der ersten Zeitreihe plus der gewählten Verschiebung $\tau$. Sollte dieser zweite Wert nicht existieren, wird kein Produkt gebildet.
 
-Für jede zeitliche Verschiebung $\tau$, für die mindestens ein Produkt gebildet wird, werden alle möglichen Produkte aufsummiert.
-
-Somit ergibt sich \autoref{eq:Korrelation}, mit $n := $ Länge von $X$ und wenn $y_{i+\tau} \not\in Y$, dann $y_{i+\tau} := 0$:
+Für jede zeitliche Verschiebung $\tau$, für die mindestens ein Produkt gebildet wird, werden wi ein \autoref{eq:Korrelation} alle möglichen Produkte aufsummiert.
 \begin{equation}\label{eq:Korrelation}
-    c(\tau) = \sum_{i=1}^n x_i\cdot y_{i+\tau}
+    c(\tau) = \sum_{t=1}^n x_t\cdot y_{t+\tau}
 \end{equation}
 
 
@@ -88,7 +103,7 @@ den Betrag der Verschiebung $\vert\tau\vert$
 von der Länge der Zeitreihe $n$ abzieht:
 
 \begin{equation}\label{eq:skalierte_Korrelation_geteilt_durch_Produkte}
-    c(\tau) =\frac{1}{n-\vert\tau\vert} \sum_{i=1}^n x_i\cdot y_{i+\tau}
+    c(\tau) =\frac{1}{n-\vert\tau\vert} \sum_{t=1}^n x_t\cdot y_{i+\tau}
 \end{equation}
 
 Um zum anderen die tendenziell größeren Werte mancher Zeitreihen auszugleichen, werden die Werte aller Zeitreihen mithilfe des sogenannten \glqq{}Autokorrelationswerts für die Verschiebung $\tau=0$ \grqq{} gewichtet: Er beschreibt den Wert der Korrelation einer Zeitreihe mit sich selbst bei keiner zeitlichen Verschiebung. Wie in \autoref{eq:skalierte_Korrelation} zu sehen, werden die Werte einer Zeitreihe gewichtet, indem sie durch die Wurzel des Autokorrelationswerts für die Verschiebung $\tau=0$ dieser Zeitreihe geteilt werden.
@@ -96,51 +111,59 @@ Um zum anderen die tendenziell größeren Werte mancher Zeitreihen auszugleichen
 \begin{equation}\label{eq:skalierte_Korrelation}
     c(\tau) =
     \frac{1}{n-\vert\tau\vert}
-    \sum_{i=1}^n
-    \frac{x_i}{\sqrt{\frac{1}{n}\sum_{i=1}^n x_i^2}}
+    \sum_{t=1}^n
+    \frac{x_t}{\sqrt{\frac{1}{n}\sum_{t=1}^n x_t^2}}
     \cdot
-    \frac{y_{i+\tau}}{\sqrt{\frac{1}{n}\sum_{i=1}^n y_i^2}}
+    \frac{y_{t+\tau}}{\sqrt{\frac{1}{n}\sum_{t=1}^n y_t^2}}
     =
     \frac{n}{n-\vert\tau\vert}
-    \frac{\sum_{i=1}^n x_i \cdot y_{i+\tau}}
-    {\sqrt{\sum_{i=1}^n x_i^2}
-    \sqrt{\sum_{i=1}^n y_i^2}}
+    \frac{\sum_{t=1}^n x_t \cdot y_{t+\tau}}
+    {\sqrt{\sum_{t=1}^n x_t^2}
+    \sqrt{\sum_{t=1}^n y_t^2}}
 \end{equation}
 
 
-Zudem wird von jedem Wert $x_i$ der Zeitreihe der Mittelwert $\overline x = \frac{1}{n}\sum_{i=1}^n x_i$ abgezogen, dadurch lassen sich Antikorrelationen feststellen: Wenn beispielsweise die Anzahl der COVID-19-Infektionen eines Landkreises zu einem Zeitpunkt überdurchschnittlich wächst, also die 7-Tage-Inzidenz minus dem Mittelwert der 7-Tage-Inzidenzen positiv ist, und das andere Edukt aus der anderen Zeitreihe negativ ist, also in dem anderen Landkreis die Anzahl der COVID-19-Infektionen unterdurchschnittlich wächst, ergibt sich ein negatives Produkt, da sich die Situation in dem einen Landkreis  schneller als üblich verschlechtert, während sich die Situation im anderen Landkreis verbessert oder langsamer als üblich verschlechtert.
+Zudem wird von jedem Wert $x_t$ der Zeitreihe der Mittelwert $\overline x = \frac{1}{n}\sum_{t=1}^n x_t$ abgezogen, dadurch lassen sich Antikorrelationen feststellen: Wenn beispielsweise die Anzahl der COVID-19-Infektionen eines Landkreises zu einem Zeitpunkt überdurchschnittlich wächst, also die 7-Tage-Inzidenz minus dem Mittelwert der 7-Tage-Inzidenzen positiv ist, und das andere Edukt aus der anderen Zeitreihe negativ ist, also in dem anderen Landkreis die Anzahl der COVID-19-Infektionen unterdurchschnittlich wächst, ergibt sich ein negatives Produkt, da sich die Situation in dem einen Landkreis  schneller als üblich verschlechtert, während sich die Situation im anderen Landkreis verbessert oder langsamer als üblich verschlechtert.
 
 Ergibt die Summe aus all den Produkten einer Korrelation eine negative Zahl, scheint die 7-Tage-Inzidenz des einen Landkreises zu fallen oder langsam zu steigen, während die 7-Tage-Inzidenz des anderen Landkreises steigt oder langsam fällt, dies wird hier Antikorrelation genannt.
 
-Mit allen Ergänzungen berechnet sich die Korrelation $c(\tau)$ zwischen der Zeitreihe $X:|X|=n$ mit den Werten $x_i\in X$ und der Zeitreihe $Y:|Y|=n$ mit den Werten $y_i \in Y$ und einer Verschiebung $\tau$ relativ zu $X$ mithilfe der Mittelwerte der Zeitreihen $\overline x,\ \overline y$ wie in \autoref{eq:komplette_skalierte_Korrelation} beschrieben.
+Mit allen Ergänzungen berechnet sich die Korrelation $c(\tau)$ zwischen der Zeitreihe $X:|X|=n$ mit den Werten $x_t\in X$ und der Zeitreihe $Y:|Y|=n$ mit den Werten $y_t \in Y$ und einer Verschiebung $\tau$ relativ zu $X$ mithilfe der Mittelwerte der Zeitreihen $\overline x,\ \overline y$ wie in \autoref{eq:komplette_skalierte_Korrelation} beschrieben.
 \begin{equation}\label{eq:komplette_skalierte_Korrelation}
     c(\tau) =\frac{n}{n-\vert\tau\vert}
-    \frac{\sum_{i=1}^n (x_i-\overline x)\cdot (y_{i+\tau}-\overline y)}{\sqrt{\sum_{i=1}^n (x_i-\overline x)^2}\sqrt{\sum_{i=1}^n (y_i-\overline y)^2}}
+    \frac{\sum_{t=1}^n (x_t-\overline x)\cdot (y_{t+\tau}-\overline y)}{\sqrt{\sum_{t=1}^n (x_t-\overline x)^2}\sqrt{\sum_{t=1}^n (y_t-\overline y)^2}}
 \end{equation}
 
 \subsection{Korrelation zwischen zwei Gebieten am Beispiel von Flensburg und Kiel}
-Um die verwendete Terminologie und die hergeleiteten Gleichungen anhand eines Beispiels näher zu bringen, werden in diesem Abschnitt die einzelnen Schritten einer Korrelationsanalyse ausgeführt. Als Beispiel dient hierfür die Korrelation zwischen dem Verlauf der 7-Tage-Inzidenzen der Stadtkreise Flensburg und Kiel. Beide Verläufe bestehen aus 508 7-Tage-Inzidenzen, welche jeweils einem Tag zugeordnet sind. Die 7-Tage-Inzidenzen sind in \autoref{fig:Inzidenz_Flensburg} und \autoref{fig:Inzidenz_Kiel} abgebildet, jeweils einmal im Original und einmal um den Mittelwert der 7-Tage-Inzidenz in x-Richtung nach unten verschoben.
+Um die verwendete Terminologie und die hergeleiteten Gleichungen anhand eines Beispiels näher zu bringen, werden in diesem Abschnitt die einzelnen Schritten einer Korrelationsanalyse ausgeführt. Als Beispiel dient hierfür die Korrelation zwischen dem Verlauf der 7-Tage-Inzidenzen der Stadtkreise Flensburg und Kiel. Die Daten stammen aus dem \glqq{}COVID-19 Datenhub\grqq{}
+(\href{npgeo-corona-npgeo-de.hub.arcgis.com}{npgeo-corona-npgeo-de.hub.arcgis.com}), weitere Informationen zur Datenquelle und der Datenbeschaffung folgen in Kapitel \autoref{chap:Vorgehensweise}.
+
+Beide Verläufe bestehen aus 508 7-Tage-Inzidenzen, welche jeweils einem Tag zugeordnet sind. Die 7-Tage-Inzidenzen sind in \autoref{fig:Inzidenz_Flensburg} und \autoref{fig:Inzidenz_Kiel} abgebildet, jeweils einmal im Original und einmal um den Mittelwert der 7-Tage-Inzidenz in x-Richtung nach unten verschoben.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/Inzidenz_Flensburg.png}
     \caption{Der Verlauf der 7-Tage-Inzidenz des Stadtkreises Flensburg (Gemeindeschlüssel 1001).
-    In Hellblau ist der originale Verlauf der 7-Tage-Inzidenz dargestellt. Der Verlauf der 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen von Flensburg abgezogen wurde, ist blau dargestellt.}
+    In Türkis ist der originale Verlauf der 7-Tage-Inzidenz dargestellt. Der Verlauf der 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen von Flensburg abgezogen wurde, ist blau dargestellt.}
     \label{fig:Inzidenz_Flensburg}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/Inzidenz_Kiel.png}
     \caption{Der Verlauf der 7-Tage-Inzidenz des Stadtkreises Kiel (Gemeindeschlüssel 1002).
-    In Hellblau sind ist der originale Verlauf der 7-Tage-Inzidenz dargestellt. Der Verlauf der 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen von Kiel abgezogen wurde, ist blau dargestellt.}
+    In Türkis sind ist der originale Verlauf der 7-Tage-Inzidenz dargestellt. Der Verlauf der 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen von Kiel abgezogen wurde, ist blau dargestellt.}
     \label{fig:Inzidenz_Kiel}
 \end{figure}
-In \autoref{fig:correlation_Flensburg_Kiel} ist die diskrete Faltung abgebildet, wie sie der Korrelationsanalyse zugrunde liegt und in \autoref{eq:Korrelation} definiert ist. Die Faltung der beiden in \autoref{fig:Inzidenz_Flensburg} und \autoref{fig:Inzidenz_Kiel} gezeigten Zeitreihen der Länge 507 erzeugt 1015 Werte, da das Spektrum der Verschiebungen $\tau$ bei $\tau=-507$ beginnt und die ganzen Zahlen bis einschließlich $\tau=507$ enthält.
+In \autoref{fig:correlation_Flensburg_Kiel} ist die diskrete Faltung abgebildet, wie sie der Korrelationsanalyse zugrunde liegt und in \autoref{eq:Korrelation} definiert ist.
+
+Die Faltung der beiden in \autoref{fig:Inzidenz_Flensburg} und \autoref{fig:Inzidenz_Kiel} gezeigten Zeitreihen der Länge 508 erzeugt 1015 Werte, da das Spektrum der Verschiebungen $\tau$ bei $\tau=-507$ beginnt und die ganzen Zahlen bis einschließlich $\tau=507$ enthält.
+Für jeden der 412 Landkreis ergeben sich daher aus der Korrelationsanalyse mit sich selbst und jedem anderen Landkreise 418~180 Werte, ebenso ergeben sich für jeden der 38 Regierungsbezirk 38~570. Dies ergibt in Summe 
+%38.570\cdot 38 + 418.180\cdot412 = 1.465.660+172.290.160=
+173~755~820 Werte.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/correlation_Flensburg_Kiel.png}
     \caption{Ergebnis der diskreten Faltung der 7-Tage-Inzidenzen der Stadtkreise Kiel und Flensburg.
-    In Hellblau ist das Ergebnis der Faltung mit den originalen 7-Tage-Inzidenzen dargestellt. Das Ergebnis der Faltung mit den 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
+    In Türkis ist das Ergebnis der Faltung mit den originalen 7-Tage-Inzidenzen dargestellt. Das Ergebnis der Faltung mit den 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
     \label{fig:correlation_Flensburg_Kiel}
 \end{figure}
 \autoref{fig:correlation_Flensburg_Kiel_scaled_autocorrelation} ergibt sich, wenn die Summen jeweils durch die Anzahl ihrer Summanden (den Produkten) geteilt werden, wie in \autoref{eq:skalierte_Korrelation_geteilt_durch_Produkte} beschrieben. Klar zu erkennen die verstärkten Ausschläge am linken und rechten Rand. Sie entstehen dadurch, dass bei betragsmäßig größeren Verschiebungen der Divisor $n-\vert\tau\vert$ kleiner wird. Dadurch werden die einzelnen Produkte stärker gewichtet und Abweichungen einzelner Produkte sorgen für größere Ausschläge.
@@ -148,7 +171,7 @@ In \autoref{fig:correlation_Flensburg_Kiel} ist die diskrete Faltung abgebildet,
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/correlation_Flensburg_Kiel_scaled_autocorrelation.png}
     \caption{Korrelationsanalyse der 7-Tage-Inzidenzen der Stadtkreise Kiel und Flensburg ohne Skalierung mithilfe der Autokorrelation.
-    In Hellblau ist das Ergebnis der Korrelationsanalyse mit den originalen 7-Tage-Inzidenzen dargestellt. Das Ergebnis der Korrelationsanalyse mit den 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
+    In Türkis ist das Ergebnis der Korrelationsanalyse mit den originalen 7-Tage-Inzidenzen dargestellt. Das Ergebnis der Korrelationsanalyse mit den 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
     \label{fig:correlation_Flensburg_Kiel_scaled_autocorrelation}
 \end{figure}
 In \autoref{fig:correlation_Flensburg_Kiel_scaled_autocorrelation} sind die Ergebnisse der kompletten Korrelationsanalyse abgebildet, wie sie mithilfe von \autoref{eq:skalierte_Korrelation} erzeugt werden.
@@ -156,19 +179,14 @@ In \autoref{fig:correlation_Flensburg_Kiel_scaled_autocorrelation} sind die Erge
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Grundlagen/correlation_Flensburg_Kiel_scaled_complete.png}
     \caption{Vollständige Korrelationsanalyse der 7-Tage-Inzidenzen der Stadtkreise Kiel und Flensburg skaliert mithilfe der Autokorrelation.
-    In Hellblau ist das Ergebnis der Korrelationsanalyse mit den originalen 7-Tage-Inzidenzen dargestellt. Das Ergebnis der Korrelationsanalyse mit den 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
+    In Türkis ist das Ergebnis der Korrelationsanalyse mit den originalen 7-Tage-Inzidenzen dargestellt. Das Ergebnis der Korrelationsanalyse mit den 7-Tage-Inzidenzen, von denen der Mittelwert der 7-Tage-Inzidenzen des jeweiligen Landkreises abgezogen wurde, ist blau dargestellt.}
     \label{fig:correlation_Flensburg_Kiel_scaled_complete}
 \end{figure}
 
-In \autoref{fig:correlation_Flensburg_Kiel_scaled_complete} ist zu erkennen, das die Korrelationsanalyse von zwei Zeitreihen mit 508 7-Tage-Inzidenzen 1015 Korrelationswerte ergibt.
-Für jeden der 412 Landkreis ergeben sich daher aus der Korrelationsanalyse mit sich selbst und jedem anderen Landkreise 418.180 Werte, ebenso ergeben sich für jeden der 38 Regierungsbezirk 38.570. Dies ergibt in Summe $
-%38.570\cdot 38 + 418.180\cdot412 = 1.465.660+172.290.160=
-173 755 820$ Werte.
-
-Jeder Wert gibt den Grad des linearen Zusammenhangs bei der jeweiligen Verschiebung an, wobei die zugeordneten Verschiebungen von links nach rechts bei jedem Schritt um eins zunehmen und der mittlere der Korrelationswerte der Verschiebung $\tau = 0$ zugeordnet ist. Die Verschiebung ist im Kontext dieser Arbeit stets in ganzen Tagen zwischen $-507$ und $507$ angegeben. 
+Jeder Korrelationswert gibt den Grad des linearen Zusammenhangs bei der jeweiligen Verschiebung an, wobei die zugeordneten Verschiebungen von links nach rechts bei jedem Schritt um eins zunehmen und der mittlere der Korrelationswerte der Verschiebung $\tau = 0$ zugeordnet ist. Die Verschiebung ist im Kontext dieser Arbeit stets in ganzen Tagen zwischen $-507$ und $507$ angegeben. 
 
 \subsection{Komprimierung und Darstellung als Matrizen}\label{sec:Grundlagen:Korrelation:Komprimierung}
-Das Ziel der nachfolgend beschriebenen Schritte ist, die Korrelationswerte eines Gebiets auf einen Wert zusammenzuführen. Dadurch kann man einfach und schnell auffallende Korrelationen zwischen zwei oder mehreren Gebieten finden kann.
+Das Ziel der nachfolgend beschriebenen Schritte ist, die Korrelationswerte eines Gebiets auf einen Wert zusammenzuführen. Dadurch kann man einfach und schnell auffallende Korrelationen zwischen zwei oder mehreren Gebieten finden und erhält einen besseren Überblick über die 173~755~820 ermittelten Korrelationswerte.
 Hierfür werden zwei verschiedenen Methoden verwendet:
 \begin{itemize}
     \item Die Verschiebung $\tau_0$ mit dem maximalen Korrelationswert $c(\tau_0)$: Die zeitliche Verschiebung, bei der die Korrelationsanalyse den größten Korrelationswert ergeben hat.
@@ -213,8 +231,8 @@ Da manche dieser Farbwerte im Kontrast zu einem weißen Hintergrund schwer zu er
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/Grundlagen/color_schemes.png}
-    \caption{Das Farbspektrum, in welchem sich die Darstellungen bewegen. Von links nach rechts steigen die eingegebenen Werte konstant. Der angegebene Wert wird jeweils anhand des ersten und des letzten Werten einer Referenzliste linear in diesem Spektrum verortet.}
+    \caption{Das Farbspektrum, in welchem sich die Darstellungen bewegen. Von links nach rechts steigen die eingegebenen Werte äquidistant. Der angegebene Wert wird jeweils anhand des ersten und des letzten Werten linear in diesem Spektrum verortet.}
     \label{fig:color_schemes}
 \end{figure}
 
-Die Matrizen werden durch die verwendete Programmbibliothek \glqq{}Matplotlib\grqq{} automatisch eingefärbt.
+Die Matrizen werden durch die verwendete Python-Programmbibliothek \glqq{}Matplotlib\grqq{} automatisch eingefärbt.

@@ -1,9 +1,9 @@
 \chapter{Diskussion}\label{chap:Diskussion}
 \section{Aussagekraft des SIR-Modells}
 Die R-Wert Berechnung des Robert Koch-Instituts basiert auf den selben Daten auf denen auch die drei Kennzahlen für das SIR-Modell in \autoref{fig:SIR_Deutschland} basieren \autocite{RKI_Bulletin}, jedoch werden hierfür noch einige weitere Maßnahmen und Annahmen getroffen, welche das Maß dieser Bachelorarbeit sprengen würden.\autocite{RKI_Bulletin}
-Wie auch in der Veröffentlichung und \autoref{sec:Resultate-SIR} beschrieben, weisen die Meldungen der Daten überraschend viele Fehler auf, obwohl es sich lediglich um die automatisch festgestellten Fehler handelt.
+Wie auch in der Veröffentlichung des Robert Koch-Instituts \autocite{RKI_Bulletin} und \autoref{sec:Resultate-SIR} beschrieben, weisen die Meldungen der Daten überraschend viele Fehler auf, obwohl es sich lediglich um die automatisch festgestellten Fehler handelt.
 
-Inwiefern die Daten nicht das Infektionsverhalten wiederspiegeln, lässt sich anhand der Wopchentagsabhängigen Schwankungen der Infizierendenzahl abschätzen: Vermutlich werden am Wochenende weniger Tests durchgeführt oder weniger Meldungen abgegeben. 
+Inwiefern die Daten nicht das Infektionsverhalten widerspiegeln, lässt sich anhand der wochentags-abhängigen Schwankungen der Infizierenden-zahl abschätzen: Vermutlich werden am Wochenende weniger Tests durchgeführt oder weniger Meldungen abgegeben. 
 
 Zudem spiegeln die Zahlen nur die getesteten Fälle wieder. Somit kann zum einen verstärktes Testen in späteren Zeiträumen in der Pandemie die Zahlen verfälschen und zum anderen machen symptomfreie Krankheitsverläufe es schwer, festzustellen ob und wie lange eine Person infektiös war.
 
@@ -20,9 +20,9 @@ Diese sind jedoch oftmals von Landkreisen mit vergleichbar niedrigen Bevölkerun
 Da somit manche mittelmäßig dicht bevölkerte Gebiete nicht trivial in einen stark bevölkerten Stadtkreis und einen dünn bevölkerten Landkreis zerlegt sind, lassen sich keine Schlussfolgerungen ziehen, inwiefern dünn bevölkerte Gebiete stärker betroffen sind als dichter bevölkerte Gebiete. Dies spiegelt sich auch in den im Vergleich zu den restlichen Matrizen recht homogenen Matrizen in \autoref{fig:matrizes_pop_density_counties} wieder.
 
 Jedoch lässt sich die Aufteilung vorzüglich nutzen, um festzustellen, ob die 7-Tages Inzidenzen einer Stadt vor den 7-Tages Inzidenzen im Umland steigen.
-\autoref{fig:highest_selected_counties} zeigt jedoch eindeutig, das die 7-Tages Inzidenzen der gewählten Städte und Landkreise außergewöhnlich zeitgleich steigen und fallen: Der höchste Korrelationswert bei einer Verschiebung von $\tau=0$ bei 50\% ist derart über dem nationalen Durchschnitt von ca. 8,7\%, das davon ausgegangen werden kann, das sich ein Landkreis, der eine Stadt komplett umgibt einen sehr ähnlichen Verlauf der 7-Tages Inzidenz aufweisen wird.
+\autoref{fig:highest_selected_counties} zeigt jedoch eindeutig, das die 7-Tages Inzidenzen der gewählten Städte und Landkreise außergewöhnlich zeitgleich steigen und fallen: Der höchste Korrelationswert bei einer Verschiebung von $\tau=0$ bei 50~\% ist derart über dem nationalen Durchschnitt von circa 8,7~\%, das davon ausgegangen werden kann, das sich ein Landkreis, der eine Stadt komplett umgibt einen sehr ähnlichen Verlauf der 7-Tages Inzidenz aufweisen wird.
 
-Auch die sehr kleinen in \autoref{fig:sum_selected_counties} eingetragenen Tendenzen der Verschiebung stützen diese These: die Tendenzen entsprechen maximal lediglich 5\% des Maximalwerts und sind zu circa gleichen Teilen positiv und negativ.
+Auch die sehr kleinen in \autoref{fig:sum_selected_counties} eingetragenen Tendenzen der Verschiebung stützen diese These: die Tendenzen entsprechen maximal lediglich 5~\% des Maximalwerts und sind zu circa gleichen Teilen positiv und negativ.
 
 Die geringe Größe der Teilmenge mit 18 untersuchten Paaren sollte bei der Einschätzung der Ergebnisse berücksichtigt werden, auch wenn kein trivialer Zusammenhang zwischen dem Ergebnis und der Auswahlmethode besteht. Es wurden die Städte gewählt. welche vollständig von einem Landkreis umgeben sind,
 
@@ -32,7 +32,7 @@ Um das oben beschriebene Problem von nicht trivial aufgeteilten Gebieten zu behe
 Alle Matrizen in \autoref{fig:matrizes_pop_density_districts} scheinen einen Farbverlauf von links unten nach rechts oben zu besitzen, was in der Matrix rechts oben am deutlichsten ersichtlich ist. Dies spricht stark dafür, dass die 7-Tages Inzidenz der bevölkerungsdichten Regierungsbezirke früher ansteigt. Der Farbverlauf wirkt relativ kontinuierlich, was den Verdacht auf einen Zusammenhang noch weiter verstärkt.
 
 Dieser Effekt entspricht durchaus der ersten Intuition, da sich, wie der Name schon sagt, in dichter bevölkerten Gebieten mehr Menschen auf engerem Raum bewegen und dadurch mehr Menschen von Infizierenden angesteckt werden.
-Zudem sind die Treffpunkte in Städten vermutlich deutlich größer: Größere Unternehmen, Universitäten, größere Diskotheken, größere Wohneinheiten, stärker frequentierte Knotenpunkte des Nah- und Fernverkehrs etc. Dadurch kann es zu mehr und stärkeren Superspreading-Events kommen. Superspreading-Events sind Ereignisse an denen sich eine Vielzahl an Menschen an wenigen Infizierten anstecken.
+Zudem sind die Treffpunkte in Städten vermutlich deutlich größer: Größere Unternehmen, Universitäten, größere Diskotheken, größere Wohneinheiten, stärker frequentierte Knotenpunkte des Nah- und Fernverkehrs et cetera. Dadurch kann es zu mehr und stärkeren Superspreading-Events kommen. Superspreading-Events sind Ereignisse an denen sich eine Vielzahl an Menschen an wenigen Infizierten anstecken.
 
 Die Superlative dieser Superspreading-Events stören jedoch auch die Regelmäßigkeit des angesprochenen Farbverlaufs in den Matrizen: Beispielsweise kam es laut Zeit im Oktober 2020 im Landkreis Cloppenburg zu einem COVID-19-Ausbruch in einem Schlachthof \autocite{Zeitartikel}. Erstellt man für den 06.10.2020 und den 07.10.2020 eine Karte mit allen Landkreisen mit einer 7-Tage-Inzidenz über 50 rot ein, ergibt sich die Karte in \autoref{fig:oktober_inzidenzen_uber_50}.
 
