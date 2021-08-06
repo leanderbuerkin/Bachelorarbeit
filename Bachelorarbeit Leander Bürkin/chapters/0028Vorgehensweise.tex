@@ -3,8 +3,8 @@ Um dem im Kapitel \glqq{}\ref{chap:Motivation} Motivation\grqq{} formulierten Zi
 Anschließend werden deren Daten in eine nutzbare Form übertragen.
 Schlussendlich können die Informationen aus den Daten verknüpft, interpretiert und graphisch dargestellt werden.
 
-Der Programmcode wurde in der Programmiersprache Python mit der Umgebung Jupyter Notebook (\href{jupyter.org}{jupyter.org}) erstellt und kann nachgeschlagen werden unter:\\
-\href{https://github.com/leanderbuerkin/Bachelorarbeit}{https://github.com/leanderbuerkin/Bachelorarbeit}
+Der Programmcode wurde in der Programmiersprache Python mit der Umgebung Jupyter Notebook (\href{jupyter.org}{jupyter.org}) erstellt und kann nachgeschlagen werden unter\\
+\href{https://github.com/leanderbuerkin/Bachelorarbeit}{https://github.com/leanderbuerkin/Bachelorarbeit} .
 
 
 Diese Bachelorarbeit basiert teilweise auf den Vorleistungen des Bachelorprojekts zur Visualisierung der COVID-19-Daten von Leander Marius Bürkin.
@@ -13,12 +13,12 @@ Ziel dieses Bachelorprojekts war eine Reihe an Deutschlandkarten in einem Video 
 
 Das Bachelorprojekt sowie eines der Videos ist verfügbar unter\\
 \href{https://github.com/leanderbuerkin/Bachelorprojekt/blob/master/media/germany_incidence_V4_300ms_1080p_music.mp4}{https://github.com/leanderbuerkin/Bachelorprojekt/blob/master/media/}\\
-\href{https://github.com/leanderbuerkin/Bachelorprojekt/blob/master/media/germany_incidence_V4_300ms_1080p_music.mp4}{germany\_incidence\_V4\_300ms\_1080p\_music.mp4}
+\href{https://github.com/leanderbuerkin/Bachelorprojekt/blob/master/media/germany_incidence_V4_300ms_1080p_music.mp4}{germany\_incidence\_V4\_300ms\_1080p\_music.mp4} .
 
 \section{Datenquellen - Ursprung und Abspeicherung}\label{sec:Datenquelle}
 
-Das genannte Bachelorprojekt sowie diese Bachelorarbeit verwenden Informationen zur COVID-19-Pandemie und den geographischen Daten von 412 deutschen Landkreisen. Alle Daten stammen von der Programmierschnittstelle (API) des Robert Koch-Instituts \glqq{}COVID-19 Datenhub\grqq{}
-(\href{npgeo-corona-npgeo-de.hub.arcgis.com}{npgeo-corona-npgeo-de.hub.arcgis.com}) oder werden aus den daher stammenden Daten generiert. Diese Datenquelle wurde gewählt, weil sie vom Robert Koch-Institut (RKI, \href{www.rki.de}{www.rki.de}) und dem deutschen Staat\\
+Das genannte Bachelorprojekt sowie diese Bachelorarbeit verwenden Informationen zur COVID-19-Pandemie und die geographischen Daten von 412 deutschen Landkreisen. Alle Daten stammen von der Programmierschnittstelle (API) des Robert Koch-Instituts \glqq{}COVID-19 Datenhub\grqq{}
+(\href{npgeo-corona-npgeo-de.hub.arcgis.com}{npgeo-corona-npgeo-de.hub.arcgis.com}) oder werden aus den daher stammenden Daten generiert. Diese Datenquelle wurde gewählt, weil sie vom Robert Koch-Institut (RKI, \href{www.rki.de}{www.rki.de}) und der deutschen Bundesregierung\\
  (www.bundesregierung.de) als Quelle angegeben wird. Beispielsweise unter:
 \begin{itemize}
     \item \href{www.bundesregierung.de/breg-de/themen/coronavirus}{www.bundesregierung.de/breg-de/themen/coronavirus}
@@ -28,37 +28,37 @@ Das genannte Bachelorprojekt sowie diese Bachelorarbeit verwenden Informationen 
 
 Insgesamt werden drei verschiedene Datenpakete der API verwendet, zum einen die geographischen Daten der Landkreise, zum anderen die Summe aller aufgetretenen COVID-19-Fälle seit Beginn der Pandemie für jeden Landkreis und jeden Tag vom 01.03.2020 bis zum 21.07.2021 sowie eine Auflistung aller Meldungen der Gesundheitsämter, in welchen das  Referenzdatum, das Meldedatum, die Anzahl der betroffenen Menschen und deren Zustand (entweder genesen, verstorben oder noch infektiös) angegeben werden. Das Referenzdatum kann laut RKI als Tag der Infektion interpretiert werden, das Meldedatum als Genesungsdatum beziehungsweise Sterbedatum \autocite{RKI_Bulletin}.
 
-Alle drei Datenpakete liefern Daten für die deutschen Landkreise. Diese sind jeweils in Form des sogenannten Gemeindeschlüssels referenziert, eine vollständige Zuordnung der Landkreise findet sich in \autoref{tab:counties_by_admunitid}. Die Gemeindeschlüssel bestehen aus vier oder fünf Ziffern, wobei die erste oder die ersten beiden das Bundesland angeben, die zweite beziehungsweise dritte Stelle gegebenenfalls den Regierungsbezirk und die letzten beiden Stellen bestimmen den Landkreis. Somit lassen sich die Landkreise in Regierungsbezirke einteilen und mithilfe der Kennzahlen der Landkreise die Kennzahlen der Regierungsbezirke berechnen.
+Alle drei Datenpakete liefern Daten für die deutschen Landkreise. Diese sind jeweils in Form des sogenannten Gemeindeschlüssels referenziert, eine vollständige Zuordnung der Landkreise findet sich in \autoref{tab:counties_by_admunitid}. Die Gemeindeschlüssel bestehen aus vier oder fünf Ziffern, wobei die erste oder die ersten beiden das Bundesland angeben, die zweite beziehungsweise dritte Stelle gegebenenfalls den Regierungsbezirk und die letzten beiden Stellen den Landkreis bestimmen. Somit lassen sich die Landkreise in Regierungsbezirke einteilen und mithilfe der Kennzahlen der Landkreise die Kennzahlen der Regierungsbezirke berechnen.
 
 Die Landkreise, welche das RKI angibt, stimmen nicht mit den Landkreisen des Statistischen Bundesamtes  \autocite{statistischesBundesamtLandkreise}
-überein: In den Daten des RKIs gibt es 118 Landkreise mehr, beziehungsweise wenn man die kreisfreien Städte abzieht, zwölf Landkreise mehr. Diese Diskrepanz kommt durch die Aufteilung von Berlin in seine 12 Bezirke. Zudem wird der Stadtkreis Eisenach in den Daten des RKIs als eigene kreisfreie Stadt gewertet und nicht zum Landkreis Wartburgkreis hinzugefügt. Der Stadtkreis Eisenach ist mit dem Gemeindeschlüssel 16056 versehen. Trotz dieser Unterschiede und obwohl auch kreisfreie Städte mit inbegriffen sind, wird im folgenden weiterhin der Begriff \glqq{}Landkreise\grqq{} für alle 412 Gebiete verwendet.
+überein: In den Daten des RKI gibt es 118 Landkreise mehr, beziehungsweise wenn man die kreisfreien Städte abzieht, zwölf Landkreise mehr. Diese Diskrepanz kommt durch die Aufteilung von Berlin in seine 12 Bezirke. Zudem wird der Stadtkreis Eisenach in den Daten des RKI als eigene kreisfreie Stadt gewertet und nicht zum Landkreis Wartburgkreis hinzugefügt. Der Stadtkreis Eisenach ist mit dem Gemeindeschlüssel 16056 versehen. Trotz dieser Unterschiede und obwohl auch kreisfreie Städte mit inbegriffen sind, wird im folgenden weiterhin der Begriff \glqq{}Landkreise\grqq{} für alle 412 Gebiete verwendet.
 
-Der Gemeinde
+
 %Liste der NUTS-Codes Gemeindeschlüssel leiten sich daraus ab. URL siehe Kommentar
 %https://eur-lex.europa.eu/legal-content/DE/TXT/PDF/?uri=CELEX:32016R2066&from=EN
 Die Regierungsbezirke, welche sich aus den ersten zwei oder drei Stellen des Gemeindeschlüssels ergeben, stimmen leider auch nicht mit den Regierungsbezirken des Statistischen Bundesamtes
 \autocite{statistischesBundesamtRegierungsbezirke}
 überein: Die Gemeindeschlüssel haben 38 verschiedene Präfixe, wohingegen laut statistischem Bundesamt aktuell nur 19 Regierungsbezirke existieren.
-Da jedoch nicht alle Bundesländer in Regierungsbezirke unterteilt sind, wird in neun Fällen das Bundesland an Stelle möglicher Regierungsbezirke verwendet. Die Diskrepanz von neun weiteren Gebieten entsteht durch die Veränderung der Regierungsbezirke seit der Einführung der Gemeindeschlüssel: Die Gemeindeschlüssel Niedersachsens lassen auf 4 Regierungsbezirke schließen, die Gemeindeschlüssel der Rheinland-Pfalz auf 3 und die Gemeindeschlüssel Sachsens auf 3 weitere. Keines dieser Bundesländer ist aktuell noch in Regierungsbezirke unterteilt. Somit ergeben sich 19 echte Regierungsbezirke, 10 ehemalige sowie 9 Bundesländer ohne Regierungsbezirke.
+Da jedoch nicht alle Bundesländer in Regierungsbezirke unterteilt sind, wird in neun Fällen das Bundesland an Stelle möglicher Regierungsbezirke verwendet. Die Diskrepanz von neun weiteren Gebieten entsteht durch die Veränderung der Regierungsbezirke seit der Einführung der Gemeindeschlüssel: Die Gemeindeschlüssel von Niedersachsen lassen auf 4 Regierungsbezirke schließen, die Gemeindeschlüssel der Rheinland-Pfalz auf 3 und die Gemeindeschlüssel Sachsens auf 3 weitere. Keines dieser Bundesländer ist aktuell noch in Regierungsbezirke unterteilt. Somit ergeben sich 19 echte Regierungsbezirke, 10 ehemalige sowie 9 Bundesländer ohne Regierungsbezirke.
 Trotz dieser Unterschiede und obwohl auch Bundesländer miteinbegriffen sind, wird im folgenden weiterhin der Begriff \glqq{}Regierungsbezirk\grqq{} für alle 38 Gebiete verwendet.
 
 Die genannten Daten wurden abgespeichert, damit sie nicht bei jeder Ausführung erneut angefordert und aufbereitet werden müssen.
 \section{Datenaufbereitung}
-Bevor die Daten genutzt werden können, müssen sie verifiziert werden, überflüssige Informationen entfernt werden und neue Kennzahlen aus den gegebenen Informationen berechnet werden. Überflüssige Informationen sind beispielsweise Alter, Geschlecht und der Tag der Publikation.
+Bevor die Daten genutzt werden können, müssen sie verifiziert werden, überflüssige Informationen entfernt und neue Kennzahlen aus den gegebenen Informationen berechnet werden. Überflüssige Informationen sind beispielsweise Alter, Geschlecht und der Tag der Publikation.
 
-Daten vor der Datenaufbereitung, welche direkt von der API oder einem Backup davon stammen, werden als \glqq{}unmodifiziert Datene\grqq{} bezeichnet. 
+Daten vor der Datenaufbereitung, welche direkt von der API oder einem Backup davon stammen, werden als \glqq{}unmodifizierte Daten\grqq{} bezeichnet. 
 
 Daten, die auf Vollständigkeit überprüft wurden, die neu-berechnete Daten enthalten und von überflüssigen Informationen bereinigt wurden, werden \glqq{}modifizierte Daten\grqq{} genannt.
 
-Zunächst werden die unmodifizierten Daten in eine übersichtlichere Form übertragen und es wird sichergestellt, dass gleich viele Werte für jeden Landkreis vorhanden sind. Zudem werden die Umrisse der 100 Landkreise von Hand geprüft, welche mehrere Polygone enthalten, diese werden entweder als Ausschnitt oder als reale Fläche interpretiert. Würde man einfach alle Polygone zeichnen, kann es passieren, das ein Bereich, welcher komplett von einem Landkreis umgeben ist von einem seiner Polygone übermalt wird, welches genau diese Fläche aus dem Landkreis ausschneiden sollte.
+Zunächst werden die unmodifizierten Daten in eine übersichtlichere Form übertragen und es wird sichergestellt, dass gleich viele Werte für jeden Landkreis vorhanden sind. Zudem werden die Umrisse der 100 Landkreise von Hand geprüft, welche mehrere Polygone enthalten. Diese werden entweder als Ausschnitt oder als reale Fläche interpretiert. Würde man einfach alle Polygone zeichnen, kann es passieren, dass ein Bereich, welcher komplett von einem Landkreis umgeben ist, von einem seiner Polygone übermalt wird, welches genau diese Fläche aus dem Landkreis ausschneiden sollte.
 
-Nachdem die unmodifizierten Daten in eine übersichtlichere Form übertragen und überprüft wurden, werden aus den Daten weitere Werte berechnet.
+Nachdem die unmodifizierten Daten in eine übersichtlichere Form übertragen und überprüft sind, werden aus den Daten weitere Werte berechnet.
 
 Die Bevölkerungsdichte der Landkreise wird berechnet, indem die Anzahl der Einwohner durch die Fläche in Quadratmetern geteilt wird (siehe \autoref{eq:Bevölkerungsdichte}). Beide Informationen werden von der API bereitgestellt.
 Die Bevölkerungsdichte wird auch für die Regierungsbezirke berechnet. 
-Sowohl die Bevölkerungsdichten der Landkreise wie auch die Bevölkerungsdichten der Regierungsbezirke werden zur Einordnung der Korrelationsanalysen auf einer Deutschlandkarte dargestellt, wobei die Farbe die Bevölkerungsdichte repräsentiert, wie in \autoref{sec:Grundlagen:Farbgebung} beschrieben.
+Sowohl die Bevölkerungsdichten der Landkreise als auch die Bevölkerungsdichten der Regierungsbezirke werden zur Einordnung der Korrelationsanalysen auf einer Deutschlandkarte dargestellt, wobei die Farbe die Bevölkerungsdichte repräsentiert, wie in \autoref{sec:Grundlagen:Farbgebung} beschrieben.
 
-Für jeden Landkreis und jeden Regierungsbezirk wird eine Zeitreihe mit den 7-Tage-Inzidenzen angefertigt, welche die 7-Tage-Inzidenz nach \autoref{eq:7-Tages_Inzidenz} für jeden Tag enthält, für den eine Fallzahlen angegeben ist. 
+Für jeden Landkreis und jeden Regierungsbezirk wird eine Zeitreihe mit den 7-Tage-Inzidenzen angefertigt, welche die 7-Tage-Inzidenz nach \autoref{eq:7-Tages_Inzidenz} für jeden Tag enthält, für den eine Fallzahl angegeben ist. 
 
 Um die Auflistung aller Meldungen der Gesundheitsämter nutzen zu können, müssen diese erst für jeden Landkreis und jeden Tag gesammelt und aufsummiert werden:
 Das Referenzdatum wird als Tag der Infektion interpretiert. Die Anzahl der betroffenen Individuen wird für jeden folgenden Tag zur akkumulierten Anzahl der Fälle hinzu addiert.
@@ -66,24 +66,23 @@ Das Meldedatum wird als Tag der Genesung beziehungsweise Tag des Todes interpret
 
 Um ein Gefühl dafür zu bekommen, welcher Landkreis in welchem Ausmaß von der COVID-19-Pandemie getroffen wurde, wird die akkumulierte Anzahl der COVID-19-Fälle des letzten Tages durch die Bevölkerung des Landkreises geteilt und farblich in einer Deutschlandkarte dargestellt.
 %\input{chapters/0029Datenformat}
-\section{Datendarstellung}
-Abschließend werden die Daten wie folgt dargestellt.
-\subsection{Allgemeine Daten der Gebiete}
+\section{Datendarstellung}\label{sec:Vorgehensweise:Datendarstellung}
+\subsection{Allgemeine Daten der Gebiete}\label{sec:Vorgehensweise:Datendarstellung:Allgemeine Daten der Gebiete}
 Zuerst werden die folgenden Daten der Landkreise und Regierungsbezirke dargestellt, welche auf einfachen Gleichungen beruhen und lediglich zur Einordnung der anderen Ergebnisse dienen:
 \begin{itemize}
     \item Die Bevölkerungsdichte $\rho_\Omega$ nach \autoref{eq:Bevölkerungsdichte}, um diese mit dem Infektionsverhalten in Zusammenhang setzen zu können.
-    \item Die Anordnung der Gebiete, wenn man sie lexikographisch nach ihrem Gemeindeschlüssel sortiert. Dadurch ergibt sich eine einheitlichere Nord-Süd-Aufteilung als die Sortierung nach dem Betrag des Gemeindeschlüssels, daher wird die lexikographische Ordnung verwendet.
-    \item Die Summe der 7-Tage-Inzidenzen nach \autoref{eq:7-Tages_Inzidenz}, als Maß dafür, wie stark ein Gebiet betroffen war.
+    \item Die Anordnung der Gebiete, wenn man sie lexikographisch nach ihrem Gemeindeschlüssel sortiert. Dadurch ergibt sich eine einheitlichere Ost-West und Nord-Süd-Aufteilung als die Sortierung nach dem Betrag des Gemeindeschlüssels, daher wird die lexikographische Ordnung verwendet.
+    \item Das Mittel der 7-Tage-Inzidenzen nach \autoref{eq:7-Tages_Inzidenz} und \autoref{sec:Grundlagen:Mittelwert}, als Maß dafür, wie stark ein Gebiet betroffen war.
 \end{itemize}
-\subsection{SIR-Modell}
+\subsection{SIR-Modell}\label{sec:Vorgehensweise:SIR}
 Zudem wird anhand der Daten ein SIR-Modell erstellt, wie in \autoref{sec:Grundlagen:SIR} beschrieben.
 
-Da jedoch die Zahl der aktiven Fälle sehr niedrig und dementsprechend sensibel gegenüber kleinen Anomalien sind, wird dieses nur auf Bundesebene erstellt. 
+Da jedoch die Zahl der aktiven Fälle sehr niedrig und dementsprechend sensibel gegenüber kleinen Anomalien sind, wird das SIR-Modell nur auf Bundesebene erstellt. 
 Hierfür werden die drei Kennzahlen des SIR-Modells in drei Abbildungen dargestellt.
-\subsection{Korrelationsanalyse}
+\subsection{Korrelationsanalyse}\label{sec:Vorgehensweise:Korrelationsanalyse}
 Für alle Korrelationsanalysen werden aus den in \autoref{sec:Grundlagen:7-Tages Inzidenz} genannten Gründen die 7-Tage-Inzidenzen nach \autoref{eq:7-Tages_Inzidenz} verwendet. Folgende Gebiete werden nach den in \autoref{sec:BeschreibungKorrelationsanalyse} beschriebenen Methoden untersucht:
 \begin{itemize}
-    \item Die Korrelation der in \autoref{fig:selected_counties} dargestellten Stadtkreise mit den Landkreisen, die sie umgeben (die Abweichungen von der in \autoref{sec:BeschreibungKorrelationsanalyse} beschriebenen Korrelationsanalyse sind am Ende diesen Abschnitts aufgeführt)
+    \item Die Korrelation der in \autoref{fig:selected_counties} dargestellten Stadtkreise mit den Landkreisen, die sie umgeben (die Abweichungen von der in \autoref{sec:BeschreibungKorrelationsanalyse} beschriebenen Korrelationsanalyse sind am Ende dieses Abschnitts aufgeführt)
     \item Die Korrelationen aller Landkreise untereinander
     \item Die Korrelationen aller Regierungsbezirke untereinander
 \end{itemize}
@@ -91,17 +90,17 @@ Für alle Korrelationsanalysen werden aus den in \autoref{sec:Grundlagen:7-Tages
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/Vorgehensweise/selected_counties.png}
-    \caption{Die ausgewählten Landkreise mit den Stadtkreisen, die sie jeweils umgeben. In Grün jeweils der Landkreis und in Dunkelgrau der Stadtkreis, der umschlossen wird.}
+    \caption{Darstellung der ausgewählten Landkreise mit den Stadtkreisen, die sie jeweils umgeben. In Grün jeweils der Landkreis und in Dunkelgrau der Stadtkreis, der umschlossen wird.}
     \label{fig:selected_counties}
 \end{figure}
-In dieser Arbeit werden nur Korrelationen mit einem zeitlichen Versatz zwischen $\tau=-50$ und $\tau=50$ betrachtet, da zum einen eine Interpretation für eine Verschiebung von mehr als 50 Tagen sehr schwierig ist und zum anderen einzelne Ausreißer bei größeren Verschiebungen stärker ins Gewicht fallen, weil immer weniger Produkte aufsummiert werden. Dies fällt auch in \autoref{fig:correlation_Flensburg_Kiel_scaled_autocorrelation} im Vergleich zu \autoref{fig:correlation_Flensburg_Kiel} an den Rändern der Graphen auf.
+In dieser Arbeit werden nur Korrelationen mit einer Verschiebungen $\tau$ zwischen einschließlich $-30$ und $30$ betrachtet, da zum einen eine Interpretation für eine Verschiebung von mehr als einem Monat aufgrund der vielen Faktoren beim Infektionsgeschehen sehr schwierig ist und zum anderen einzelne Ausreißer bei größeren Verschiebungen stärker ins Gewicht fallen, weil immer weniger Produkte aufsummiert werden. Dies fällt auch in \autoref{fig:correlation_Flensburg_Kiel_scaled_autocorrelation} im Vergleich zu \autoref{fig:correlation_Flensburg_Kiel} an den Rändern der Graphen auf.
 
-Um ein detailliertes Bild zu erhalten, werden zudem Korrelationsanalysen für die Verschiebungen $\tau\in[-30,30]$ und $\tau\in[-14,14]$ durchgeführt.
+Um ein detailliertes Bild zu erhalten, werden zudem Korrelationsanalysen für die Verschiebungen $\tau$ zwischen einschließlich $-14$ und $14$ durchgeführt.
 
 \subsubsection{Abweichungen von der Standard-Korrelationsanalyse bei der Korrelationsanalyse einzelner ausgewählter Städte und Landkreise}\label{sec:selected_counties}
-Um herauszufinden, ob sich in den Korrelationswerten zwischen einer Stadt und ihrem Umland eine zeitliche Verschiebung feststellen lässt oder andere Auffälligkeiten auftauchen, werden Korrelationsanalysen für die in \autoref{fig:selected_counties} definierten Land- und Stadtkreise durchgeführt.
+Um herauszufinden, ob sich in den Korrelationswerten zwischen einer Stadt und ihrem Umland eine zeitliche Verschiebung feststellen lässt oder andere Auffälligkeiten auftreten, werden Korrelationsanalysen für die in \autoref{fig:selected_counties} definierten Land- und Stadtkreise durchgeführt.
 
-Um die festgestellten zeitlichen Verschiebungen einzuordnen, wird zusätzlich zu der in \autoref{sec:BeschreibungKorrelationsanalyse} beschriebenen Korrelationsanalyse, ermittelt, bei wie viel Prozent der Korrelationen aller deutschen Landkreise untereinander der höchste Korrelationswert bei einer Verschiebung von $\tau = 0$ zu finden ist.
+Um die festgestellten zeitlichen Verschiebungen einzuordnen, wird zusätzlich zu der in \autoref{sec:BeschreibungKorrelationsanalyse} beschriebenen Korrelationsanalyse ermittelt, bei wie viel Prozent der Korrelationen aller deutschen Landkreise untereinander der höchste Korrelationswert bei einer Verschiebung von $\tau = 0$ zu finden ist.
 
-Ansonsten werden für die ausgewählten Landkreis-Stadtkreis-Paare Korrelationsanalysen durchgeführt, wie in \autoref{sec:BeschreibungKorrelationsanalyse} beschrieben. Da es sich jedoch um eine übersichtliche Datenmenge handelt und für jedes Gebiet nur eine Korrelation geprüft wird, werden die Korrelationswerte explizit ausgegeben anstatt das die Verschiebungen mit dem maximalen Korrelationswert $\tau_0$ und die Tendenzen der Verschiebung $\hat{\tau}$ in Form einer Matrix dargestellt werden.
+Ansonsten werden für die ausgewählten Landkreis-Stadtkreis-Paare Korrelationsanalysen durchgeführt, wie in \autoref{sec:BeschreibungKorrelationsanalyse} beschrieben. Da es sich jedoch um eine übersichtliche Datenmenge handelt und für jedes Gebiet nur eine Korrelation geprüft wird, werden die Korrelationswerte explizit ausgegeben anstatt, dass die Verschiebungen mit dem maximalen Korrelationswert $\tau_0$ und die Tendenzen der Verschiebung $\hat{\tau}$ in Form einer Matrix dargestellt werden.
 

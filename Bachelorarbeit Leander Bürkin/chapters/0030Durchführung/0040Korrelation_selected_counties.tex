@@ -1,7 +1,7 @@
+\newpage
 \section{Korrelationen zwischen Städten und ihrem Umland}
-In \autoref{fig:highest_selected_counties} sind die Korrelationswerte zwischen den in  \autoref{sec:selected_counties} beschriebenen Städten und den zugehörigen Landkreisen für eine zeitliche Verschiebung zwischen $\tau=-50$ und $\tau=50$ als Kurven dargestellt.
+In \autoref{fig:highest_selected_counties} sind die Korrelationswerte zwischen den in  \autoref{sec:selected_counties} beschriebenen Städten und den zugehörigen Landkreisen für eine zeitliche Verschiebung zwischen $\tau=-30$ und $\tau=30$ als Kurven dargestellt. 
 
-Die Kurven, deren Maximum rechts der null ist, sind orange eingefärbt. Die Kurven mit dem höchsten Punkt links der null sind blau gefärbt. Die restlichen Kurven, welche am für $\tau=0$ maximal werden, sind grün gefärbt.
 Bei den Korrelationsanalysen der folgenden Stadt- (SK) und Landkreise (LK) sind die Werte bei einer Verschiebung $\tau=0$ maximal:
 \begin{itemize}
     \item LK Kassel (6633) mit SK Kassel (6611)
@@ -21,21 +21,21 @@ Bei den Korrelationsanalysen der folgenden Stadt- und Landkreise sind die Werte 
     \item LK Weimarer Land (16071) mit SK Weimar (16055)
 \end{itemize}
 Bei den Korrelationsanalysen von LK Trier-Saarburg (7235) mit SK Trier (7211) und LK Regensburg (9375) mit SK Regensburg (9362) sind die Werte bei einer Verschiebung $\tau=3$ maximal. Die Werte der Korrelationsanalyse von LK Bamberg (9471) mit SK Bamberg (9461) sind maximal bei einer Verschiebung $\tau=8$.
-Die Werte Korrelationsanalysen von LK Südwestpfalz (7340) mit SK Pirmasens (7317), LK Potsdam-Mittelmark (12069) mit SK Brandenburg a.d.Havel (12051) und LK Spree-Neiße (12071) mit SK Cottbus (12052) werden in jeweils bei einer Verschiebung $\tau=-2$, $\tau=-4$ und $\tau=-6$ maximal.
+Die Werte Korrelationsanalysen von LK Südwestpfalz (7340) mit SK Pirmasens (7317), LK Potsdam-Mittelmark (12069) mit SK Brandenburg a.d.Havel (12051) und LK Spree-Neiße (12071) mit SK Cottbus (12052) werden jeweils bei einer Verschiebung $\tau=-2$, $\tau=-4$ und $\tau=-6$ maximal.
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.95\textwidth]{figures/Ergebnisse/highest_selected_counties.png}
-    \caption{Die Korrelationswerte der 7-Tage-Inzidenzen der ausgewählten Landkreise mit den Städten, die sie umgeben. Die Kurven sind je nach dem x-Wert ihres Maximums eingefärbt: Orange bei positiven x-Werten, Blau bei negativen und grün bei einem x-Wert von null.}
+    \includegraphics[width =\textwidth]{figures/Ergebnisse/highest_selected_counties.png}
+    \caption{Die Korrelationswerte $c(\tau)$ der 7-Tage-Inzidenzen der ausgewählten Landkreise mit den Städten, die sie umgeben. Die Kurven, deren Maximum rechts der null ist, sind Orange eingefärbt. Die Kurven mit dem höchsten Punkt links der null sind Blau gefärbt. Die restlichen Kurven, welche am für $\tau=0$ maximal werden, sind Grün gefärbt.}
     \label{fig:highest_selected_counties}
 \end{figure}
 
 In dieser sehr kleinen Teilmenge weisen 50~\% der Korrelationen den höchsten Korrelationswert bei einer Verschiebung von $\tau = 0$ auf.
 Bei den Korrelationen aller deutschen Landkreise untereinander liegt bei 8.7~\% der höchste Korrelationswert bei einer Verschiebung von $\tau= 0$ (8.5~\% wenn man die Korrelationen der Landkreise mit sich selbst herausrechnet).
 
-\autoref{fig:sum_selected_counties} zeigt die Tendenz der Verschiebung.
-\begin{figure}
+\autoref{fig:sum_selected_counties} zeigt die Tendenzen der Verschiebung $\hat{\tau}$ der in \autoref{sec:selected_counties} beschriebenen Korrelationen. Wie auch die Maxima sind auch die Tendenzen fast gleichmäßig auf positive und negative Werte aufgeteilt. Mit Tendenzen zwischen -0.075 und 0.1 sind diese jedoch ähnlich verteilt wie die Tendenzen der Verschiebung der Korrelationen aller anderen Landkreise, wie sie im folgenden \autoref{sec:Durchführung:Korrelationsmatrizen sortiert nach der Bevölkerungsdichte} beschrieben werden.
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{figures/Ergebnisse/sum_selected_counties.png}
-    \caption{Die Tendenzen der Verschiebung aus den Korrelationsanalysen der ausgewählten Städte und Landkreise.}
+    \includegraphics[width=\textwidth]{figures/Ergebnisse/sum_selected_counties.png}
+    \caption{Die Tendenzen der Verschiebung $\hat{\tau}$ aus den Korrelationsanalysen der ausgewählten Städte und Landkreise. In orange sind die Tendenzen der Verschiebung für Verschiebungen $\tau$ zwischen $-14$ und $14$ dargestellt. In blau sind die Tendenzen der Verschiebung für Verschiebungen $\tau$ zwischen $-30$ und $30$ dargestellt.}
     \label{fig:sum_selected_counties}
 \end{figure}
